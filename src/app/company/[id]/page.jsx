@@ -11,6 +11,10 @@ import {
   ShoppingCart,
   MessageCircle,
   Users,
+  Building2,
+  Settings,
+  CalendarCheck,
+  ClipboardList
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -71,22 +75,38 @@ export default function Dashboard() {
                 href="#"
                 className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
               >
-                <Package className="h-4 w-4" />
-                Products{" "}
+                <Building2 className="h-4 w-4" />
+                Company Profile{" "}
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Users className="h-4 w-4" />
-                Customers
+                All Applicants
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <LineChart className="h-4 w-4" />
-                Analytics
+                <ClipboardList className="h-4 w-4" />
+                Job Listning
+              </Link>
+
+              <Link
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <CalendarCheck className="h-4 w-4" />
+                My Shedule
+              </Link>
+
+              <Link
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <Settings className="h-4 w-4" />
+                Settings
               </Link>
             </nav>
           </div>
