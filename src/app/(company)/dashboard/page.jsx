@@ -1,5 +1,5 @@
 
-import SideBar from "./_components/sidebar"
+import SideBar from "../_components/sidebar"
 import {
   
   ClipboardList
@@ -8,7 +8,7 @@ import {
 
 import { Button } from "@/components/ui/button"
 
-import CompanyHeader from "./_components/header"
+import CompanyHeader from "../_components/header"
 
 export default function DashBoard() {
   return (
