@@ -1,11 +1,11 @@
-import ConnectDB from '@/DB/connectDB';
+import ConnectDB from '../../DB/connectDB';
 import Joi from 'joi';
-import AppliedJob from '@/models/ApplyJob';
-import formidable from 'formidable';
+import AppliedJob from '../../models/ApplyJob';
+// import formidable from 'formidable';
 import fs from 'fs';
 import path from 'path'
 import crypto from 'crypto';
-import validateToken from '@/middleware/tokenValidation';
+// import validateToken from '../../middleware/tokenValidation';
 
 const schema = Joi.object({
     name: Joi.string().required(),
@@ -22,17 +22,17 @@ export const config = {
 };
 
 
-export default async (req, res) => {
+export async function POST(req, res) {
     await ConnectDB();
     const { method } = req;
     switch (method) {
         case 'POST':
-            await validateToken(req, res, async () => {
+        
                 await applyToJob(req, res);
-            });
+           
             break;
         default:
-            res.status(400).json({ success: false, message: 'Invalid Request' });
+            return NextResponse.json({ success: false, message: "Invalid Request" });
     }
 }
 
