@@ -94,13 +94,11 @@ console.log(formData);
     ]
 
 
-
-
     return (
         <>
            
-            <div className='w-full  py-20 flex items-center  justify-center flex-col'>
-                <h1 className='text-xl mt-4 uppercase tracking-widest border-b-2 border-b-indigo-600 py-2 font-semibold mb-8 md:text-2xl lg:text-4xl'>Enter Job Details</h1>
+            <div className='w-full  py-5 flex items-center  justify-center flex-col'>
+                <h2 className='text-xl mt-1 uppercase tracking-widest border-b-2 border-b-indigo-600 py-2 font-semibold mb-8 md:text-2xl lg:text-2xl'>Enter Job Details</h2>
                 <form onSubmit={handleSubmit} className=" w-full px-4 mx-4  h-full" >
                     <div className='w-full mb-4  flex flex-col items-start justify-center'>
                         <label htmlFor="title" className='mb-1 text-base font-semibold'>Title :</label>
