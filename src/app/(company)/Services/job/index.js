@@ -6,7 +6,8 @@ import Cookies from "js-cookie";
 export const post_job = async (formData) => {
 
     try {
-        const res = await fetch(`http://localhost:3000/api/job/postAJob`, {
+        console.log("posting");
+        const res = await fetch(`http://localhost:3000/api/postajob`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,24 +21,6 @@ export const post_job = async (formData) => {
         console.log('error in post job (service) => ', error);
     }
 }
-
-
-// get job api
-// export const get_job = async () => {
-//     try {
-//         console.log("done2");
-//         const res = await fetch(`http://localhost:3000/api/job/getAllJobs`, {
-//             method: 'GET',
-//             headers : {
-//                 'Authorization': `Bearer ${Cookies.get('token')}`
-//             }
-//         })
-//         const data = await res.json(); // Await here
-//         return data; // Return the resolved data
-//     } catch (error) {
-//         console.log('error in getting job (service) => ', error);
-//     }
-// }
 
 
 // get specified job api
@@ -60,7 +43,7 @@ export const get_specified_job = async (id) => {
 
 export const apply_job = async (formData) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/job/applyJob`, {
+        const res = await fetch(`http://localhost:3000/api/applyajob`, {
             method: 'POST',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`},
             body: formData,
