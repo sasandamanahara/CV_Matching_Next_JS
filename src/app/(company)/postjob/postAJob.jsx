@@ -1,4 +1,4 @@
-import NavBar from '../components_company/NavBar'
+
 import Select from 'react-select'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
@@ -94,16 +94,12 @@ console.log(formData);
     ]
 
 
-
-
-
-
     return (
         <>
-            <NavBar />
-            <div className='w-full  py-20 flex items-center  justify-center flex-col'>
-                <h1 className='text-xl mt-4 uppercase tracking-widest border-b-2 border-b-indigo-600 py-2 font-semibold mb-8 md:text-2xl lg:text-4xl'>Enter Job Details</h1>
-                <form onSubmit={handleSubmit} className="sm:w-1/2 w-full px-4 mx-4  h-full" >
+           
+            <div className='w-full  py-5 flex items-center  justify-center flex-col'>
+                <h2 className='text-xl mt-1 uppercase tracking-widest border-b-2 border-b-indigo-600 py-2 font-semibold mb-8 md:text-2xl lg:text-2xl'>Enter Job Details</h2>
+                <form onSubmit={handleSubmit} className=" w-full px-4 mx-4  h-full" >
                     <div className='w-full mb-4  flex flex-col items-start justify-center'>
                         <label htmlFor="title" className='mb-1 text-base font-semibold'>Title :</label>
                         <input onChange={(e) => setFormData({ ...formData, title: e.target.value })} type="text" id='title' className='w-full py-2 px-3 mb-2 border border-indigo-600 rounded' placeholder='Enter title of job' />
@@ -173,7 +169,7 @@ console.log(formData);
                             error.job_deadline && <p className="text-sm text-red-500">{error.job_deadline}</p>
                         }
                     </div>
-                    <button type="submit" className='w-full py-2 rounded bg-indigo-600 text-white font-semibold tracking-widest'>Submit</button>
+                    <button type="submit" className='py-3 px-10  rounded bg-gray-900 text-white font-semibold tracking-widest'>Submit</button>
                 </form>
             </div>
             <ToastContainer />

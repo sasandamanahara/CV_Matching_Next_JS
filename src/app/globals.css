@@ -84,11 +84,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-fuchsia-600;
+    @apply bg-gray-600;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-fuchsia-700;
+    @apply bg-gray-700;
   }
 
   textarea,

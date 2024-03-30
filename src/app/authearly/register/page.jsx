@@ -1,137 +1,140 @@
-import Link from "next/link"
+"use client"; // This is a client component 👈🏽
+import React from "react";
+import Link from "next/link";
+
+import Image from "next/image";
+import "../assets/css/tailwind.css";
+import "../assets/scss/tailwind.scss";
+import "../assets/scss/icons.scss";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-
-export default function LoginForm() {
-  return (
-    <Card className="mx-auto max-w-sm">
-        <Tabs defaultValue="company" className=" mx-auto max-w-sm">
-        <TabsList >
-            <TabsTrigger  value="company">Company</TabsTrigger>
-            <TabsTrigger value="jobseeker">JobSeeker</TabsTrigger>
-        </TabsList>
-        <TabsContent value="company">
-
-
-    <Card className="mx-auto max-w-sm">
-      <CardHeader>
-        <CardTitle className="text-xl">Company Sign Up</CardTitle>
-        <CardDescription>
-          Enter your information to create an account
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="grid gap-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="first-name">First name</Label>
-              <Input id="first-name" placeholder="Max" required />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="last-name">Last name</Label>
-              <Input id="last-name" placeholder="Robinson" required />
-            </div>
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="m@example.com"
-              required
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" />
-          </div>
-          <Button type="submit" className="w-full">
-            Create an account
-          </Button>
-          <Button variant="outline" className="w-full">
-            Sign up with Google
-          </Button>
-        </div>
-        <div className="mt-4 text-center text-sm">
-          Already have an account?{" "}
-          <Link href="#" className="underline">
-            Login
-          </Link>
-        </div>
-      </CardContent>
-    </Card>
-
-    </TabsContent>
+/**
+ * Login component
+ */
+export default function Login() {
+    return (
+        <>
+            <section
+                 style={{ backgroundImage: `url(/images/bg/auth.jpg)` }}
+                className="position-relative bg-center bg-cover">
+                <div className="absolute inset-0 bg-black opacity-90"></div>
+                <div className="container-fluid relative">
+                   <div className="grid grid-cols-1">
+                        <div className="lg:col-span-4">
+                            <div className="flex flex-col min-h-screen md:px-12 py-12 px-3">
+                                <div className="text-center mx-auto">
+                                    <Link href="/"><Image  src={"/images/logo.png"} width={200} height={24} alt=""/></Link>
+                                  
+                                </div>
+                                <div className=" my-auto">
+       
+                                      <div className="mt-5 w-full max-w-sm m-auto px-6 py-8 bg-white dark:bg-slate-900 rounded-md shadow-lg shadow-slate-500 dark:shadow-slate-800">
 
 
-    
-        <TabsContent value="jobseeker">
+                                      <Tabs defaultValue="jobseeker" >
+                                      <TabsList>
+                                        <TabsTrigger value="jobseeker">Job Seeker</TabsTrigger>
+                                        <TabsTrigger value="company">Company</TabsTrigger>
+                                      </TabsList>
+                                      <TabsContent value="jobseeker">
+                                      <div className="grid grid-cols-1">
+                                            <h5 className="mb-8 text-xl dark:text-white font-semibold text-center">Register as Jobseeker</h5>
+                                            <form className="ltr:text-left rtl:text-right">
+                                                <div className="grid grid-cols-1">
+                                                    <div className="mb-4">
+                                                        <label className="dark:text-white" htmlFor="RegisterName">Your Name:</label>
+                                                        <input id="RegisterName" type="email" className="form-input mt-3" placeholder="Harry" />
+                                                    </div>
 
+                                                    <div className="mb-4">
+                                                        <label className="dark:text-white" htmlFor="LoginEmail">Email Address:</label>
+                                                        <input id="LoginEmail" type="email" className="form-input mt-3" placeholder="name@example.com" />
+                                                    </div>
 
+                                                    <div className="mb-4">
+                                                        <label className="dark:text-white" htmlFor="LoginPassword">Password:</label>
+                                                        <input id="LoginPassword" type="password" className="form-input mt-3" placeholder="Password:" />
+                                                    </div>
 
-        <Card className="mx-auto max-w-sm">
-      <CardHeader>
-        <CardTitle className="text-xl">Job Seeker Sign Up</CardTitle>
-        <CardDescription>
-          Enter your information to create an account
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="grid gap-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="first-name">First name</Label>
-              <Input id="first-name" placeholder="Max" required />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="last-name">Last name</Label>
-              <Input id="last-name" placeholder="Robinson" required />
-            </div>
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="m@example.com"
-              required
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" />
-          </div>
-          <Button type="submit" className="w-full">
-            Create an account
-          </Button>
-          <Button variant="outline" className="w-full">
-            Sign up with Google
-          </Button>
-        </div>
-        <div className="mt-4 text-center text-sm">
-          Already have an account?{" "}
-          <Link href="#" className="underline">
-            Login
-          </Link>
-        </div>
-      </CardContent>
-    </Card>
+                                                    <div className="flex justify-between mb-4">
+                                                        <div className="inline-flex items-center">
+                                                            <input className="form-checkbox text-orange-600 rounded w-4 h-4 me-2 border border-inherit" type="checkbox" value="" id="RememberMe" />
+                                                            <label className="form-check-label text-slate-400" htmlFor="RememberMe">Remember me</label>
+                                                        </div>
+                                                    </div>
 
+                                                    <div className="mb-4">
+                                                        <Link href="" className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full">Register</Link>
+                                                    </div>
 
+                                                    <div className="text-center">
+                                                        <span className="text-slate-400 dark:text-slate-300 me-2">Already have an account ?</span> <Link href="/auth-login" className="text-dark dark:text-white fw-bold">Sign in</Link>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                      
+                                      </TabsContent>
+                                      <TabsContent value="company">
+                                      
+                                      <div className="grid grid-cols-1">
+                                            <h5 className="mb-8 text-xl dark:text-white font-semibold text-center">Register as Company</h5>
+                                            <form className="ltr:text-left rtl:text-right">
+                                                <div className="grid grid-cols-1">
+                                                    <div className="mb-4">
+                                                        <label className="dark:text-white" htmlFor="RegisterName">Your Name:</label>
+                                                        <input id="RegisterName" type="email" className="form-input mt-3" placeholder="Harry" />
+                                                    </div>
 
-        </TabsContent>
-        </Tabs>
-        </Card>
-  )
+                                                    <div className="mb-4">
+                                                        <label className="dark:text-white" htmlFor="LoginEmail">Email Address:</label>
+                                                        <input id="LoginEmail" type="email" className="form-input mt-3" placeholder="name@example.com" />
+                                                    </div>
+
+                                                    <div className="mb-4">
+                                                        <label className="dark:text-white" htmlFor="LoginPassword">Password:</label>
+                                                        <input id="LoginPassword" type="password" className="form-input mt-3" placeholder="Password:" />
+                                                    </div>
+
+                                                    <div className="flex justify-between mb-4">
+                                                        <div className="inline-flex items-center">
+                                                            <input className="form-checkbox text-orange-600 rounded w-4 h-4 me-2 border border-inherit" type="checkbox" value="" id="RememberMe" />
+                                                            <label className="form-check-label text-slate-400" htmlFor="RememberMe">Remember me</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="mb-4">
+                                                        <Link href="" className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full">Register</Link>
+                                                    </div>
+
+                                                    <div className="text-center">
+                                                        <span className="text-slate-400 dark:text-slate-300 me-2">Already have an account ?</span> <Link href="/auth-login" className="text-dark dark:text-white fw-bold">Sign in</Link>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    
+                  
+                  
+                  
+                  </TabsContent>
+                </Tabs>
+                </div>        
+                                </div>
+
+                                {/* <!-- Start Footer --> */}
+                                <div className="text-center">
+                                    <p className="text-gray-400">© {new Date().getFullYear()} Next Step Careers.</p>
+                                </div>
+                                {/* <!-- End Footer --> */}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           
+        </>
+    )
+
 }

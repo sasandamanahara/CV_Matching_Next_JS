@@ -20,8 +20,7 @@ import Blog from "./component/Blog";
 import Contact from "./component/Contact";
 import Footer from "./component/Footer";
 import Portfolio from "./component/Portfolio";
-import Review from "./component/Testimonial";
-import Switcher from "./component/Switcher";
+
 
 function Home() {
   const [isOpen, setMenu] = useState(true);
@@ -37,10 +36,9 @@ function Home() {
     const timer = setTimeout(() => {
       new Typed("#typed", {
         strings: [
-          "<b>Business</b>",
-          "<b>Startups</b>",
-          "<b>Digital Agency</b>",
-          "<b>Marketing</b>",
+          "<b>Talent</b>",
+          "<b>Job</b>",
+          
         ],
         backDelay: 2000,
         loop: true,
@@ -73,71 +71,28 @@ function Home() {
                     src={"/images/logo-dark.png"}
                     className="l-dark"
                     alt=""
-                    width="105"
+                    width="150"
                     height={24}
                   />
                   <Image
-                    src={"/images/logo-light.png"}
+                    src={"/images/logo.png"}
                     className="l-light"
                     alt=""
-                    width="105"
+                    width="150"
                     height={24}
                   />
                 </span>
                 <Image
-                  src={"/images/logo-light.png"}
+                  src={"/images/logo.png"}
                   className="hidden dark:inline-block"
                   alt=""
                   height={24}
-                  width="105"
+                  width="150"
                 />
               </Link>
 
               <div className="nav-icons flex items-center lg_992:order-2 ms-auto">
-                <ul className="list-none menu-social mb-0">
-                  <li className="inline ms-1">
-                    <Link to="#">
-                      <span className="login-btn-primary">
-                        <span className="btn btn-sm btn-icon p-1.5 rounded-full bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white">
-                          <Unicons.UilGithub />
-                        </span>
-                      </span>
-                      <span className="login-btn-light">
-                        <span className="btn btn-sm btn-icon p-1.5 rounded-full bg-gray-50 hover:bg-gray-200 dark:bg-slate-900 dark:hover:bg-gray-700 hover:border-gray-100 dark:border-gray-700 dark:hover:border-gray-700">
-                          <Unicons.UilGithub />
-                        </span>
-                      </span>
-                    </Link>
-                  </li>
-                  <li className="inline ms-1">
-                    <Link to="#">
-                      <span className="login-btn-primary">
-                        <span className="btn btn-sm btn-icon p-1.5 rounded-full bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white">
-                          <Unicons.UilTwitter />
-                        </span>
-                      </span>
-                      <span className="login-btn-light">
-                        <span className="btn btn-sm btn-icon p-1.5 rounded-full bg-gray-50 hover:bg-gray-200 dark:bg-slate-900 dark:hover:bg-gray-700 hover:border-gray-100 dark:border-gray-700 dark:hover:border-gray-700">
-                          <Unicons.UilTwitter />
-                        </span>
-                      </span>
-                    </Link>
-                  </li>
-                  <li className="inline ms-1">
-                    <Link to="#">
-                      <span className="login-btn-primary">
-                        <span className="btn btn-sm btn-icon p-1.5 rounded-full bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white">
-                          <Unicons.UilInstagram />
-                        </span>
-                      </span>
-                      <span className="login-btn-light">
-                        <span className="btn btn-sm btn-icon p-1.5 rounded-full bg-gray-50 hover:bg-gray-200 dark:bg-slate-900 dark:hover:bg-gray-700 hover:border-gray-100 dark:border-gray-700 dark:hover:border-gray-700">
-                          <Unicons.UilInstagram />
-                        </span>
-                      </span>
-                    </Link>
-                  </li>
-                </ul>
+                
                 <button
                   type="button"
                   className="collapse-btn inline-flex items-center ms-3 text-dark dark:text-white lg_992:hidden"
@@ -248,8 +203,8 @@ function Home() {
             <div className="container relative">
               <div className="grid grid-cols-1 mt-12">
                 <h4 className="text-white lg:text-5xl text-4xl lg:leading-normal leading-normal font-medium mb-7 position-relative">
-                  Providing Brilliant Ideas <br />
-                  For Your{" "}
+                  Looking For <br />
+                  {" "}
                   <span
                     className="typewrite relative text-type-element"
                     id="typed"
@@ -259,9 +214,7 @@ function Home() {
                 </h4>
 
                 <p className="text-white opacity-50 mb-0 max-w-2xl text-lg">
-                  Launch your campaign and benefit from our expertise on
-                  designing and managing conversion centered Tailwind CSS html
-                  page.
+                Unlock Your Next Career Move or Find the Perfect Candidate Effortlessly with Our Advanced Matching Platform.
                 </p>
 
                 <div className="relative mt-10">
@@ -301,8 +254,7 @@ function Home() {
           {/* Footer section */}
           <Footer />
 
-          {/* Switcher section */}
-          <Switcher />
+          
         </div>
       </Wrapper>
     </>
