@@ -2,7 +2,7 @@
 import Cookies from "js-cookie";
 
 // post job api
-
+//ok
 export const post_job = async (formData) => {
 
     try {
@@ -26,6 +26,7 @@ export const post_job = async (formData) => {
 // get specified job api
 export const get_specified_job = async (id) => {
     try {
+      
         const res = await fetch(`http://localhost:3000/api/job/getSpecifiedJob?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
@@ -60,6 +61,7 @@ export const apply_job = async (formData) => {
  
 export const get_my_applied_job = async (id) => {
     try {
+        
         const res = await fetch(`http://localhost:3000/api/job/getAppliedJobs?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
@@ -71,9 +73,11 @@ export const get_my_applied_job = async (id) => {
     }
 }
 
+//ok
 export const get_all_posted_job = async (id) => {
 
     try {
+
         console.log("done1");
         const res = await fetch("http://localhost:3000/api/getalljobs", {
             method: 'GET',
@@ -92,8 +96,8 @@ export const get_all_posted_job = async (id) => {
 export const get_my_posted_job = async (id) => {
 
     try {
-        console.log("done");
-        const res = await fetch(`http://localhost:3000/api/job/getPostedJobs?id=${id}`, {
+        console.log("getting id"+id);
+        const res = await fetch(`http://localhost:3000/api/getPostedJobs?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
