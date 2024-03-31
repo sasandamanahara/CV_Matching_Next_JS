@@ -13,7 +13,7 @@ import useSWR from 'swr'
 import { Provider } from 'react-redux';
 import { store } from '../Store/store';
 
-export default function PostedJobs() {
+export default function AllJobs() {
     // const router = useRouter();
     const dispatch = useDispatch();
     const user = useSelector(state => state?.User?.userData)

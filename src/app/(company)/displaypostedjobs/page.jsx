@@ -1,13 +1,13 @@
 'use client';
 import { Provider } from 'react-redux';
-import { store } from '../Store/store'; // Import your Redux store configuration
+import { store } from '../Store/store'; 
 import React from 'react';
-import AllJobs from './PostedJobs';
+import PostedJobs from './PostedJobs';
 
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <AllJobs/>
+      <PostedJobs/>
     </Provider>
   );
 }
