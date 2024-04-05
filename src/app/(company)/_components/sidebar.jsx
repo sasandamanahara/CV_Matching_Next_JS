@@ -61,13 +61,19 @@ export default function SideBar() {
                 All Applicants
               </Link>
               <Link
-                href="#"
+                href="/display_jobs"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <ClipboardList className="h-4 w-4" />
-                Job Listning
+                All Jobs
               </Link>
-
+              <Link
+                href="/displaypostedjobs"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <ClipboardList className="h-4 w-4" />
+                My Jobs
+              </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
@@ -75,6 +81,7 @@ export default function SideBar() {
                 <CalendarCheck className="h-4 w-4" />
                 My Shedule
               </Link>
+              
 
               <Link
                 href="#"

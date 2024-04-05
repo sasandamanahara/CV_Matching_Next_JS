@@ -1,7 +1,7 @@
 'use client';
 import { get_all_posted_job, get_my_posted_job } from '../Services/job';
 import { setMyJobs } from '../Utils/JobSlice';
-import JobsCard from '../components_company/JobsCard';
+import JobsCard from '../components_company/JobsCardOld';
 import NavBar from  '../components_company/NavBar'
 import Cookies from 'js-cookie';
 // import { useRouter } from 'next/router';
@@ -20,13 +20,6 @@ export default function AllJobs() {
     const myJobs = useSelector(state => state?.Job?.myJobs);
     const id = user?._id
 
-
-
-    // useEffect(() => {
-    //     if (!id || !Cookies.get('token')) {
-    //         router.push('/auth/login')
-    //     }
-    // }, [user, id, Cookies])
 
 
     const { data, error, isLoading } = useSWR('/getAllJobs', () =>  get_all_posted_job())
@@ -48,11 +41,9 @@ export default function AllJobs() {
                     </div>
                 ) : (
                     <>
-                        <NavBar />
+                       
                         <div className='w-full  pt-20'>
-                            <div className='w-full h-20 bg-gray-50 text-indigo-600 font-bold flex items-center justify-center flex-col'>
-                                <h1 className='text-3xl'>All Jobs</h1>
-                            </div>
+                            
                             <div className='w-full h-full px-4 py-4 flex  overflow-y-auto  items-start justify-center flex-wrap'>
                                 {
                                     myJobs?.map((job, index) => (

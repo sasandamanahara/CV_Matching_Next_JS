@@ -8,7 +8,7 @@ import { InfinitySpin } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import useSWR from 'swr';
-import NavBar from "../components_company/NavBar";
+
 
 export default function PostedJobs() {
     const router = useRouter();
@@ -40,7 +40,7 @@ export default function PostedJobs() {
 
     return (
         <>
-            <NavBar/>
+            
             {swrIsLoading ? (
                 <div className='bg-gray w-full h-screen flex items-center flex-col justify-center'>
                     <InfinitySpin width='200' color="#4f46e5" />
@@ -48,9 +48,7 @@ export default function PostedJobs() {
                 </div>
             ) : (
                 <div className='w-full pt-20'>
-                    <div className='w-full h-20 bg-gray-50 text-indigo-600 font-bold flex items-center justify-center flex-col'>
-                        <h1 className='text-3xl'>Posted Jobs</h1>
-                    </div>
+                    
                     <div className='w-full h-full px-4 py-4 flex overflow-y-auto items-start justify-center flex-wrap'>
                         {myJobs?.map((job, index) => (
                             <JobsCard key={index} job={job} posted={true}/>
