@@ -6,40 +6,40 @@ import * as Unicons from '@iconscout/react-unicons';
 export default function Services() {
   const team = [
     {
-      title: "Grow Your Business",
-      Icon: Unicons.UilAdjustCircle ,
+      title: "Graphic Desings",
+      Icon: Unicons.UilPalette ,
       subtext:
-        "The phrasal sequence of the is now so that many campaign and benefit",
+        "",
     },
     {
-      title: "Drive More Sales",
-      Icon: Unicons.UilCircuit ,
+      title: "Digital Marketing",
+      Icon: Unicons.UilMegaphone ,
       subtext:
-        "The phrasal sequence of the is now so that many campaign and benefit",
+        "",
     },
     {
-      title: "Handled By Expert",
-      Icon:Unicons.UilFire ,
+      title: "Code & Programming",
+      Icon:Unicons.UilArrow ,
       subtext:
-        "The phrasal sequence of the is now so that many campaign and benefit",
+        "",
     },
     {
-      title: "Discussion For Idea",
-      Icon: Unicons.UilShoppingBasket ,
+      title: "Music & Audio",
+      Icon: Unicons.UilMusic ,
       subtext:
-        "The phrasal sequence of the is now so that many campaign and benefit",
+        "",
     },
     {
-      title: "Increase Conversion",
-      Icon: Unicons.UilFlower ,
+      title: "Account & Finance",
+      Icon: Unicons.UilAnalytics ,
       subtext:
-        "The phrasal sequence of the is now so that many campaign and benefit",
+        "",
     },
     {
-      title: "Sales Growth Idea",
-      Icon: Unicons.UilFlipH ,
+      title: "Health & Care",
+      Icon: Unicons.UilMedkit ,
       subtext:
-        "The phrasal sequence of the is now so that many campaign and benefit",
+        "",
     },
   ];
 
@@ -50,20 +50,13 @@ export default function Services() {
         <div className="container lg mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 pb-8 items-center">
             <div>
-              <h6 className="text-orange-600 text-base font-medium uppercase mb-2">
-                What We Do ?
-              </h6>
+              
               <h3 className="mb-4 md:text-2xl text-xl font-medium dark:text-white md:mb-0">
-                Perfect Solution For Your <br /> Business
+                Popular Categories <br /> 
               </h3>
             </div>
 
-            <div>
-              <p className="text-slate-400 dark:text-slate-300 max-w-xl">
-                Launch your campaign and benefit from our expertise on designing
-                and managing conversion centered Tailwind CSS html page.
-              </p>
-            </div>
+            
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
@@ -93,7 +86,7 @@ export default function Services() {
 
                   <Link href="#" className="mt-5 inline-flex  btn btn-link hover:text-orange-600 dark:hover:text-orange-600 after:bg-orange-600 dark:text-white transition duration-500">
                     <span>
-                       Read More
+                       Explore Jobs
                     </span>
                       <Unicons.UilArrowRight width="16px"/>
                   </Link>
@@ -105,17 +98,9 @@ export default function Services() {
 
         <div className="container md:mt-24 mt-16">
           <div className="grid grid-cols-1 pb-8 text-center">
-            <h6 className="text-orange-600 text-base font-medium uppercase mb-2">
-              Work Process
-            </h6>
-            <h3 className="mb-4 md:text-2xl text-xl font-medium dark:text-white">
-              Digital System For Our Business
+            <h3 className="text-orange-600 text-base font-medium uppercase mb-2">
+              How this works?
             </h3>
-
-            <p className="text-slate-400 dark:text-slate-300 max-w-xl mx-auto">
-              Launch your campaign and benefit from our expertise on designing
-              and managing conversion centered Tailwind CSS html page.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 mt-8">
@@ -136,13 +121,10 @@ export default function Services() {
                   <div className="mt-4 md:mt-0">
                     <div className="event event-description-right ltr:float-left rtl:float-right ltr:text-left rtl:text-right md:ms-7">
                       <h5 className="text-lg dark:text-white mb-1 font-medium">
-                        Strategy
+                        Create an account
                       </h5>
                       <p className="timeline-subtitle mt-3 mb-0 text-slate-400">
-                        The generated injected humour, or non-characteristic
-                        words etc. Cum sociis natoque penatibus et magnis dis
-                        parturient montes, nascetur ridiculus mus. Donec quam
-                        felis,
+                        First create an account in our platform as a jobseeker or company.
                       </p>
                     </div>
                   </div>
@@ -154,13 +136,10 @@ export default function Services() {
                   <div className="md:order-1 order-2">
                     <div className="event event-description-left ltr:float-left rtl:float-right ltr:text-right rtl:text-left md:me-7">
                       <h5 className="text-lg dark:text-white mb-1 font-medium">
-                        Development
+                        Update Your Profile & CV
                       </h5>
                       <p className="timeline-subtitle mt-3 mb-0 text-slate-400">
-                        The generated injected humour, or non-characteristic
-                        words etc. Cum sociis natoque penatibus et magnis dis
-                        parturient montes, nascetur ridiculus mus. Donec quam
-                        felis,
+                        After loging to out platform enter your details to profile and update your CV
                       </p>
                     </div>
                   </div>
@@ -194,13 +173,10 @@ export default function Services() {
                   <div className="mt-4 mt-sm-0">
                     <div className="event event-description-right ltr:float-left rtl:float-right ltr:text-left rtl:text-right md:ms-7">
                       <h5 className="text-lg dark:text-white mb-1 font-medium">
-                        Launch
+                        Apply for Jobs
                       </h5>
                       <p className="timeline-subtitle mt-3 mb-0 text-slate-400">
-                        The generated injected humour, or non-characteristic
-                        words etc. Cum sociis natoque penatibus et magnis dis
-                        parturient montes, nascetur ridiculus mus. Donec quam
-                        felis,
+                       Our system will matched your profile with job offers. Then you can start to apply those job offers.
                       </p>
                     </div>
                   </div>

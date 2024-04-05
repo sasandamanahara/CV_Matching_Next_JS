@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Link } from "react-scroll";
 import * as Unicons from "@iconscout/react-unicons";
 
+
 import Typed from "typed.js";
 
 import Services from "./component/Services";
@@ -26,34 +27,35 @@ function Home() {
   const [isOpen, setMenu] = useState(true);
   const [scroll, setScroll] = useState(false);
 
-  useEffect(() => {
-    const windowScroll = () => {
-      setScroll(window.scrollY > 50);
-    };
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", windowScroll);
-    }
-    const timer = setTimeout(() => {
-      new Typed("#typed", {
-        strings: [
-          "<b>Talent</b>",
-          "<b>Job</b>",
+  // useEffect(() => {
+  //   const windowScroll = () => {
+  //     setScroll(window.scrollY > 50);
+  //   };
+  //   if (typeof window !== "undefined") {
+  //     window.addEventListener("scroll", windowScroll);
+  //   }
+  //   const timer = setTimeout(() => {
+  //     new Typed("#typed", {
+  //       strings: [
+  //         "<b>Talent</b>",
+  //         "<b>Job</b>",
           
-        ],
-        backDelay: 2000,
-        loop: true,
-        startDelay: 300,
-        typeSpeed: 100,
-        backSpeed: 100,
-      });
-    }, 500);
-    return () => {
-      clearTimeout(timer);
-      if (typeof window !== "undefined") {
-        window.removeEventListener("scroll", windowScroll);
-      }
-    };
-  }, []);
+  //       ],
+  //       backDelay: 2000,
+  //       loop: true,
+  //       startDelay: 300,
+  //       typeSpeed: 100,
+  //       backSpeed: 100,
+  //     });
+  //   }, 500);
+  //   return () => {
+  //     clearTimeout(timer);
+  //     if (typeof window !== "undefined") {
+  //       window.removeEventListener("scroll", windowScroll);
+  //     }
+  //   };
+  // },
+  //  []);
 
   const toggleMenu = () => {
     setMenu(!isOpen);
@@ -120,7 +122,7 @@ function Home() {
                   >
                     <span className="nav-link">Home</span>
                   </Link>
-                  <Link
+                  {/* <Link
                     className="nav-item"
                     activeclassname="active"
                     spy={true}
@@ -129,7 +131,7 @@ function Home() {
                     to="about"
                   >
                     <span className="nav-link">About us</span>
-                  </Link>
+                  </Link> */}
                   <Link
                     className="nav-item"
                     to="features"
@@ -138,9 +140,9 @@ function Home() {
                     smooth={true}
                     duration={500}
                   >
-                    <span className="nav-link">Services</span>
+                    <span className="nav-link">Popular Categories</span>
                   </Link>
-                  <Link
+                  {/* <Link
                     className="nav-item"
                     to="portfolio"
                     activeclassname="active"
@@ -159,8 +161,8 @@ function Home() {
                     duration={500}
                   >
                     <span className="nav-link">Review</span>
-                  </Link>
-                  <Link
+                  </Link> */}
+                  {/* <Link
                     className="nav-item"
                     to="pricing"
                     activeclassname="active"
@@ -169,8 +171,8 @@ function Home() {
                     duration={500}
                   >
                     <span className="nav-link">Pricing</span>
-                  </Link>
-                  <Link
+                  </Link> */}
+                  {/* <Link
                     className="nav-item"
                     to="blog"
                     activeclassname="active"
@@ -179,7 +181,7 @@ function Home() {
                     duration={500}
                   >
                     <span className="nav-link">Blog</span>
-                  </Link>
+                  </Link> */}
                   <Link
                     className="nav-item"
                     to="contact"
@@ -203,14 +205,9 @@ function Home() {
             <div className="container relative">
               <div className="grid grid-cols-1 mt-12">
                 <h4 className="text-white lg:text-5xl text-4xl lg:leading-normal leading-normal font-medium mb-7 position-relative">
-                  Looking For <br />
-                  {" "}
-                  <span
-                    className="typewrite relative text-type-element"
-                    id="typed"
-                    data-period="2000"
-                    data-type='[ "Business", "Startups", "Digital Agency", "Marketing" ]'
-                  ></span>
+                Unlock Your Career Potential: Where Job Seekers and Employers Connect Efficiently. <br />
+                 
+                  
                 </h4>
 
                 <p className="text-white opacity-50 mb-0 max-w-2xl text-lg">
@@ -219,7 +216,7 @@ function Home() {
 
                 <div className="relative mt-10">
                   <Link
-                    to="#"
+                    to=""
                     className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md"
                   >
                     Get Started
@@ -229,24 +226,24 @@ function Home() {
             </div>
           </section>
 
-          {/* About section */}
-          <About />
+          {/* About section
+          <About /> */}
 
           {/* Service section */}
           <Services />
 
-          {/* Portfolio section */}
-          <Portfolio />
+          {/* Portfolio section
+          <Portfolio /> */}
 
           {/* Review section 
           <Review />
           */}
 
-          {/* Pricing section */}
-          <Pricing />
+          {/* Pricing section
+          <Pricing /> */}
 
-          {/* Blog section */}
-          <Blog />
+          {/* Blog section
+          <Blog /> */}
 
           {/* Contact section */}
           <Contact />
