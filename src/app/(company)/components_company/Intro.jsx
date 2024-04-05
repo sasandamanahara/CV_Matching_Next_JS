@@ -3,7 +3,7 @@ import { BiSearchAlt } from 'react-icons/bi'
 import Image from 'next/image'
 import { BsFillBookmarkFill } from 'react-icons/bs'
 import { useSelector } from 'react-redux';
-import JobsCard from './JobsCard';
+import JobsCard from './JobsCardOld';
 
 export default function Intro() {
   const [search, setSearch] = useState('');

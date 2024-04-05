@@ -116,7 +116,7 @@ export default function PostAJob() {
 
   return (
     <>
-    <NavBar/>
+    
       <div className="w-full  py-5 flex items-center  justify-center flex-col">
         <h2 className="text-xl mt-1 uppercase tracking-widest border-b-2 border-b-indigo-600 py-2 font-semibold mb-8 md:text-2xl lg:text-2xl">
           Enter Job Details
