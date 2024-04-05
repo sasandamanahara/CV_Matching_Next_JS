@@ -12,7 +12,8 @@ export default function Contact() {
                         <h6 className="text-orange-600 text-base font-medium uppercase mb-2">Contact us</h6>
                         <h3 className="mb-4 md:text-2xl text-xl font-medium dark:text-white">Get In Touch !</h3>
 
-                        <p className="text-slate-400 dark:text-slate-300 max-w-xl mx-auto">Launch your campaign and benefit from our expertise on designing and managing conversion centered Tailwind CSS html page.</p>
+                        <p className="text-slate-400 dark:text-slate-300 max-w-xl mx-auto">
+If you have any further inquiries or need assistance with anything else, please don't hesitate to ask. We're here to help!</p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 md:grid-cols-2 mt-8 items-center gap-6">
@@ -52,7 +53,7 @@ export default function Contact() {
 
                                     <div className="flex-1 ms-6">
                                         <h5 className="text-lg dark:text-white mb-2 font-medium">Phone</h5>
-                                        <Link href="tel:+152534-468-854" className="text-slate-400">+152 534-468-854</Link>
+                                        <Link href="tel:+152534-468-854" className="text-slate-400">070 999 9999</Link>
                                     </div>
                                 </div>
 
@@ -63,7 +64,7 @@ export default function Contact() {
 
                                     <div className="flex-1 ms-6">
                                         <h5 className="text-lg dark:text-white mb-2 font-medium">Email</h5>
-                                        <Link href="mailto:contact@example.com" className="text-slate-400">contact@example.com</Link>
+                                        <Link href="mailto:contact@example.com" className="text-slate-400">contact@nextstepcareers.com</Link>
                                     </div>
                                 </div>
 
@@ -74,7 +75,7 @@ export default function Contact() {
 
                                     <div className="flex-1 ms-6">
                                         <h5 className="text-lg dark:text-white mb-2 font-medium">Location</h5>
-                                        <p className="text-slate-400 mb-2">C/54 Northwest Freeway, Suite 558, Houston, USA 485</p>
+                                        <p className="text-slate-400 mb-2">54/1, Hapugala, Galle </p>
                                     </div>
                                 </div>
                             </div>
