@@ -1,4 +1,7 @@
 import React from 'react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleDown, faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function profile() {
   return (
@@ -11,7 +14,7 @@ export default function profile() {
         <div className="flex ">
           <img
             src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-            class="rounded-full w-32 mr-10 mb-10"
+            className="rounded-full w-32 mr-10 mb-10"
             alt="Avatar"
           />
         </div>
@@ -23,12 +26,9 @@ export default function profile() {
 
           <a
             href="#!"
-            class="py-3 text-xl text-blue-400 hover:text-blue-500 transition duration-300 ease-in-out mb-4"
+            className="py-3 text-xl text-blue-400 hover:text-blue-500 transition duration-300 ease-in-out mb-4"
           >
-            <FontAwesomeIcon
-              icon={faArrowAltCircleDown}
-              className="pr-2 "
-            />
+            
             Upload
           </a>
         </div>
@@ -68,7 +68,7 @@ export default function profile() {
       </p>
       <button
         type="button"
-        class="mb-2 w-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+        className="mb-2 w-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
       >
         Update my profile
       </button>
