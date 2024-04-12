@@ -44,7 +44,7 @@ export default function Profile() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6">
-          <div>
+          <div >
             <label
               htmlFor="username"
               className="block mb-2 text-base font-medium text-gray-700"

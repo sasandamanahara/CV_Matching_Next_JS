@@ -38,7 +38,7 @@ export default function TabsDemo() {
             
             
           </div>
-          <Tabs defaultValue="profile" className="w-[900px]">
+          <Tabs defaultValue="profile" className="flex-auto">
       <TabsList className="grid w-full grid-cols-3">
         <TabsTrigger value="profile">Profile</TabsTrigger>
         <TabsTrigger value="notification">Notifications</TabsTrigger>
