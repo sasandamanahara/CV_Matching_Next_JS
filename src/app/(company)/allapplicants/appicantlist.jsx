@@ -11,13 +11,27 @@ export default function ApplicantList() {
               type="text"
               id="form-subscribe-Filter"
               className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full md:w-auto py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent mb-2 md:mb-0 md:mr-2"
-              placeholder="Search"
+              placeholder="Search Applicants"
             />
             <button
-              className="px-4 py-2 text-base font-semibold text-white bg-orange-400 rounded-lg shadow-md hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-orange-200"
+              className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-orange-400 rounded-lg shadow-md hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-orange-200 flex items-center"
+              type="submit"
             >
+              <svg
+                className="w-4 h-4 mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7 9V2H3a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V10h-7a1 1 0 01-1-1zm9-5v2a1 1 0 001 1h2l-3.707 3.707a1 1 0 01-1.414 0L10 5H7a1 1 0 001-1V2h6a1 1 0 011 1z"
+                  clipRule="evenodd"
+                />
+              </svg>
               Filter
             </button>
+
           </div>
         </div>
         <div className="overflow-x-auto">
@@ -44,54 +58,150 @@ export default function ApplicantList() {
                 </th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <a href="#" className="block">
-                        <img alt="profil" src="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg" className="object-cover rounded-full h-8 w-8"/>
-                      </a>
-                    </div>
-                    <div className="ml-2">
-                      <p className="text-gray-900">
-                        Jean marc
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                  <p className="text-gray-900">
-                    0.0
-                  </p>
-                </td>
-                <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                  <p className="text-gray-900">
-                    Admin
-                  </p>
-                </td>
-                <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                  <p className="text-gray-900">
-                    12/09/2020
-                  </p>
-                </td>
-                <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                  <span className="relative inline-block px-2 py-1 text-xs font-semibold leading-tight text-green-900">
-                    <span aria-hidden="true" className="absolute inset-0 bg-orange-200 rounded-full opacity-50"></span>
-                    <span className="relative">
-                      active
-                    </span>
-                  </span>
-                </td>
-                <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                  <a href="#" className="text-orange-600 hover:text-orange-900">
-                    See
-                  </a>
-                </td>
-              </tr>
-              {/* Additional rows */}
-              {/* You can add more rows here */}
-            </tbody>
+           <tbody>
+  <tr>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <div className="flex items-center">
+        <div className="flex-shrink-0">
+          <a href="#" className="block">
+            <img alt="profil" src="https://th.bing.com/th/id/OIP.kEXBJMLiahYU_7vmOq-4fwHaHa?pid=ImgDet&w=474&h=474&rs=1" className="object-cover rounded-full h-8 w-8"/>
+          </a>
+        </div>
+        <div className="ml-2">
+          <p className="text-gray-900">
+            Marcus coco
+          </p>
+        </div>
+      </div>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <p className="text-gray-900">
+        0.0
+      </p>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <p className="text-gray-900">
+        Designer
+      </p>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <p className="text-gray-900">
+        01/10/2012
+      </p>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <span className="relative inline-block px-2 py-1 text-xs font-semibold leading-tight text-green-900">
+        <span aria-hidden="true" className="absolute inset-0 bg-orange-200 rounded-full opacity-50"></span>
+        <span className="relative">
+          active
+        </span>
+      </span>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <a href="#" className="text-orange-600 hover:text-orange-900 flex items-center">
+        <svg className="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M7 9V2H3a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V10h-7a1 1 0 01-1-1zm9-5v2a1 1 0 001 1h2l-3.707 3.707a1 1 0 01-1.414 0L10 5H7a1 1 0 001-1V2h6a1 1 0 011 1z" clipRule="evenodd"/>
+        </svg>
+        See Application
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <div className="flex items-center">
+        <div className="flex-shrink-0">
+          <a href="#" className="block">
+            <img alt="profil" src="https://th.bing.com/th/id/OIP.Uo81CoJ1d7-M93o3mhGNQwHaHa?rs=1&pid=ImgDetMain" className="object-cover rounded-full h-8 w-8"/>
+          </a>
+        </div>
+        <div className="ml-2">
+          <p className="text-gray-900">
+            Ecric marc
+          </p>
+        </div>
+      </div>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <p className="text-gray-900">
+        0.0
+      </p>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <p className="text-gray-900">
+        Developer
+      </p>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <p className="text-gray-900">
+        02/10/2018
+      </p>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <span className="relative inline-block px-2 py-1 text-xs font-semibold leading-tight text-green-900">
+        <span aria-hidden="true" className="absolute inset-0 bg-orange-200 rounded-full opacity-50"></span>
+        <span className="relative">
+          active
+        </span>
+      </span>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <a href="#" className="text-orange-600 hover:text-orange-900 flex items-center">
+        <svg className="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M7 9V2H3a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V10h-7a1 1 0 01-1-1zm9-5v2a1 1 0 001 1h2l-3.707 3.707a1 1 0 01-1.414 0L10 5H7a1 1 0 001-1V2h6a1 1 0 011 1z" clipRule="evenodd"/>
+        </svg>
+        See Application
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <div className="flex items-center">
+        <div className="flex-shrink-0">
+          <a href="#" className="block">
+            <img alt="profil" src="https://th.bing.com/th/id/OIP.Uo81CoJ1d7-M93o3mhGNQwHaHa?rs=1&pid=ImgDetMain" className="object-cover rounded-full h-8 w-8"/>
+          </a>
+        </div>
+        <div className="ml-2">
+          <p className="text-gray-900">
+            Julien Huger
+          </p>
+        </div>
+      </div>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <p className="text-gray-900">
+        0.0
+      </p>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <p className="text-gray-900">
+        User
+      </p>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <p className="text-gray-900">
+        23/09/2010
+      </p>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <span className="relative inline-block px-2 py-1 text-xs font-semibold leading-tight text-green-900">
+        <span aria-hidden="true" className="absolute inset-0 bg-orange-200 rounded-full opacity-50"></span>
+        <span className="relative">
+          active
+        </span>
+      </span>
+    </td>
+    <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+      <a href="#" className="text-orange-600 hover:text-orange-900 flex items-center">
+        <svg className="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M7 9V2H3a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V10h-7a1 1 0 01-1-1zm9-5v2a1 1 0 001 1h2l-3.707 3.707a1 1 0 01-1.414 0L10 5H7a1 1 0 001-1V2h6a1 1 0 011 1z" clipRule="evenodd"/>
+        </svg>
+        See Application
+      </a>
+    </td>
+  </tr>
+</tbody>
+
           </table>
         </div>
         <div className="flex flex-col items-center px-2 py-2 bg-white">
