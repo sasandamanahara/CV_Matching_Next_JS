@@ -15,9 +15,8 @@ export default function DashBoard() {
           <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">All Applicants</h1>
           </div>
-          <div className="flex flex-3 items-left justify-center rounded-lg border border-dashed shadow-sm">
-            
-              
+          <div className="flex-auto items-left justify-center rounded-lg border border-dashed shadow-sm">
+
               <Appicantlist/>
             
           </div>
