@@ -69,7 +69,7 @@ export default function Login() {
                                                     </div>
 
                                                     <div className="text-center">
-                                                        <span className="text-slate-400 dark:text-slate-300 me-2">Already have an account ?</span> <Link href="/auth-login" className="text-dark dark:text-white fw-bold">Sign in</Link>
+                                                        <span className="text-slate-400 dark:text-slate-300 me-2">Already have an account ?</span> <Link href="/auth/login" className="text-dark dark:text-white fw-bold">Sign in</Link>
                                                     </div>
                                                 </div>
                                             </form>

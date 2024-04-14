@@ -8,7 +8,7 @@ import "../assets/scss/tailwind.scss";
 import "../assets/scss/icons.scss";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "react-scroll";
-import { login_me } from "../../(company)/Services/auth";
+import { login_me } from "../../(jobseeker)/Services/auth";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../../(company)/Utils/UserSlice";
