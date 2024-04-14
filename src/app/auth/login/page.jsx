@@ -63,11 +63,11 @@ export default function Login() {
                                                     </div>
 
                                                     <div className="mb-4">
-                                                        <Link href="#" className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full">Login / Sign in</Link>
+                                                        <Link href="#" className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full">Login</Link>
                                                     </div>
 
                                                     <div className="text-center">
-                                                        <span className="text-slate-400 dark:text-slate-300 me-2">Dont have an Accounts</span> <Link href="/auth-signup" className="text-dark dark:text-white fw-bold">Sign Up</Link>
+                                                        <span className="text-slate-400 dark:text-slate-300 me-2">Dont have an Accounts</span> <Link href="/auth/register" className="text-dark dark:text-white fw-bold">Sign Up</Link>
                                                     </div>
                                                 </div>
                                             </form>
