@@ -2,7 +2,7 @@
 
 export const register_me = async (formData) => {
     try {
-    console.log("regg");
+
         const res = await fetch(`http://localhost:3000/api/auth/register`, {
             method: 'POST',
             headers: {

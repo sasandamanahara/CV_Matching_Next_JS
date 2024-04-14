@@ -1,5 +1,5 @@
-import ConnectDB from '../../DB/connectDB';
-import User from '../../models/User';
+import ConnectDB from '../../../DB/connectDB';
+import User from '../../../models/User';
 import Joi from 'joi';
 import { compare } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -33,7 +33,7 @@ export async function POST(req, res) {
         return NextResponse.json({ success: true, message: "Login Successful", finalData });
 
     } catch (error) {
-        console.log('Error in register (server) => ', error);
+        console.log('Error in login (server) => ', error);
         return NextResponse.json({ success: false,message: 'Something Went Wrong Please Retry Later !' })
     }
 }
