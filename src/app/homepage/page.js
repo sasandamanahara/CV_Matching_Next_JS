@@ -218,7 +218,6 @@ function Home() {
                 <div className="relative mt-10">
                   <Link
                     onClick={() => router.push('/auth/login')} 
-                    // to="http://localhost:3000/auth/login"
                     className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md"
                   >
                     Get Started
