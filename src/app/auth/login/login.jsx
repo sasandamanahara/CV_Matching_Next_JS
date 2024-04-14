@@ -1,5 +1,5 @@
-"use client"; // This is a client component 👈🏽
-import React from "react";
+"use client"; // This is a client component
+import React, { useEffect, useState } from 'react'
 import Link from "next/link";
 
 import Image from "next/image";
@@ -7,12 +7,51 @@ import "../assets/css/tailwind.css";
 import "../assets/scss/tailwind.scss";
 import "../assets/scss/icons.scss";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
+import { Button } from 'react-scroll';
+import { login_me } from '../../(company)/Services/auth';
+import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../../(company)/Utils/UserSlice';
+import { useRouter } from "next/navigation";
 
 /**
  * Login component
  */
 export default function Login() {
+    const dispatch = useDispatch();
+    const router = useRouter();
+    
+    const [formData, setFormData] = useState({ email: "", password: "" });
+    const [error, setError] = useState({ email: "", password: "" });
+
+    const handleJobSeekerLogin = async (e) => {
+
+        e.preventDefault();
+        if (!formData.email) {
+          setError({ ...error, email: "Email Field is Required" })
+          return;
+        }
+        if (!formData.password) {
+          setError({ ...error, password: "Password Field is required" })
+          return;
+        }
+    
+        const res = await login_me(formData);
+        if(res.success)
+        {
+          Cookies.set('token', res?.finalData?.token);
+          localStorage.setItem('user', JSON.stringify(res?.finalData?.user));
+          dispatch(setUserData(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null));
+          console.log("login success");
+          router.push('/companydashboard');
+        }
+        else
+        {
+          toast.error(res.message);
+        }
+      }
+
+
     return (
         <>
             <sections
@@ -45,12 +84,12 @@ export default function Login() {
                                                 <div className="grid grid-cols-1">
                                                     <div className="mb-4">
                                                         <label className="dark:text-white" htmlFor="LoginEmail">Email Address:</label>
-                                                        <input id="LoginEmail" type="email" className="form-input mt-3" placeholder="name@example.com" />
+                                                        <input onChange={(e) => setFormData({ ...formData, email: e.target.value })}  id="LoginEmail" type="email" className="form-input mt-3" placeholder="name@example.com" />
                                                     </div>
 
                                                     <div className="mb-4">
                                                         <label className="dark:text-white" htmlFor="LoginPassword">Password:</label>
-                                                        <input id="LoginPassword" type="password" className="form-input mt-3" placeholder="Password:" />
+                                                        <input onChange={(e) => setFormData({ ...formData, password: e.target.value })} id="LoginPassword" type="password" className="form-input mt-3" placeholder="Password:" />
                                                     </div>
 
                                                     <div className="flex justify-between mb-4">
@@ -63,11 +102,11 @@ export default function Login() {
                                                     </div>
 
                                                     <div className="mb-4">
-                                                        <Link href="#" className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full">Login / Sign in</Link>
+                                                        <Button onClick={handleJobSeekerLogin} className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full">Login</Button>
                                                     </div>
 
                                                     <div className="text-center">
-                                                        <span className="text-slate-400 dark:text-slate-300 me-2">Dont have an Accounts</span> <Link href="/auth-signup" className="text-dark dark:text-white fw-bold">Sign Up</Link>
+                                                        <span className="text-slate-400 dark:text-slate-300 me-2">Dont have an Accounts</span> <Link href="/auth/register" className="text-dark dark:text-white fw-bold">Sign Up</Link>
                                                     </div>
                                                 </div>
                                             </form>

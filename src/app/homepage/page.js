@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Link } from "react-scroll";
 import * as Unicons from "@iconscout/react-unicons";
-
+import { useRouter } from "next/navigation";
 
 import Typed from "typed.js";
 
@@ -21,12 +21,13 @@ import Blog from "./component/Blog";
 import Contact from "./component/Contact";
 import Footer from "./component/Footer";
 import Portfolio from "./component/Portfolio";
+import { Button } from "react-day-picker";
 
 
 function Home() {
   const [isOpen, setMenu] = useState(true);
   const [scroll, setScroll] = useState(false);
-
+  const router = useRouter();
   // useEffect(() => {
   //   const windowScroll = () => {
   //     setScroll(window.scrollY > 50);
@@ -216,7 +217,7 @@ function Home() {
 
                 <div className="relative mt-10">
                   <Link
-                    to=""
+                    onClick={() => router.push('/auth/login')} 
                     className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md"
                   >
                     Get Started
