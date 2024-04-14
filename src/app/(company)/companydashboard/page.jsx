@@ -1,6 +1,9 @@
 
 import SideBar from "../_components/sidebar"
 import CompanyHeader from "../_components/header"
+import CardsGrid from "./cardsgrid"
+import GraphSection from "./graphsection"
+import JobupdatesSection from "./jobupdatessection"
 
 export default function DashBoard() {
   return (
@@ -14,11 +17,28 @@ export default function DashBoard() {
           <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">DashBoard</h1>
           </div>
-          <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
-            <div className="flex flex-col items-center gap-1 text-center">
+          <div className="flex-auto items-center justify-center rounded-lg border border-dashed shadow-sm">
+            <div>
+            <CardsGrid/>
               
-              
+
             </div>
+            <div>
+            <span class="flex items-center m-3">
+                  <span class="pr-6">Job Statistics</span>
+                  <span class="h-px flex-1 bg-black"></span>
+                </span>
+              <GraphSection/>
+            </div>
+             <div >
+             <span class="flex items-center m-3">
+                  <span class="pr-6">Job Updates</span>
+                  <span class="h-px flex-1 bg-black"></span>
+                </span>
+              <JobupdatesSection />
+              </div>
+              
+           
           </div>
         </main>
       </div>

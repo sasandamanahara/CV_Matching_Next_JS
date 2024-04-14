@@ -1,48 +1,107 @@
-import React from 'react'
-// import Image from 'next/image'
-import { BsDot } from 'react-icons/bs'
-import { AiOutlineArrowRight } from 'react-icons/ai'
-// import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
-export default function JobsCard({job , posted}) {
-    // const router = useRouter();
+export default function JobsCard({ job, posted }) {
+    
+    const [search, setSearch] = useState('');
+
+    
+
+    const handleSearchChange = (e) => {
+        setSearch(e.target.value);
+    };
+
+    const handleSearch = () => {
+        // Perform search action here
+        console.log('Search:', search);
+        
+    };
+
     return (
-        <div key={job._id} className='w-full cursor-pointer  transition-all duration-1000  md:w-5/12 m-4 border hover:shadow-xl rounded px-4 md:flex md:flex-wrap'>
-            <div className='mb-4 flex  items-center justify-center py-2 '>
-                {/* <Image width={70} height={70} className="flex rounded-full " src={"https://xsgames.co/randomusers/avatar.php?g=male"} alt="no image" /> */}
-                <div className='flex flex-col mx-2 px-2'>
-                    <h1 className='text-xl md:text-2xl font-semibold'>{job?.user.name}</h1>
-                    <p className='text-xs sm:text-sm md:text-base text-gray-800'>{job?.company}</p>
-                </div>
+      
+        <a href="#" className="block rounded-lg p-2 shadow-sm shadow-indigo-100 border my-2 mx-2">
+           
+            <div className="border border-orange-500 rounded-md overflow-hidden">
+                <img
+                    alt=""
+                    src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                    className="h-56 w-full object-cover"
+                />
             </div>
-            <div className='mb-4 flex   items-start justify-center py-2 flex-col'>
-                <div className='flex  px-2 py-2 items-center justify-center '>
-                    <BsDot className='text-4xl font-extrabold text-indigo-600' />
-                    <h1 className='text-lg text-gray-900'>Salary :</h1>
-                    <p className='text-base  font-semibold'>{job?.salary}$ / month</p>
-                </div>
-                <div className='flex px-2 py-2 items-center  justify-center'>
-                    <BsDot className='text-4xl font-extrabold text-indigo-600' />
-                    <h1 className='text-lg text-gray-900'>Deadline :</h1>
-                    <p className='text-base  font-semibold'>{new Date(`${job?.job_deadline}`).toLocaleDateString('en-GB')}</p>
-                </div>
-            </div>
-            <div className='mb-4 flex flex-col md:flex-wrap md:flex-row w-full justify-between  items-center '>
-
-                <div className='mb-4 flex  items-start justify-center py-2 flex-col'>
-                    <div className='flex px-6 rounded-2xl py-1 items-center justify-center bg-indigo-200 text-indigo-900  '>
-                        <p>{job?.title} </p>
+            <div className="mt-2">
+                <dl>
+                    <div>
+                        <dt className="sr-only">Company Name</dt>
+                        <dd className="text-sm text-orange-500">{job?.user.name}</dd>
+                    </div>
+                    <div>
+                        <dt className="sr-only">Address</dt>
+                        <dd className="font-medium">{job?.company}</dd>
+                    </div>
+                </dl>
+                <div className="mt-6 flex items-center gap-8 text-xs">
+                    <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                        <svg
+                            className="size-4 text-orange-500"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+                            />
+                        </svg>
+                        <div className="mt-1.5 sm:mt-0">
+                            <p className="text-gray-500">Salary</p>
+                            <p className="font-medium">{job?.salary}$ / month</p>
+                        </div>
+                    </div>
+                    <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                        <svg
+                            className="size-4 text-orange-500"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                            />
+                        </svg>
+                        <div className="mt-1.5 sm:mt-0">
+                            <p className="text-gray-500">Deadline</p>
+                            <p className="font-medium">{new Date(`${job?.job_deadline}`).toLocaleDateString('en-GB')}</p>
+                        </div>
+                    </div>
+                    <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                        <svg
+                            className="size-4 text-orange-500"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                            />
+                        </svg>
+                        <div className="mt-1.5 sm:mt-0">
+                            <p className="text-gray-500">Title</p>
+                            <p className="font-medium">{job?.title}</p>
+                        </div>
                     </div>
                 </div>
-                {/* {
-                    posted ? (
-                        <button onClick={() => router.push(`/frontend/detailPostedJob/${job?._id}`)} className='my-2 py-2 px-4  border border-indigo-600   rounded flex items-center justify-center transition-all duration-700 hover:bg-indigo-600 hover:text-white text-indigo-600 font-semibold'>View Applications <AiOutlineArrowRight className='mx-2 text-xl' /></button>
-                    ) : (
-
-                        <button onClick={() => router.push(`/frontend/jobDetails/${job?._id}`)} className='my-2 py-2 px-4  border border-indigo-600   rounded flex items-center justify-center transition-all duration-700 hover:bg-indigo-600 hover:text-white text-indigo-600 font-semibold'>View Detail <AiOutlineArrowRight className='mx-2 text-xl' /></button>
-                    )
-                } */}
             </div>
-        </div>
-    )
+        </a>
+        
+    );
 }

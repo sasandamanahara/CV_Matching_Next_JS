@@ -22,13 +22,6 @@ export default function AllJobs() {
 
 
 
-    // useEffect(() => {
-    //     if (!id || !Cookies.get('token')) {
-    //         router.push('/auth/login')
-    //     }
-    // }, [user, id, Cookies])
-
-
     const { data, error, isLoading } = useSWR('/getAllJobs', () =>  get_all_posted_job())
     
     useEffect(() => {
@@ -48,11 +41,9 @@ export default function AllJobs() {
                     </div>
                 ) : (
                     <>
-                        <NavBar />
+                       
                         <div className='w-full  pt-20'>
-                            <div className='w-full h-20 bg-gray-50 text-indigo-600 font-bold flex items-center justify-center flex-col'>
-                                <h1 className='text-3xl'>All Jobs</h1>
-                            </div>
+                            
                             <div className='w-full h-full px-4 py-4 flex  overflow-y-auto  items-start justify-center flex-wrap'>
                                 {
                                     myJobs?.map((job, index) => (
