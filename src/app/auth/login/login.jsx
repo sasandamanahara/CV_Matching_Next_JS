@@ -29,25 +29,34 @@ export default function Login() {
   const handleCompanyLogin = async (e) => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    let formErrors = {};
+    console.log(formData.email);
     if (!formData.email) {
-      setError({ ...error, email: "Email Field is Required" });
-      return;
+      formErrors = { ...formErrors, email: "Email Field is Required" };
     } else if (!emailRegex.test(formData.email)) {
-      setError({ ...error, email: "Please enter a valid email address" });
-      return;
-    } else {
-      setError({ ...error, email: "" });
-    }
-    if (!formData.password) {
-      setError({ ...error, password: "Password Field is required" });
-      return;
-    } else {
-      setError({ ...error, password: "" });
+      formErrors = {
+        ...formErrors,
+        email: "Please enter a valid email address",
+      };
     }
 
+    if (!formData.password) {
+      formErrors = { ...formErrors, password: "Password Field is required" };
+    }
+
+    if (Object.keys(formErrors).length > 0) {
+      setError(formErrors);
+      return;
+    }
+
+    // Clear error state if there are no errors
+    setError({ email: "", password: "" });
+
     try {
+      console.log("login");
       const res = await login_me(formData);
-        console.log(res);
+      console.log(res);
       if (res.success) {
         Cookies.set("token", res?.finalData?.token);
         localStorage.setItem("user", JSON.stringify(res?.finalData?.user));
@@ -60,12 +69,13 @@ export default function Login() {
         );
         console.log("login success");
         router.push("/companydashboard");
-      }else{
+      } else {
         console.log("wrong");
         toast.error(res.message);
       }
     } catch (error) {
-      toast.error(res.message);
+      console.error("An error occurred:", error);
+      toast.error("An error occurred while logging in");
     }
   };
 
@@ -184,7 +194,7 @@ export default function Login() {
 
                               <div className="mb-4">
                                 <Button
-                                //   onClick={handleJobSeekerLogin}
+                                  //   onClick={handleJobSeekerLogin}
                                   className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full"
                                 >
                                   Login
@@ -221,7 +231,7 @@ export default function Login() {
                                   Email Address:
                                 </label>
                                 <input
-                                onChange={(e) =>
+                                  onChange={(e) =>
                                     setFormData({
                                       ...formData,
                                       email: e.target.value,
@@ -234,7 +244,7 @@ export default function Login() {
                                 />
                                 {error.password && (
                                   <p className="text-sm text-red-500">
-                                    {error.password}
+                                    {error.email}
                                   </p>
                                 )}
                               </div>
@@ -247,7 +257,7 @@ export default function Login() {
                                   Password:
                                 </label>
                                 <input
-                                 onChange={(e) =>
+                                  onChange={(e) =>
                                     setFormData({
                                       ...formData,
                                       password: e.target.value,
