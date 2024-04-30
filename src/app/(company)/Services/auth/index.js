@@ -1,9 +1,9 @@
 
 
-export const register_me = async (formData) => {
+export const register_me_company = async (formData) => {
     try {
     console.log("regg");
-        const res = await fetch(`http://localhost:3000/api/auth/register`, {
+        const res = await fetch(`http://localhost:3000/api/auth/registerCompany`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -17,11 +17,9 @@ export const register_me = async (formData) => {
     }
 }
 
-export const login_me = async (formData) => {
-    console.log("gettong");
+export const login_me_company = async (formData) => {
     try {
-        console.log("formData");
-        const res = await fetch("http://localhost:3000/api/auth/login", {
+        const res = await fetch("http://localhost:3000/api/auth/loginCompany", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,9 +35,9 @@ export const login_me = async (formData) => {
 
 
 
-export const forget_password = async (formData) => {
+export const forget_password_company = async (formData) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/auth/forgetPassword`, {
+        const res = await fetch(`http://localhost:3000/api/auth/forgetPasswordCompany`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

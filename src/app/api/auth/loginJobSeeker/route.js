@@ -1,5 +1,5 @@
 import ConnectDB from '../../../DB/connectDB';
-import User from '../../../models/User';
+import UserJobSeeker from '../../../models/UserJobSeeker';
 import Joi from 'joi';
 import { compare } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -22,14 +22,14 @@ export async function POST(req, res) {
     if (error) return NextResponse.json({ message: error.details[0].message.replace(/['"]+/g, '') }, { status: 401 });
 
     try {
-        const checkUser = await User.findOne({ email });
+        const checkUser = await UserJobSeeker.findOne({ email });
         if (!checkUser) return NextResponse.json({ success: false,message: 'Account not found' })
 
         const isMatch = await compare(password, checkUser.password);
         if (!isMatch) return NextResponse.json({ success: false,message: 'Incorrect Password' })
 
         const token = jwt.sign({ id: checkUser._id, email: checkUser.email }, "e8)Qz+j@L8b>D2~T?fN*UH#J5W}Zx?%G", { expiresIn: '1d' });
-        const finalData = {token , user : checkUser}
+        const finalData = {token , UserJobSeeker : checkUser}
         return NextResponse.json({ success: true, message: "Login Successful", finalData });
 
     } catch (error) {
