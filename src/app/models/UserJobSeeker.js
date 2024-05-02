@@ -7,6 +7,6 @@ const UserSchema = new mongoose.Schema({
     password: String,
 });
 
-const User = mongoose.models.User  || mongoose.model('User', UserSchema);
+const UserJobSeeker = mongoose.models.UserJobSeeker  || mongoose.model('UserJobSeeker', UserSchema);
 
-export default User;
+export default UserJobSeeker;

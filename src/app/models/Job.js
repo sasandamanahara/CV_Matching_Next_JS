@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
-import User from './User';
+import UserCompany from './UserCompany';
 
 const JobSchema = new mongoose.Schema({
 
-    user : {
+    userCompany : {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'UserCompany',
     },
     title: {
         type: String,

@@ -8,13 +8,14 @@ import "../assets/scss/tailwind.scss";
 import "../assets/scss/icons.scss";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "react-scroll";
-import { login_me } from "../../(jobseeker)/Services/auth";
+import { login_me, login_me_company } from "../../(company)/Services/auth";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../../(company)/Utils/UserSlice";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { login_me_jobseeker } from "@/app/(jobseeker)/Services/auth";
 
 /**
  * Login component
@@ -55,11 +56,13 @@ export default function Login() {
 
     try {
       console.log("login");
-      const res = await login_me(formData);
+      const res = await login_me_company(formData);
       console.log(res);
+
       if (res.success) {
         Cookies.set("token", res?.finalData?.token);
-        localStorage.setItem("user", JSON.stringify(res?.finalData?.user));
+        console.log(res?.finalData?.UserCompany);
+        localStorage.setItem("user", JSON.stringify(res?.finalData?.UserCompany));
         dispatch(
           setUserData(
             localStorage.getItem("user")
@@ -78,6 +81,63 @@ export default function Login() {
       toast.error("An error occurred while logging in");
     }
   };
+
+
+  const handleJobSeekerLogin = async (e) => {
+    e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    let formErrors = {};
+    console.log(formData.email);
+    if (!formData.email) {
+      formErrors = { ...formErrors, email: "Email Field is Required" };
+    } else if (!emailRegex.test(formData.email)) {
+      formErrors = {
+        ...formErrors,
+        email: "Please enter a valid email address",
+      };
+    }
+
+    if (!formData.password) {
+      formErrors = { ...formErrors, password: "Password Field is required" };
+    }
+
+    if (Object.keys(formErrors).length > 0) {
+      setError(formErrors);
+      return;
+    }
+
+    // Clear error state if there are no errors
+    setError({ email: "", password: "" });
+
+    try {
+      console.log("login");
+      const res = await login_me_jobseeker(formData);
+      console.log(res);
+
+      if (res.success) {
+        Cookies.set("token", res?.finalData?.token);
+        console.log(res?.finalData?.UserJobSeeker);
+        localStorage.setItem("user", JSON.stringify(res?.finalData?.UserJobSeeker));
+        dispatch(
+          setUserData(
+            localStorage.getItem("user")
+              ? JSON.parse(localStorage.getItem("user"))
+              : null
+          )
+        );
+        console.log("login success");
+        router.push("/companydashboard");
+      } else {
+        console.log("wrong");
+        toast.error(res.message);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+      toast.error("An error occurred while logging in");
+    }
+  };
+
 
   return (
     <>
@@ -194,7 +254,7 @@ export default function Login() {
 
                               <div className="mb-4">
                                 <Button
-                                  //   onClick={handleJobSeekerLogin}
+                                    onClick={handleJobSeekerLogin}
                                   className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full"
                                 >
                                   Login

@@ -11,7 +11,8 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { register_me } from "../../(company)/Services/auth";
+import { register_me_company } from "../../(company)/Services/auth";
+import { register_me_jobseeker } from "../../(jobseeker)/Services/auth";
 import { Button } from "react-scroll";
 
 /**
@@ -23,51 +24,99 @@ export default function Register() {
 
     
     const handleCompanyRegister = async (e) => {
-        e.preventDefault();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      e.preventDefault();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       
-        let formErrors = {};
+      let formErrors = {};
+      console.log(formData);
+      if (!formData.email) {
+        formErrors = { ...formErrors, email: "Email Field is Required" };
+      } else if (!emailRegex.test(formData.email)) {
+        formErrors = { ...formErrors, email: "Please enter a valid email address" };
+      }
       
-        if (!formData.email) {
-          formErrors = { ...formErrors, email: "Email Field is Required" };
-        } else if (!emailRegex.test(formData.email)) {
-          formErrors = { ...formErrors, email: "Please enter a valid email address" };
+      if (!formData.password) {
+        formErrors = { ...formErrors, password: "Password Field is required" };
+      }
+      
+      if (!formData.name) {
+        formErrors = { ...formErrors, name: "Name Field is required" };
+      }
+    
+      if (Object.keys(formErrors).length > 0) {
+        setError(formErrors);
+        return;
+      }
+      
+      // Clear error state if there are no errors
+      setError({ email: "", password: "", name: "" });
+    
+      try {
+        const data = await register_me_company(formData); // Pass formData directly here
+        setFormData("");
+        if (data.success) {
+          toast.success(data.message);
+        } else {
+          toast.error(data.message);
         }
-      
-        if (!formData.password) {
-          formErrors = { ...formErrors, password: "Password Field is required" };
-        }
-      
-        if (!formData.name) {
-          formErrors = { ...formErrors, name: "Name Field is required" };
-        }
-      
-        if (Object.keys(formErrors).length > 0) {
-          setError(formErrors);
-          return;
-        }
-      
-        // Clear error state if there are no errors
-        setError({ email: "", password: "", name: "" });
-      
-        try{
-          const data = await register_me(formData);
-          if (data.success) {
-            toast.success(data.message);
-            // setTimeout(() => {
-            //   router.push("/auth/login");
-            // }, 2000);
-          } else {
-            toast.error(data.message);
-          }
-        }catch(error){
-          console.error("An error occurred:", error);
-          toast.error("An error occurred while logging in");
-        }
-        
-      };
+      } catch (error) {
+        console.error("An error occurred:", error);
+        toast.error("An error occurred while logging in");
+      }
+    };
+    
       
  
+
+      const handleJobSeekerRegister = async (e) => {
+        console.log("regstering jobseeker");
+          e.preventDefault();
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+          let formErrors = {};
+          if (!formData.email) {
+            formErrors = { ...formErrors, email: "Email Field is Required" };
+          } else if (!emailRegex.test(formData.email)) {
+            formErrors = { ...formErrors, email: "Please enter a valid email address" };
+          }
+        
+          if (!formData.password) {
+            formErrors = { ...formErrors, password: "Password Field is required" };
+          }
+        
+          if (!formData.name) {
+            formErrors = { ...formErrors, name: "Name Field is required" };
+          }
+        
+          if (Object.keys(formErrors).length > 0) {
+            setError(formErrors);
+            return;
+          }
+        
+          // Clear error state if there are no errors
+          setError({ email: "", password: "", name: "" });
+        
+          try{
+            const data = await register_me_jobseeker(formData);
+            setFormData("");
+            console.log(formData);
+            if (data.success) {
+              toast.success(data.message);
+              
+              // setTimeout(() => {
+              //   router.push("/auth/login");
+              // }, 2000);
+            } else {
+              toast.error(data.message);
+            }
+          }catch(error){
+            console.error("An error occurred:", error);
+            toast.error("An error occurred while logging in");
+          }
+          
+        };
+
+
   return (
     <>
       <section
@@ -200,7 +249,7 @@ export default function Register() {
 
                               <div className="mb-4">
                                 <Button
-                                  onClick={handleCompanyRegister}
+                                  onClick={handleJobSeekerRegister}
                                   className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full"
                                 >
                                   Register
@@ -237,6 +286,12 @@ export default function Register() {
                                   Your Name:
                                 </label>
                                 <input
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      name: e.target.value,
+                                    })
+                                  }
                                   id="RegisterName"
                                   type="email"
                                   className="form-input mt-3"
@@ -252,6 +307,12 @@ export default function Register() {
                                   Email Address:
                                 </label>
                                 <input
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      email: e.target.value,
+                                    })
+                                  }
                                   id="LoginEmail"
                                   type="email"
                                   className="form-input mt-3"
@@ -267,6 +328,12 @@ export default function Register() {
                                   Password:
                                 </label>
                                 <input
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      password: e.target.value,
+                                    })
+                                  }
                                   id="LoginPassword"
                                   type="password"
                                   className="form-input mt-3"
@@ -292,12 +359,12 @@ export default function Register() {
                               </div>
 
                               <div className="mb-4">
-                                <Link
-                                  href=""
+                              <Button
+                                  onClick={handleCompanyRegister}
                                   className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full"
                                 >
                                   Register
-                                </Link>
+                                </Button>
                               </div>
 
                               <div className="text-center">
