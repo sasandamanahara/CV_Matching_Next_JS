@@ -98,7 +98,7 @@ export default function PostAJob() {
     }
 
     const token = Cookies.get("token");
-  const tokenParts = token.split(".");
+  const tokenParts = token ? token.split(".") : [];
   const payload = JSON.parse(atob(tokenParts[1]));
   const userId = payload.id;
 
