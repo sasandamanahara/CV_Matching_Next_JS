@@ -21,7 +21,7 @@ export default function Contact() {
 
             <p className="text-slate-400 dark:text-slate-300 max-w-xl mx-auto">
               If you have any further inquiries or need assistance with anything
-              else, please don't hesitate to ask. We're here to help!
+              else, please do not hesitate to ask. We are here to help!
             </p>
           </div>
 
