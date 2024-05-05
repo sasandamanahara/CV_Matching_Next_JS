@@ -29,12 +29,12 @@ export default function JobsCard({ job, posted }) {
             </div>
             <div className="mt-2">
                 <dl>
-                    <div>
+                    {/* <div>
                         <dt className="sr-only">Company Name</dt>
-                        <dd className="text-sm text-orange-500">{job?.user.name}</dd>
-                    </div>
+                        <dd className="text-sm text-orange-500">{job?.company.name}</dd>
+                    </div> */}
                     <div>
-                        <dt className="sr-only">Address</dt>
+                        {/* <dt className="sr-only">Address</dt> */}
                         <dd className="font-medium">{job?.company}</dd>
                     </div>
                 </dl>

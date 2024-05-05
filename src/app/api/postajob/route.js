@@ -1,12 +1,13 @@
 import ConnectDB from '../../DB/connectDB';
 import Job from '../../models/Job';
-import Joi from 'joi';
+// import Joi from 'joi';
 import { NextResponse } from 'next/server';
+const Joi = require('joi-oid')
 
 const schema = Joi.object({
     title: Joi.string().required(),
     description: Joi.string().required(),
-    user: Joi.required(),
+    userCompany: Joi.objectId(),
     email: Joi.string().email().required(),
     company: Joi.string().required(),
     job_category: Joi.string().required(),
@@ -32,16 +33,19 @@ export async function POST(req, res) {
 }
 
 const postAJob = async (req, res) => {
-    const { user, title, description, salary, company, email, job_category, job_type, job_experience, job_vacancy, job_deadline  } = await req.json();
-    const { error } = schema.validate({ user, title, description, salary, company, email, job_category, job_type, job_experience, job_vacancy, job_deadline });
+    
+    const { userCompany, title,description, salary, company, email, job_category, job_type, job_experience, job_vacancy, job_deadline  } = await req.json();
+    console.log(userCompany);
+    const { error } = schema.validate({ userCompany, title,description, salary, company, email, job_category, job_type, job_experience, job_vacancy, job_deadline });
     console.log("post the job");
     if (error) {
-        console.log("error");
+        console.log(error);
         return NextResponse.json({ success: false, message: error.details[0].message.replace(/['"]+/g, '') });
     }
   
     try {
-        const creatingJob = await Job.create({ user, title, description, salary, company, email, job_category, job_type, job_experience, job_vacancy, job_deadline });
+      console.log(userCompany);
+        const creatingJob = await Job.create({ userCompany,title, description, salary, company, email, job_category, job_type, job_experience, job_vacancy, job_deadline });
         console.log("creatingJob");
         console.log(creatingJob);
         return NextResponse.json({ success: true, message: "Job Posted Successfully !", creatingJob });

@@ -2,7 +2,7 @@
 import { get_all_posted_job, get_my_posted_job } from '../Services/job';
 import { setMyJobs } from '../Utils/JobSlice';
 import JobsCard from '../components_company/JobsCard';
-import NavBar from  '../components_company/NavBar'
+
 import Cookies from 'js-cookie';
 // import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
@@ -19,7 +19,7 @@ export default function AllJobs() {
     const user = useSelector(state => state?.User?.userData)
     const myJobs = useSelector(state => state?.Job?.myJobs);
     const id = user?._id
-
+    console.log(user);
 
 
     const { data, error, isLoading } = useSWR('/getAllJobs', () =>  get_all_posted_job())
@@ -32,6 +32,7 @@ export default function AllJobs() {
 
     return (
         <Provider store={store}>
+        
             {
                 isLoading ? (
 
