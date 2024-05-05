@@ -1,21 +1,21 @@
 import Select from "react-select";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { post_job } from "../Services/job";
 import { useRouter } from "next/navigation";
-import NavBar from "../components_company/NavBar";
+import Cookies from "js-cookie";
+// import NavBar from "../components_company/NavBar";
 
 export default function PostAJob() {
-  const user = useSelector((state) => state.User.userData);
-  console.log(user);
   const router = useRouter();
+  
 
   // const [formData, setFormData] = useState({ user: user?._id, title: "", salary: 0, email: "", company: "", description: "", job_category: "", job_type: "", job_experience: "", job_vacancy: 0, job_deadline: "" });
-  const [formData, setFormData] = useState({
-    user: user ? user._id : "",
-    title: "",
+  let [formData, setFormData] = useState({
+    title:"",
+    userCompany: "",
     salary: 0,
     email: "",
     company: "",
@@ -27,8 +27,9 @@ export default function PostAJob() {
     job_deadline: "",
   });
 
+
   const [error, setError] = useState({
-    user: "",
+    userCompany: "",
     title: "",
     salary: "",
     email: "",
@@ -46,7 +47,7 @@ export default function PostAJob() {
 
     console.log(formData);
 
-    if (formData.user == null) {
+    if (formData.userCompany == null) {
       return toast.error("Please Login First");
     }
     if (!formData.title) {
@@ -96,6 +97,22 @@ export default function PostAJob() {
       return;
     }
 
+    const token = Cookies.get("token");
+  const tokenParts = token.split(".");
+  const payload = JSON.parse(atob(tokenParts[1]));
+  const userId = payload.id;
+
+  var mongoose = require("mongoose");
+  var id = new mongoose.Types.ObjectId(userId);
+
+
+// Add userCompany ObjectId to formData
+formData.userCompany = userId;
+
+
+  
+console.log("formData");
+console.log(formData);
     const res = await post_job(formData);
     if (res.success) {
       toast.success(res.message);
@@ -116,7 +133,7 @@ export default function PostAJob() {
 
   return (
     <>
-    
+    {/* <NavBar></NavBar> */}
       <div className="w-full  py-5 flex items-center  justify-center flex-col">
         <h2 className="text-xl mt-1 uppercase tracking-widest border-b-2 border-b-indigo-600 py-2 font-semibold mb-8 md:text-2xl lg:text-2xl">
           Enter Job Details

@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { login_me_jobseeker } from "@/app/(jobseeker)/Services/auth";
+import jwt_decode from "jwt-decode";
 
 /**
  * Login component
@@ -61,15 +62,18 @@ export default function Login() {
 
       if (res.success) {
         Cookies.set("token", res?.finalData?.token);
-        console.log(res?.finalData?.UserCompany);
-        localStorage.setItem("user", JSON.stringify(res?.finalData?.UserCompany));
-        dispatch(
-          setUserData(
-            localStorage.getItem("user")
-              ? JSON.parse(localStorage.getItem("user"))
-              : null
-          )
-        );
+        
+        const token = Cookies.get("token");
+        const tokenParts = token.split(".");
+
+        // Decode the payload (which is the middle part)
+        const payload = JSON.parse(atob(tokenParts[1]));
+
+        // Extract id and username from the decoded payload
+        const id = payload.id;
+
+        console.log(id);
+
         console.log("login success");
         router.push("/companydashboard");
       } else {
@@ -81,7 +85,6 @@ export default function Login() {
       toast.error("An error occurred while logging in");
     }
   };
-
 
   const handleJobSeekerLogin = async (e) => {
     e.preventDefault();
@@ -117,15 +120,24 @@ export default function Login() {
 
       if (res.success) {
         Cookies.set("token", res?.finalData?.token);
-        console.log(res?.finalData?.UserJobSeeker);
-        localStorage.setItem("user", JSON.stringify(res?.finalData?.UserJobSeeker));
-        dispatch(
-          setUserData(
-            localStorage.getItem("user")
-              ? JSON.parse(localStorage.getItem("user"))
-              : null
-          )
-        );
+        // console.log(res?.finalData?.UserJobSeeker);
+        // localStorage.setItem("user", JSON.stringify(res?.finalData?.UserJobSeeker));
+
+        // const action = setUserData(
+        //   localStorage.getItem("user")
+        //     ? JSON.parse(localStorage.getItem("user"))
+        //     : null
+        // );
+        // console.log("Action being dispatched:", action);
+        // dispatch(action);
+
+        // dispatch(
+        //   setUserData(
+        //     localStorage.getItem("user")
+        //       ? JSON.parse(localStorage.getItem("user"))
+        //       : null
+        //   )
+        // );
         console.log("login success");
         router.push("/companydashboard");
       } else {
@@ -137,7 +149,6 @@ export default function Login() {
       toast.error("An error occurred while logging in");
     }
   };
-
 
   return (
     <>
@@ -254,7 +265,7 @@ export default function Login() {
 
                               <div className="mb-4">
                                 <Button
-                                    onClick={handleJobSeekerLogin}
+                                  onClick={handleJobSeekerLogin}
                                   className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full"
                                 >
                                   Login

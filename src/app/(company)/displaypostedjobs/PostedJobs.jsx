@@ -13,26 +13,35 @@ import useSWR from 'swr';
 export default function PostedJobs() {
     const router = useRouter();
     const dispatch = useDispatch();
-    const user = useSelector(state => state.User.userData);
     const myJobs = useSelector(state => state?.Job?.myJobs);
-    const id =  user ? user._id : "";
+
+
+    const token = Cookies.get("token");
+    const tokenParts = token.split(".");
+    const payload = JSON.parse(atob(tokenParts[1]));
+    const userId = payload.id;
+  
+    var mongoose = require("mongoose");
+    var id = new mongoose.Types.ObjectId(userId);
+
+
 
     // Always call useSWR at the top level
-    const { data, error, isLoading: swrIsLoading } = useSWR(user ? '/getMyPostedJobs' : null, () => user ? get_my_posted_job(id) : null);
+    const { data, error, isLoading: swrIsLoading } = useSWR(id ? '/getMyPostedJobs' : null, () => id ? get_my_posted_job(id) : null);
     
     useEffect(() => {
         if (data) dispatch(setMyJobs(data?.data))
     }, [data, dispatch])
 
     useEffect(() => {
-        if (user === null) {
+        if (id === null) {
             console.log("returning");
             return;
         }
         if (!id) {
             router.push('/auth');
         }
-    }, [user, id, router])
+    }, [ id, router])
 
     if (error) {
         toast.error(error);

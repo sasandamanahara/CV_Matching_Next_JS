@@ -24,7 +24,7 @@ const getPostedJobs =  async (req, res) => {
     if(!id) return NextResponse.json({ success: false, message: "Please Login First"});
 
     try {
-        const gettingjobs = await Job.find({user : id}).populate('user', 'name email');
+        const gettingjobs = await Job.find({userCompany : id}).populate('userCompany', 'name email');
         return NextResponse.json({ success: true, data: gettingjobs });
     } catch (error) {
         console.log('Error in getting a specifed Job job (server) => ', error);
