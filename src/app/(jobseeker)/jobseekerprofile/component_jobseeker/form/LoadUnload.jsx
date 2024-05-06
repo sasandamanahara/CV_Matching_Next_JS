@@ -1,6 +1,8 @@
 import { FaCloudUploadAlt, FaCloudDownloadAlt } from "react-icons/fa";
 import React, { useContext } from "react";
 import { ResumeContext } from "../../../jobseekerprofile/builder";
+import { post_resume } from "../../../Services/Resume";
+import Cookies from 'js-cookie';
 
 const LoadUnload = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -16,17 +18,32 @@ const LoadUnload = () => {
     reader.readAsText(file);
   };
 
-  // download resume data
-  const handleDownload = (data, filename, event) => {
+  const handleSave = async (data, filename, event) => {
     event.preventDefault();
-    const jsonData = JSON.stringify(data);
-    const blob = new Blob([jsonData], { type: "application/json" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    link.click();
+  
+    const token = Cookies.get("token");
+    const tokenParts = token ? token.split(".") : [];
+    const payload = JSON.parse(atob(tokenParts[1]));
+    const userId = payload.id;
+  
+    // Add userCompany ObjectId to formData
+    data.userJobSeeker = userId;
+  
+    console.log("formData");
+    console.log(data);
+  
+    const res = await post_resume(data); // Send the resume data object directly
+    if (res.success) {
+      // toast.success(res.message);
+      setTimeout(() => {
+        console.log("send resume");
+        // router.push("/display_jobs");
+      }, 1000);
+    } else {
+      // toast.error(res.message);
+    }
   };
-
+  
   return (
     <div className="flex flex-wrap gap-4 mb-2 justify-center">
       <div className="inline-flex flex-row items-center gap-2">
@@ -48,7 +65,7 @@ const LoadUnload = () => {
           aria-label="Save Data"
           className="p-2 text-white bg-blue-700 rounded"
           onClick={(event) =>
-            handleDownload(
+            handleSave(
               resumeData,
               resumeData.name + " by ATSResume.json",
               event
