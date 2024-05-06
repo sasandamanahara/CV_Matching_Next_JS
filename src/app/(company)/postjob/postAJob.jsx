@@ -102,9 +102,6 @@ export default function PostAJob() {
   const payload = JSON.parse(atob(tokenParts[1]));
   const userId = payload.id;
 
-  var mongoose = require("mongoose");
-  var id = new mongoose.Types.ObjectId(userId);
-
 
 // Add userCompany ObjectId to formData
 formData.userCompany = userId;

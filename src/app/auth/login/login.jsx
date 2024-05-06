@@ -120,26 +120,8 @@ export default function Login() {
 
       if (res.success) {
         Cookies.set("token", res?.finalData?.token);
-        // console.log(res?.finalData?.UserJobSeeker);
-        // localStorage.setItem("user", JSON.stringify(res?.finalData?.UserJobSeeker));
-
-        // const action = setUserData(
-        //   localStorage.getItem("user")
-        //     ? JSON.parse(localStorage.getItem("user"))
-        //     : null
-        // );
-        // console.log("Action being dispatched:", action);
-        // dispatch(action);
-
-        // dispatch(
-        //   setUserData(
-        //     localStorage.getItem("user")
-        //       ? JSON.parse(localStorage.getItem("user"))
-        //       : null
-        //   )
-        // );
         console.log("login success");
-        router.push("/companydashboard");
+        router.push("/jobseekerdashboard");
       } else {
         console.log("wrong");
         toast.error(res.message);
