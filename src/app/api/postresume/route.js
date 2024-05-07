@@ -19,6 +19,7 @@ export async function POST(req, res) {
 }
 
 const postResume = async (req, res) => {
+    
     try {
         // Extract the data from the request body
         const {
@@ -39,52 +40,33 @@ const postResume = async (req, res) => {
             certifications
         } = await req.json();
 
-        // Check if a resume already exists for the given userJobSeeker
-        const existingResume = await ResumeModel.findOne({ userJobSeeker });
+        
 
-        if (existingResume) {
-            // If a resume exists, update the record
-            existingResume.set({
-                name,
-                position,
-                contactInformation,
-                email,
-                address,
-                profilePicture,
-                socialMedia,
-                summary,
-                education,
-                workExperience,
-                projects,
-                skills,
-                languages,
-                certifications
-            });
-            await existingResume.save();
-            return NextResponse.json({ success: true, message: "Resume Updated Successfully !", existingResume });
-        } else {
-            // If no resume exists, create a new one
-            const creatingResume = await ResumeModel.create({ 
-                userJobSeeker,
-                name,
-                position,
-                contactInformation,
-                email,
-                address,
-                profilePicture,
-                socialMedia,
-                summary,
-                education,
-                workExperience,
-                projects,
-                skills,
-                languages,
-                certifications
-            });
-            return NextResponse.json({ success: true, message: "Resume Posted Successfully !", creatingResume });
-        }
+        console.log("name,position");
+        console.log(name,position);
+
+
+        const creatingResume=await ResumeModel.create({ 
+            userJobSeeker,
+            name,
+            position,
+            contactInformation,
+            email,
+            address,
+            profilePicture,
+            socialMedia,
+            summary,
+            education,
+            workExperience,
+            projects,
+            skills,
+            languages,
+            certifications});
+        return NextResponse.json({ success: true, message: "Resume Posted Successfully !", creatingResume });
     } catch (error) {
         console.error('Error saving resume:', error);
         return NextResponse.json({ success: false, message: "Something Went Wrong Please Retry login !" }, { status: 400 });
     }
 }
+
+

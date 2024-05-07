@@ -21,3 +21,25 @@ export const post_resume = async (formData) => {
         console.log('error in post resume (service) => ', error);
     }
 };
+
+
+export const load_resume = async (userID) => {
+    try {
+        console.log("getting resume");
+        console.log(userID);
+        const res = await fetch(`http://localhost:3000/api/loadresume?id=${userID}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Cookies.get('token')}`
+            },
+        });
+
+        // Await the JSON parsing
+        const data = await res.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.log('error in post resume (service) => ', error);
+    }
+};

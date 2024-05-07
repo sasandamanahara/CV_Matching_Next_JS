@@ -1,21 +1,38 @@
 import { FaCloudUploadAlt, FaCloudDownloadAlt } from "react-icons/fa";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ResumeContext } from "../../../jobseekerprofile/builder";
 import { post_resume } from "../../../Services/Resume";
+import { load_resume } from "../../../Services/Resume";
 import Cookies from 'js-cookie';
 
 const LoadUnload = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
 
+
+  useEffect(() => {
+    handleLoad();
+  }, []); 
+
+
   // load backup resume data
-  const handleLoad = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const resumeData = JSON.parse(event.target.result);
-      setResumeData(resumeData);
-    };
-    reader.readAsText(file);
+  const handleLoad = async (event) => {
+    console.log("handle load");
+    const token = Cookies.get("token");
+    const tokenParts = token ? token.split(".") : [];
+    const payload = JSON.parse(atob(tokenParts[1]));
+    const userId = payload.id;
+
+    const res = await load_resume(userId);
+    if (res.success) {
+      setTimeout(() => {
+        console.log("load resume");
+        console.log(res.resume);
+        setResumeData(res.resume);
+      }, 1000);
+    } else {
+      // toast.error(res.message);
+    }
+
   };
 
   const handleSave = async (data, filename, event) => {
@@ -46,19 +63,6 @@ const LoadUnload = () => {
   
   return (
     <div className="flex flex-wrap gap-4 mb-2 justify-center">
-      <div className="inline-flex flex-row items-center gap-2">
-        <h2 className="text-[1.2rem] text-white">Load Data</h2>
-        <label className="p-2 text-white bg-blue-700 rounded cursor-pointer">
-          <FaCloudUploadAlt className="text-[1.2rem] text-white" />
-          <input
-            aria-label="Load Data"
-            type="file"
-            className="hidden"
-            onChange={handleLoad}
-            accept=".json"
-          />
-        </label>
-      </div>
       <div className="inline-flex flex-row items-center gap-2">
         <h2 className="text-[1.2rem] text-white">Save Data</h2>
         <button
