@@ -77,6 +77,6 @@ const resumeSchema = new mongoose.Schema({
     certifications: [String]
 });
 
-const ResumeModel = mongoose.model('Resume', resumeSchema);
 
-module.exports = ResumeModel;
+module.exports = mongoose.models.Resume || mongoose.model('Resume', resumeSchema);
+
