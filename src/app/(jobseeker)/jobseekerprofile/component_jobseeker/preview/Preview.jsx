@@ -267,46 +267,6 @@ const Preview = () => {
                                 id={`work-experience-start-end-date`}
                               />
                               <p className="content hyphens-auto">{item.description}</p>
-                              {/* <Droppable
-                                droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
-                                type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
-                              >
-                                {(provided) => (
-                                  <ul
-                                    className="list-disc ul-padding content"
-                                    {...provided.droppableProps}
-                                    ref={provided.innerRef}
-                                  >
-                                    {typeof item.keyAchievements === "string" &&
-                                      item.keyAchievements
-                                        .split("\n")
-                                        .map((achievement, subIndex) => (
-                                          <Draggable
-                                            key={`${item.company}-${index}-${subIndex}`}
-                                            draggableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}-${subIndex}`}
-                                            index={subIndex}
-                                          >
-                                            {(provided, snapshot) => (
-                                              <li
-                                                ref={provided.innerRef}
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                                className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                          ${
-                                            snapshot.isDragging &&
-                                            "outline-dashed outline-2 outline-gray-400 bg-white"
-                                          }`}
-                                              >
-                                                {achievement}
-                                              </li>
-                                            )}
-                                          </Draggable>
-                                        ))}
-                                    {provided.placeholder}
-                                  </ul>
-                                )}
-                              </Droppable> */}
                             </div>
                           )}
                         </Draggable>

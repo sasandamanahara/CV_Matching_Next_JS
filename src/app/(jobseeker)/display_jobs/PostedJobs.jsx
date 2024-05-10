@@ -1,7 +1,7 @@
 'use client';
 import { get_all_posted_job, get_my_posted_job } from '../Services/job';
-import { setMyJobs } from '../Utils/JobSlice';
-import JobsCard from '../components_company/JobsCard';
+import { setMyJobs } from '../../(company)/Utils/JobSlice';
+import JobsCard from '../../(company)/components_company/JobsCard';
 
 import Cookies from 'js-cookie';
 // import { useRouter } from 'next/router';
@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify';
 import useSWR from 'swr'
 import { Provider } from 'react-redux';
-import { store } from '../Store/store';
+import { store } from '../../(company)/Store/store';
 
 export default function AllJobs() {
     // const router = useRouter();
