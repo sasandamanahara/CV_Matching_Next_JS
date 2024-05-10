@@ -74,7 +74,10 @@ export default function SideBar() {
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-                onClick={() => router.push("/display_jobs")}>
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push("/display_jobs_jobseeker");
+                }}>
                 <ClipboardList className="h-4 w-4" />
                 Job Listning
               </Link>

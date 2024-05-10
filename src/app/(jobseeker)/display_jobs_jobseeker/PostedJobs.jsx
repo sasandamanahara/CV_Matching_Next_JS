@@ -1,7 +1,7 @@
 'use client';
 import { get_all_posted_job, get_my_posted_job } from '../Services/job';
 import { setMyJobs } from '../../(company)/Utils/JobSlice';
-import JobsCard from '../../(company)/components_company/JobsCard';
+import JobsCard from '../_components/JobsCard';
 
 import Cookies from 'js-cookie';
 // import { useRouter } from 'next/router';
