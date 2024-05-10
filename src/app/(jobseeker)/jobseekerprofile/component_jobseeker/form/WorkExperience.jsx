@@ -23,7 +23,6 @@ const WorkExperience = () => {
           company: "",
           position: "",
           description: "",
-          keyAchievements: "",
           startYear: "",
           endYear: "",
         },
@@ -66,14 +65,6 @@ const WorkExperience = () => {
             className="w-full other-input h-32"
             value={workExperience.description}
             maxLength="250"
-            onChange={(e) => handleWorkExperience(e, index)}
-          />
-          <textarea
-            type="text"
-            placeholder="Key Achievements"
-            name="keyAchievements"
-            className="w-full other-input h-40"
-            value={workExperience.keyAchievements}
             onChange={(e) => handleWorkExperience(e, index)}
           />
           <div className="flex-wrap-gap-2">

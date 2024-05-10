@@ -267,7 +267,7 @@ const Preview = () => {
                                 id={`work-experience-start-end-date`}
                               />
                               <p className="content hyphens-auto">{item.description}</p>
-                              <Droppable
+                              {/* <Droppable
                                 droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
                                 type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
                               >
@@ -306,7 +306,7 @@ const Preview = () => {
                                     {provided.placeholder}
                                   </ul>
                                 )}
-                              </Droppable>
+                              </Droppable> */}
                             </div>
                           )}
                         </Draggable>
