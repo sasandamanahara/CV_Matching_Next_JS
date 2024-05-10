@@ -1,3 +1,4 @@
+"use client"; // This is a client component
 import Link from "next/link"
 import {
   Bell,
@@ -14,13 +15,16 @@ import {
   Building2,
   Settings,
   CalendarCheck,
-  ClipboardList
+  ClipboardList,
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation";
 
 export default function SideBar() {
+  const router = useRouter();
+
   return (
     
         <div className="flex h-full max-h-screen flex-col gap-2">
@@ -70,7 +74,10 @@ export default function SideBar() {
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push("/display_jobs_jobseeker");
+                }}>
                 <ClipboardList className="h-4 w-4" />
                 Job Listning
               </Link>

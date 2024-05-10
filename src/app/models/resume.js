@@ -9,7 +9,6 @@ const workExperienceSchema = new mongoose.Schema({
     company: String,
     position: String,
     description: String,
-    keyAchievements: [String],
     startYear: String,
     endYear: String
 });

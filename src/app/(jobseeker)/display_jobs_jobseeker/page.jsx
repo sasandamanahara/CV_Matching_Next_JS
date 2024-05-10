@@ -1,6 +1,6 @@
 'use client';
 import { Provider } from 'react-redux';
-import { store } from '../Store/store';
+import { store } from '../../(company)/Store/store';
 import React, { useState } from 'react';
 import AllJobs from './PostedJobs';
 import SideBar from '../_components/sidebar';
