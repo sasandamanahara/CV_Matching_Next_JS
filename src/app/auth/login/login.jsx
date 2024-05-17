@@ -75,7 +75,7 @@ export default function Login() {
         console.log(id);
 
         console.log("login success");
-        router.push("/companydashboard");
+        window.location.href = "/companydashboard";
       } else {
         console.log("wrong");
         toast.error(res.message);
@@ -87,6 +87,7 @@ export default function Login() {
   };
 
   const handleJobSeekerLogin = async (e) => {
+
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -121,7 +122,7 @@ export default function Login() {
       if (res.success) {
         Cookies.set("token", res?.finalData?.token);
         console.log("login success");
-        router.push("/jobseekerdashboard");
+        window.location.href = "/jobseekerdashboard";
       } else {
         console.log("wrong");
         toast.error(res.message);
