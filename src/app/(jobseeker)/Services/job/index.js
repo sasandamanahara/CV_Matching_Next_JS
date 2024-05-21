@@ -31,3 +31,20 @@ export const get_specified_job = async (id) => {
         console.log('error in getting  specified job (service) => ', error);
     }
 }
+
+
+// apply  job api
+
+export const apply_job = async (formData) => {
+    try {
+        const res = await fetch(`/api/applyJob`, {
+            method: 'POST',
+            headers : {'Authorization': `Bearer ${Cookies.get('token')}`},
+            body: formData,
+        });
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error in apply job (service) => ', error);
+    }
+}
