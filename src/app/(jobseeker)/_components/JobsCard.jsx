@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-scroll";
+import { useRouter } from "next/navigation";
 
 export default function JobsCard({ job, posted }) {
   const [search, setSearch] = useState("");
@@ -12,7 +13,7 @@ export default function JobsCard({ job, posted }) {
     // Perform search action here
     console.log("Search:", search);
   };
-
+  const router = useRouter();
   return (
     <a
       href="#"
@@ -102,7 +103,7 @@ export default function JobsCard({ job, posted }) {
         </div>
         <br />
         <div className="mb-4">
-          <Button className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full">
+          <Button onClick={() => router.push(`/jobDetails/${job?._id}`)} className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full">
             View and Apply
           </Button>
         </div>

@@ -15,3 +15,19 @@ export const get_all_posted_job = async (id) => {
         console.log('error in   getting all job (service) => ', error);
     }
 }
+
+
+// get specified job api
+export const get_specified_job = async (id) => {
+    try {
+      
+        const res = await fetch(`http://localhost:3000/api/getSpecifiedJob?id=${id}`, {
+            method: 'GET',
+            headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
+        })
+        const data = res.json();
+        return data;
+    } catch (error) {
+        console.log('error in getting  specified job (service) => ', error);
+    }
+}
