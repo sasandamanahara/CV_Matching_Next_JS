@@ -58,7 +58,7 @@ export default function SideBar() {
                 </Badge>
               </Link>
               <Link
-                href="#"
+                href="/jobseekerprofile"
                 className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
               >
                 <Building2 className="h-4 w-4" />
