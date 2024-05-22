@@ -53,3 +53,18 @@ export const apply_job = async (formData) => {
         console.log('error in apply job (service) => ', error);
     }
 }
+
+// get my all applied job api
+
+export const get_my_applied_job = async (id) => {
+    try {
+        const res = await fetch(`/api/getAppliedJobs?id=${id}`, {
+            method: 'GET',
+            headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
+        })
+        const data = res.json();
+        return data;
+    } catch (error) {
+        console.log('error in getting  getting my all job (service) => ', error);
+    }
+}
