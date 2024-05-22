@@ -7,24 +7,14 @@ const ApplyJobSchema = new mongoose.Schema({
     userJobSeeker: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'UserJobSeeker',
+        required: true,
     },
-    job: {
+    jobId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Job',
-    },
-    name: {
-        type: String,
         required: true,
     },
-    email: {
-        type: String,
-        required: true,
-    },
-    about: {
-        type: String,
-        required: true,
-    },
-    cv: {
+    message: {
         type: String,
         required: true,
     },

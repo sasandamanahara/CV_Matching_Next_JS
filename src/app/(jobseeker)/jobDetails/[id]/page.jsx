@@ -16,7 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { InfinitySpin } from "react-loader-spinner";
 import useSWR from "swr";
 import Cookies from "js-cookie";
-
+import { apply_job } from "../../Services/job";
 import { usePathname } from "next/navigation";
 
 function extractIdFromUrl(url) {
@@ -31,54 +31,58 @@ export default function JobDetails() {
   const url = usePathname();
   const id = extractIdFromUrl(url);
   const [JobDetails, setJobDetails] = useState(null);
+  const [formData, setFormData] = useState({ message: "", userJobSeeker: "", jobId:""});
 
   const token = Cookies.get("token");
   const tokenParts = token ? token.split(".") : [];
   const payload = JSON.parse(atob(tokenParts[1]));
   const userId = payload.id;
-//   console.log(userId);
-  const [formikData, setFormikData] = useState({
-    name: "",
-    user: "",
-  });
+
 
   const [error, setError] = useState({
     message: "",
   });
 
-  const { message, user } = formikData;
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!message) {
+  
+    if (!formData.message) {
       setError({ ...error, message: "Message Field is required" });
       return;
     }
-
-    
-        const form = new FormData();
-        form.append("message", message);
-        form.append("user", userId);
-        if(user!=null){
-        // const res = await apply_job(form);
-        // if (res.success) {
-        // toast.success("Your Application is Submitted , Redirecting ... ");
-        // setTimeout(() => {
-        //     router.push("/");
-        // }, 1000);
-        // } else {
-        // toast.error("Something Went Wrong");
-        // }
-        router.push(`/jobseekermyapplication`);
-    }else{
-        toast.error("Please Login First");
+  
+    // Update formData with user and jobId
+    const updatedFormData = {
+      ...formData,
+      userJobSeeker: userId,
+      jobId: id,
+    };
+    setFormData(updatedFormData);
+  
+    // Use updatedFormData instead of formData here
+    console.log(userId);
+    console.log(id);
+    console.log(updatedFormData);
+  
+    if (updatedFormData.userJobSeeker) {
+      const res = await apply_job(updatedFormData);
+      console.log(res);
+      if (res.success) {
+        toast.success("Your Application is Submitted , Redirecting ... ");
+        setTimeout(() => {
+          window.location.href = "/jobseekermyapplication";
+      }, 1000);
+      
+      } else {
+        toast.error("Something Went Wrong");
+      }
+      
+    } else {
+      toast.error("Please Login First");
     }
-
-
-    
   };
-
+  
   const { data, error2, isLoading } = useSWR(`/get-specified-job`, () =>
     get_specified_job(id)
   );
@@ -225,7 +229,10 @@ export default function JobDetails() {
                 <textarea
                   name="message"
                   onChange={(e) =>
-                    setFormikData({ ...formikData, message: e.target.value })
+                    setFormData({
+                      ...formData,
+                      message: e.target.value,
+                    })
                   }
                   type="description"
                   id="description"
