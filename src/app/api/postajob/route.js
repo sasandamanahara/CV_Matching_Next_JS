@@ -26,7 +26,6 @@ export async function POST(req, res) {
         case 'POST':
             await postAJob(req, res);
             return NextResponse.json({ success: true, message: "Job Posted Successfully !" });
-            break;
         default:
             return NextResponse.json({ success: false, message: "Invalid Request" });
     }

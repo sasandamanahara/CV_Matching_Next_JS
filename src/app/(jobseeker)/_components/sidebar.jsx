@@ -62,14 +62,14 @@ export default function SideBar() {
                 className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
               >
                 <Building2 className="h-4 w-4" />
-                Company Profile{" "}
+                Job Seeker Profile{" "}
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Users className="h-4 w-4" />
-                All Applicants
+                All Applications
               </Link>
               <Link
                 href="#"
@@ -79,7 +79,7 @@ export default function SideBar() {
                   router.push("/display_jobs_jobseeker");
                 }}>
                 <ClipboardList className="h-4 w-4" />
-                Job Listning
+                All Jobs
               </Link>
 
               <Link
