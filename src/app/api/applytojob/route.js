@@ -22,8 +22,6 @@ export async function POST(req, res) {
     }
 }
 
-
-
 const applyToJob =  async (req, res) => {
     await ConnectDB();
 
@@ -32,6 +30,13 @@ const applyToJob =  async (req, res) => {
         const { message, userJobSeeker, jobId} = await req.json();
             const { error } = schema.validate({message , userJobSeeker , jobId});
             if (error) return NextResponse.json({ success: false, message: error.details[0].message.replace(/['"]+/g, '') });
+
+            const existingApplication = await AppliedJob.findOne({ userJobSeeker, jobId });
+
+            if (existingApplication) {
+                // If an application already exists, return an error
+                return NextResponse.json({ success: false, message: "You have already submitted an application for this job" });
+            }
 
             const newJobApplication = await AppliedJob.create({ message, userJobSeeker, jobId });
             return NextResponse.json({ success: true, message: "Applied Successfully !", newJobApplication });

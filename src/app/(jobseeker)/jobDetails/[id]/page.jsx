@@ -75,7 +75,15 @@ export default function JobDetails() {
       }, 1000);
       
       } else {
-        toast.error("Something Went Wrong");
+        if(res.message){
+          toast.error(res.message);
+          setTimeout(() => {
+            window.location.href = "/jobseekermyapplication";
+        }, 1000);
+        }else{
+          toast.error("Something Went Wrong");
+        }
+        
       }
       
     } else {
