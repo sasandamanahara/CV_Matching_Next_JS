@@ -129,7 +129,7 @@ export default function ApplicantList() {
             </span>
           </td>
           <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-            <a href={`/jobseekerprofile/${applicant.userJobSeeker._id}`} className="text-orange-600 hover:text-orange-900 flex items-center">
+          <a href={`/applicantprofile/${applicant.userJobSeeker._id}`}  className="text-orange-600 hover:text-orange-900 flex items-center">
               <svg className="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M7 9V2H3a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V10h-7a1 1 0 01-1-1zm9-5v2a1 1 0 001 1h2l-3.707 3.707a1 1 0 01-1.414 0L10 5H7a1 1 0 001-1V2h6a1 1 0 011 1z" clipRule="evenodd"/>
               </svg>

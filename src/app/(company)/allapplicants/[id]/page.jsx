@@ -1,6 +1,6 @@
 
 import SideBar from "../../_components/sidebar"
-import CompanyHeader from "../../_components/header"
+
 import Appicantlist from "./appicantlist"
 
 export default function Allapplicants() {
