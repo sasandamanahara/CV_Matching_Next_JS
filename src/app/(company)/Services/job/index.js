@@ -27,11 +27,26 @@ export const post_job = async (formData) => {
 }
 
 
-// get specified job api
-export const get_specified_job = async (id) => {
+// // get specified job api
+// export const get_specified_job = async (id) => {
+//     try {
+      
+//         const res = await fetch(`http://localhost:3000/api/getSpecifiedJob?id=${id}`, {
+//             method: 'GET',
+//             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
+//         })
+//         const data = res.json();
+//         return data;
+//     } catch (error) {
+//         console.log('error in getting  specified job (service) => ', error);
+//     }
+// }
+
+// get specified job applicants api
+export const get_specified_job_applicants = async (id) => {
     try {
       
-        const res = await fetch(`http://localhost:3000/api/job/getSpecifiedJob?id=${id}`, {
+        const res = await fetch(`http://localhost:3000/api/getSpecifiedJobApplicants?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
@@ -41,7 +56,6 @@ export const get_specified_job = async (id) => {
         console.log('error in getting  specified job (service) => ', error);
     }
 }
-
 
 
 // apply  job api
