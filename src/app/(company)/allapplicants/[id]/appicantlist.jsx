@@ -102,8 +102,8 @@ export default function ApplicantList() {
           <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <a href="#" className="block">
-                  <img alt="profil" src="https://th.bing.com/th/id/OIP.kEXBJMLiahYU_7vmOq-4fwHaHa?pid=ImgDet&w=474&h=474&rs=1" className="object-cover rounded-full h-8 w-8"/>
+                <a href="" className="block">
+                  <img alt="profil" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Orange_Icon_User.svg/1024px-Orange_Icon_User.svg.png" className="object-cover rounded-full h-8 w-8"/>
                 </a>
               </div>
               <div className="ml-2">
