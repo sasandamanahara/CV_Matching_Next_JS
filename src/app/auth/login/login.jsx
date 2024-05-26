@@ -58,6 +58,7 @@ export default function Login() {
     try {
       console.log("login");
       const res = await login_me_company(formData);
+      setFormData({ email: "", password: ""});
       console.log(res);
 
       if (res.success) {
@@ -117,6 +118,7 @@ export default function Login() {
     try {
       console.log("login");
       const res = await login_me_jobseeker(formData);
+      setFormData({ email: "", password: ""});
       console.log(res);
 
       if (res.success) {

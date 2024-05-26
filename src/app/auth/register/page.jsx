@@ -54,7 +54,7 @@ export default function Register() {
 
     try {
       const data = await register_me_company(formData); // Pass formData directly here
-      setFormData("");
+      setFormData({ email: "", password: "", name: "" });
       if (data.success) {
         toast.success(data.message);
         Cookies.set("token", data?.finalData?.token);
@@ -115,7 +115,8 @@ export default function Register() {
 
     try {
       const data = await register_me_jobseeker(formData);
-      setFormData("");
+      setFormData({ email: "", password: "", name: "" });
+
       console.log(formData);
       if (data.success) {
         console.log(data);
