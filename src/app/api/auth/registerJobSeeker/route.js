@@ -3,6 +3,7 @@ import UserJobSeeker from '../../../models/UserJobSeeker';
 import Joi from 'joi';
 import { hash } from 'bcryptjs';
 import { NextResponse } from 'next/server';
+import jwt from 'jsonwebtoken';
 
 const schema = Joi.object({
     email: Joi.string().email().required(),
@@ -30,8 +31,10 @@ export async function POST(req, res) {
 
         else {
             const hashedPassword = await hash(password, 12)
-            const createUser = await UserJobSeeker.create({ email, name, password: hashedPassword });
-            return NextResponse.json({ success: true,message: 'Account created successfully' })
+            const createJobSeeker = await UserJobSeeker.create({ email, name, password: hashedPassword });
+            const token = jwt.sign({ id: createJobSeeker._id, email: createJobSeeker.email }, "e8)Qz+j@L8b>D2~T?fN*UH#J5W}Zx?%G", { expiresIn: '1d' });
+            const finalData = {token , UserJobSeeker : createJobSeeker}
+            return NextResponse.json({ success: true,message: 'Account created successfully', finalData })
         }
     } catch (error) {
         console.log('Error in register (server) => ', error);

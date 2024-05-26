@@ -1,7 +1,6 @@
 "use client"; // This is a client component
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
 import Image from "next/image";
 import "../assets/css/tailwind.css";
 import "../assets/scss/tailwind.scss";
@@ -19,103 +18,133 @@ import { Button } from "react-scroll";
  * Login component
  */
 export default function Register() {
-    const [formData, setFormData] = useState({ email: "", password: "" });
-    const [error, setError] = useState({ email: "", password: "", name: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [error, setError] = useState({ email: "", password: "", name: "" });
 
-    
-    const handleCompanyRegister = async (e) => {
-      e.preventDefault();
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      
-      let formErrors = {};
+  const handleCompanyRegister = async (e) => {
+    e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    let formErrors = {};
+    console.log(formData);
+    if (!formData.email) {
+      formErrors = { ...formErrors, email: "Email Field is Required" };
+    } else if (!emailRegex.test(formData.email)) {
+      formErrors = {
+        ...formErrors,
+        email: "Please enter a valid email address",
+      };
+    }
+
+    if (!formData.password) {
+      formErrors = { ...formErrors, password: "Password Field is required" };
+    }
+
+    if (!formData.name) {
+      formErrors = { ...formErrors, name: "Name Field is required" };
+    }
+
+    if (Object.keys(formErrors).length > 0) {
+      setError(formErrors);
+      return;
+    }
+
+    // Clear error state if there are no errors
+    setError({ email: "", password: "", name: "" });
+
+    try {
+      const data = await register_me_company(formData); // Pass formData directly here
+      setFormData("");
+      if (data.success) {
+        toast.success(data.message);
+        Cookies.set("token", data?.finalData?.token);
+
+        const token = Cookies.get("token");
+        const tokenParts = token.split(".");
+
+        // Decode the payload (which is the middle part)
+        const payload = JSON.parse(atob(tokenParts[1]));
+
+        // Extract id and username from the decoded payload
+        const id = payload.id;
+
+        console.log(id);
+
+        console.log("register success");
+        window.location.href = "/companydashboard";
+      } else {
+        console.log("wrong");
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+      toast.error("An error occurred while logging in");
+    }
+  };
+
+  const handleJobSeekerRegister = async (e) => {
+    console.log("regstering jobseeker");
+    e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    let formErrors = {};
+    if (!formData.email) {
+      formErrors = { ...formErrors, email: "Email Field is Required" };
+    } else if (!emailRegex.test(formData.email)) {
+      formErrors = {
+        ...formErrors,
+        email: "Please enter a valid email address",
+      };
+    }
+
+    if (!formData.password) {
+      formErrors = { ...formErrors, password: "Password Field is required" };
+    }
+
+    if (!formData.name) {
+      formErrors = { ...formErrors, name: "Name Field is required" };
+    }
+
+    if (Object.keys(formErrors).length > 0) {
+      setError(formErrors);
+      return;
+    }
+
+    // Clear error state if there are no errors
+    setError({ email: "", password: "", name: "" });
+
+    try {
+      const data = await register_me_jobseeker(formData);
+      setFormData("");
       console.log(formData);
-      if (!formData.email) {
-        formErrors = { ...formErrors, email: "Email Field is Required" };
-      } else if (!emailRegex.test(formData.email)) {
-        formErrors = { ...formErrors, email: "Please enter a valid email address" };
-      }
-      
-      if (!formData.password) {
-        formErrors = { ...formErrors, password: "Password Field is required" };
-      }
-      
-      if (!formData.name) {
-        formErrors = { ...formErrors, name: "Name Field is required" };
-      }
-    
-      if (Object.keys(formErrors).length > 0) {
-        setError(formErrors);
-        return;
-      }
-      
-      // Clear error state if there are no errors
-      setError({ email: "", password: "", name: "" });
-    
-      try {
-        const data = await register_me_company(formData); // Pass formData directly here
-        setFormData("");
-        if (data.success) {
-          toast.success(data.message);
-        } else {
-          toast.error(data.message);
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-        toast.error("An error occurred while logging in");
-      }
-    };
-    
-      
- 
+      if (data.success) {
+        console.log(data);
+        
+        toast.success(data.message);
+        Cookies.set("token", data?.finalData?.token);
 
-      const handleJobSeekerRegister = async (e) => {
-        console.log("regstering jobseeker");
-          e.preventDefault();
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-          let formErrors = {};
-          if (!formData.email) {
-            formErrors = { ...formErrors, email: "Email Field is Required" };
-          } else if (!emailRegex.test(formData.email)) {
-            formErrors = { ...formErrors, email: "Please enter a valid email address" };
-          }
-        
-          if (!formData.password) {
-            formErrors = { ...formErrors, password: "Password Field is required" };
-          }
-        
-          if (!formData.name) {
-            formErrors = { ...formErrors, name: "Name Field is required" };
-          }
-        
-          if (Object.keys(formErrors).length > 0) {
-            setError(formErrors);
-            return;
-          }
-        
-          // Clear error state if there are no errors
-          setError({ email: "", password: "", name: "" });
-        
-          try{
-            const data = await register_me_jobseeker(formData);
-            setFormData("");
-            console.log(formData);
-            if (data.success) {
-              toast.success(data.message);
-              
-              // setTimeout(() => {
-              //   router.push("/auth/login");
-              // }, 2000);
-            } else {
-              toast.error(data.message);
-            }
-          }catch(error){
-            console.error("An error occurred:", error);
-            toast.error("An error occurred while logging in");
-          }
-          
-        };
+        const token = Cookies.get("token");
+        const tokenParts = token.split(".");
+        console.log(data?.finalData?.token);
+        // Decode the payload (which is the middle part)
+        const payload = JSON.parse(atob(tokenParts[1]));
 
+        // Extract id and username from the decoded payload
+        const id = payload.id;
+
+        console.log(id);
+
+        console.log("register success");
+        window.location.href = "/jobseekerdashboard";
+      } else {
+        console.log("wrong");
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+      toast.error("An error occurred while logging in");
+    }
+  };
 
   return (
     <>
@@ -359,7 +388,7 @@ export default function Register() {
                               </div>
 
                               <div className="mb-4">
-                              <Button
+                                <Button
                                   onClick={handleCompanyRegister}
                                   className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md w-full"
                                 >
