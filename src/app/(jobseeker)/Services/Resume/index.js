@@ -2,8 +2,8 @@ import Cookies from 'js-cookie';
 
 export const post_resume = async (formData) => {
     try {
-        console.log("posting");
-        console.log(formData);
+        // console.log("posting");
+        // console.log(formData);
         const res = await fetch(`http://localhost:3000/api/postresume`, {
             method: 'POST',
             headers: {
@@ -15,7 +15,7 @@ export const post_resume = async (formData) => {
 
         // Await the JSON parsing
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         return data;
     } catch (error) {
         console.log('error in post resume (service) => ', error);
@@ -25,7 +25,7 @@ export const post_resume = async (formData) => {
 
 export const load_resume = async (userID) => {
     try {
-        console.log("getting resume");
+        // console.log("getting resume");
         console.log(userID);
         const res = await fetch(`http://localhost:3000/api/loadresume?id=${userID}`, {
             method: 'GET',
@@ -37,7 +37,7 @@ export const load_resume = async (userID) => {
 
         // Await the JSON parsing
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         return data;
     } catch (error) {
         console.log('error in post resume (service) => ', error);

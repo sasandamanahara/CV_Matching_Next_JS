@@ -24,7 +24,7 @@ const getAppliedJobs =  async (req, res) => {
     if(!userId) return NextResponse.json({ success: false, message: "Please Login First"});
 
     try {
-        console.log("trying");
+        // console.log("trying  get applied jobs");
         const gettingAppliedJobs  = await ApplyJob.find({userJobSeeker : userId}).populate('userJobSeeker').populate('jobId');
         return NextResponse.json({ success: true, data: gettingAppliedJobs });
     } catch (error) {

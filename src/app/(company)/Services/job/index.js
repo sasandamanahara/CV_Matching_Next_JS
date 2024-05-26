@@ -176,3 +176,33 @@ export const get_application_details = async (id) => {
         console.log('error in   getting my all application of specified jobs (service) => ', error);
     }
 }
+
+
+
+export const get_matched_score = async (cvText, jdText) => {
+    const formData = {
+        cv_text: cvText,
+        jd_text: jdText
+    };
+
+    try {
+        const res = await fetch(`http://localhost:5000/match-skills`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Cookies.get('token')}`
+            },
+            body: JSON.stringify(formData)
+        });
+
+        if (!res.ok) {
+            throw new Error('Failed to fetch');
+        }
+
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error in get_matched_score (service) => ', error);
+        return { error: error.message };
+    }
+}
