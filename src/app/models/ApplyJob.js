@@ -1,30 +1,20 @@
 import mongoose from 'mongoose';
-import User from './User';
+import UserJobSeeker from './UserJobSeeker';
 import Job from './Job';
 
 const ApplyJobSchema = new mongoose.Schema({
 
-    user: {
+    userJobSeeker: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'UserJobSeeker',
+        required: true,
     },
-    job: {
+    jobId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Job',
-    },
-    name: {
-        type: String,
         required: true,
     },
-    email: {
-        type: String,
-        required: true,
-    },
-    about: {
-        type: String,
-        required: true,
-    },
-    cv: {
+    message: {
         type: String,
         required: true,
     },

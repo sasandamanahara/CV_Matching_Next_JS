@@ -6,7 +6,10 @@ import Cookies from "js-cookie";
 export const post_job = async (formData) => {
 
     try {
+
+
         console.log("posting");
+        console.log(formData);
         const res = await fetch(`http://localhost:3000/api/postajob`, {
             method: 'POST',
             headers: {
@@ -16,6 +19,7 @@ export const post_job = async (formData) => {
             body: JSON.stringify(formData),
         })
         const data = res.json();
+        console.log(data);
         return data;
     } catch (error) {
         console.log('error in post job (service) => ', error);
@@ -23,11 +27,26 @@ export const post_job = async (formData) => {
 }
 
 
-// get specified job api
-export const get_specified_job = async (id) => {
+// // get specified job api
+// export const get_specified_job = async (id) => {
+//     try {
+      
+//         const res = await fetch(`http://localhost:3000/api/getSpecifiedJob?id=${id}`, {
+//             method: 'GET',
+//             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
+//         })
+//         const data = res.json();
+//         return data;
+//     } catch (error) {
+//         console.log('error in getting  specified job (service) => ', error);
+//     }
+// }
+
+// get specified job applicants api
+export const get_specified_job_applicants = async (id) => {
     try {
       
-        const res = await fetch(`http://localhost:3000/api/job/getSpecifiedJob?id=${id}`, {
+        const res = await fetch(`http://localhost:3000/api/getSpecifiedJobApplicants?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
@@ -37,7 +56,6 @@ export const get_specified_job = async (id) => {
         console.log('error in getting  specified job (service) => ', error);
     }
 }
-
 
 
 // apply  job api
@@ -96,7 +114,7 @@ export const get_all_posted_job = async (id) => {
 export const get_my_posted_job = async (id) => {
 
     try {
-        console.log("getting id"+id);
+        console.log("getting id "+id);
         const res = await fetch(`http://localhost:3000/api/getPostedJobs?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}

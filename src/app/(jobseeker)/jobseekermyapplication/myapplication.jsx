@@ -1,6 +1,32 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useState } from "react";
+import { get_my_applied_job  } from "../Services/job";
+import Cookies from "js-cookie";
 
 export default function Application() {
+  const [appliedJobs, setAppliedJobs] = useState([]);
+
+  useEffect(() => {
+    handleLoad();
+  }, []); 
+
+
+  // load backup resume data
+  const handleLoad = async (event) => {
+    const token = Cookies.get("token");
+    const tokenParts = token ? token.split(".") : [];
+    const payload = JSON.parse(atob(tokenParts[1]));
+    const userId = payload.id;
+    const res = await get_my_applied_job (userId);
+    if (res.success) {
+        setAppliedJobs(res.data);
+    } else {
+      // toast.error(res.message);
+    }
+
+  };
+
+  
   return (
     <div className="flex-auto flex-col px-4 py-6">
       <div className="flex flex-col md:flex-row md:justify-between mb-4">
@@ -35,12 +61,18 @@ export default function Application() {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
+            
             <tr className="bg-orange-200">
+            <th className="px-4 py-3 text-sm font-semibold text-center text-gray-800 uppercase border-b border-gray-300">
+                Role
+              </th>
               <th className="px-4 py-3 text-sm font-semibold text-center text-gray-800 uppercase border-b border-gray-300">
                 Company Name
               </th>
+              
+             
               <th className="px-4 py-3 text-sm font-semibold text-center text-gray-800 uppercase border-b border-gray-300">
-                Roles
+                Message for Company
               </th>
               <th className="px-4 py-3 text-sm font-semibold text-center text-gray-800 uppercase border-b border-gray-300">
                 Applied Date
@@ -51,54 +83,29 @@ export default function Application() {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white">
-              <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
-                Nomand
-              </td>
-              <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
-                Social Media Assistant
-              </td>
-              <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
-                01/10/2012
-              </td>
-              <td className="px-4 py-3 text-sm text-center text-green-800 border-b border-gray-300">
-                <span className="inline-block px-2 py-1 text-xs font-semibold leading-tight bg-green-200 text-green-800 rounded-full">
-                  In Review
-                </span>
-              </td>
-            </tr>
-            <tr className="bg-white">
-              <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
-                Packer
-              </td>
-              <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
-                Social Media Assistant
-              </td>
-              <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
-                01/10/2012
-              </td>
-              <td className="px-4 py-3 text-sm text-center text-green-800 border-b border-gray-300">
-                <span className="inline-block px-2 py-1 text-xs font-semibold leading-tight bg-green-200 text-green-800 rounded-full">
-                  Offered
-                </span>
-              </td>
-            </tr>
-            <tr className="bg-white">
-              <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
-                Divvy
-              </td>
-              <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
-                Social Media Assistant
-              </td>
-              <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
-                01/10/2012
-              </td>
-              <td className="px-4 py-3 text-sm text-center text-green-800 border-b border-gray-300">
-                <span className="inline-block px-2 py-1 text-xs font-semibold leading-tight bg-green-200 text-green-800 rounded-full">
-                  Interviewing
-                </span>
-              </td>
-            </tr>
+            {appliedJobs.map(job => (
+              <tr key={job._id} className="bg-white">
+                <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
+                  {job.jobId.title} 
+                </td>
+                <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
+                {job.jobId.company}
+                </td>
+                
+                
+                <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
+                  {job.message}
+                </td>
+                <td className="px-4 py-3 text-sm text-center text-gray-800 border-b border-gray-300">
+                  {job.createdAt.split("T")[0]} 
+                </td>
+                <td className="px-4 py-3 text-sm text-center text-green-800 border-b border-gray-300">
+                  <span className="inline-block px-2 py-1 text-xs font-semibold leading-tight bg-green-200 text-green-800 rounded-full">
+                    {job.status}
+                  </span>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -54,13 +54,6 @@ export default function SideBar() {
                 Company Profile
               </Link>
               <Link
-                href=""
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <Users className="h-4 w-4" />
-                All Applicants
-              </Link>
-              <Link
                 href="/display_jobs"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
