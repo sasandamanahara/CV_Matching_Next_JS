@@ -77,10 +77,13 @@ export default function ApplicantList() {
             <thead>
               <tr>
                 <th className="px-3 py-2 text-xs font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                  Full Name
+                  Name
                 </th>
                 <th className="px-3 py-2 text-xs font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                  Score
+                  Message
+                </th>
+                <th className="px-3 py-2 text-xs font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                  Matched Score
                 </th>
                 <th className="px-3 py-2 text-xs font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                   Applied Date
@@ -109,6 +112,11 @@ export default function ApplicantList() {
                 </p>
               </div>
             </div>
+          </td>
+          <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
+            <p className="text-gray-900">
+              {applicant.message}
+            </p>
           </td>
           <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
             <p className="text-gray-900">
