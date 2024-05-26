@@ -35,7 +35,7 @@ export default function JobsCard({ job, posted }) {
                     </div> */}
           <div>
             {/* <dt className="sr-only">Address</dt> */}
-            <dd className="font-medium">{job?.company}</dd>
+            <dd className="font-medium">{job?.title}</dd>
           </div>
         </dl>
         <div className="mt-6 flex items-center gap-8 text-xs">
@@ -97,8 +97,8 @@ export default function JobsCard({ job, posted }) {
               />
             </svg>
             <div className="mt-1.5 sm:mt-0">
-              <p className="text-gray-500">Title</p>
-              <p className="font-medium">{job?.title}</p>
+              <p className="text-gray-500">Company</p>
+              <p className="font-medium">{job?.company}</p>
             </div>
           </div>
           
