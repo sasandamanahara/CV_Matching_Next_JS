@@ -29,10 +29,11 @@ export default function DashBoard() {
                   <span class="h-px flex-1 bg-black"></span>
                 </span>
               <GraphSection/>
+              <br/>
             </div>
              <div >
              <span class="flex items-center m-3">
-                  <span class="pr-6">Job Updates</span>
+                  <span class="pr-6">Open Jobs</span>
                   <span class="h-px flex-1 bg-black"></span>
                 </span>
               <JobupdatesSection />
