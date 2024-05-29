@@ -109,7 +109,7 @@ const MyComponent = (appliedCount) => {
                 </p>
                 <div className="flex flex-row justify-between">
                   <p className="my-4 text-4xl font-bold text-left text-gray-800 dark:text-white">
-                    12
+                    {appliedCount.appliedCount}
                   </p>
                   <p className="ml-2 text-gray-700 text-md dark:text-gray-50 py-7">
                     Applicants
