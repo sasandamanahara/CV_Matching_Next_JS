@@ -251,9 +251,7 @@ export default function ApplicantList() {
                                 className="absolute inset-0 bg-orange-200 rounded-full opacity-50"
                               ></span>
                               <span className="relative">
-                                {applicant.status === "Pending"
-                                  ? "Active"
-                                  : applicant.status}
+                                {applicant.status}
                               </span>
                             </span>
                           </td>

@@ -125,7 +125,7 @@ console.log(formData);
     { value: "fulltime", label: "Full Time" },
     { value: "parttime", label: "Part Time" },
     { value: "internship", label: "Internship" },
-    { value: "contract", label: "Contract" },
+    { value: "remote", label: "remote" },
   ];
 
   return (
