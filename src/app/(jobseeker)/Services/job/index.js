@@ -18,6 +18,7 @@ export const get_all_posted_job = async (id) => {
 
 
 // get specified job api
+//ok
 export const get_specified_job = async (id) => {
     try {
       
@@ -34,7 +35,7 @@ export const get_specified_job = async (id) => {
 
 
 // apply  job api
-
+//ok
 export const apply_job = async (formData) => {
     console.log("formdata");
     try {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CardsGrid() {
+export default function CardsGrid({ pendingCount, interviewingCount, offeredCount }) {
   return (
     <section>
       <div className="relative items-center w-full px-1 py-1 mx-auto md:px-1 lg:px-2 max-w-7xl">
@@ -10,7 +10,7 @@ export default function CardsGrid() {
             <div className="flex items-center justify-between w-72 p-6 bg-white shadow-lg rounded-2xl">
               <div className="w-2/6">
                 <span className="font-bold text-indigo-500 text-xl">
-                  76
+                {pendingCount}
                 </span>
               </div>
               <div className="w-3/6">
@@ -29,7 +29,7 @@ export default function CardsGrid() {
             <div className="flex items-center justify-between w-72 p-6 bg-white shadow-lg rounded-2xl">
               <div className="w-2/6">
                 <span className="font-bold text-indigo-500 text-xl">
-                  3
+                 {interviewingCount}
                 </span>
               </div>
               {/* Interviwing */}
@@ -48,7 +48,7 @@ export default function CardsGrid() {
             <div className="flex items-center justify-between w-72 p-6 bg-white shadow-lg rounded-2xl">
               <div className="w-2/6">
                 <span className="font-bold text-indigo-500 text-xl">
-                  24
+                  {offeredCount}
                 </span>
               </div>
               {/* Offered  */}
