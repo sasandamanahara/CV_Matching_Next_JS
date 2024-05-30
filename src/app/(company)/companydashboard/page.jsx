@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import { get_all_jobs_of_company } from "../Services/job";
 import { useEffect, useState } from "react";
 
+
 export default function DashBoard() {
   let [pendingCount, setPendingCount] = useState(null);
   let [interviewingCount, setInterviewingCount] = useState(null);
