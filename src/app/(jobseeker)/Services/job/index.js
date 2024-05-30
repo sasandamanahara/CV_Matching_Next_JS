@@ -69,3 +69,85 @@ export const get_my_applied_job = async (id) => {
         console.log('error in getting  getting my all job (service) => ', error);
     }
 }
+
+
+export const update_profile = async (formData) => {
+
+    try {
+
+
+        console.log("posting");
+        console.log(formData);
+        const res = await fetch(`http://localhost:3000/api/updateprofile`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Cookies.get('token')}`
+            },
+            body: JSON.stringify(formData),
+        })
+        const data = res.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.log('error in post job (service) => ', error);
+    }
+}
+
+
+export const load_profile = async (userID) => {
+    try {
+        // console.log("getting resume");
+        console.log(userID);
+        const res = await fetch(`http://localhost:3000/api/loadProfile?id=${userID}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Cookies.get('token')}`
+            },
+        });
+
+        // Await the JSON parsing
+        const data = await res.json();
+        // console.log(data);
+        return data;
+    } catch (error) {
+        console.log('error in post resume (service) => ', error);
+    }
+};
+
+
+export const update_email = async (formData) => {
+    try {
+        console.log("formData");
+        const res = await fetch("http://localhost:3000/api/updateEmail", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error in login (service) => ', error);
+    }
+}
+
+
+export const update_password = async (formData) => {
+    try {
+        console.log("formData");
+        const res = await fetch("http://localhost:3000/api/updatePassword", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error in login (service) => ', error);
+    }
+}
