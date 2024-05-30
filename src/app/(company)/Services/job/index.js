@@ -61,7 +61,7 @@ export const get_specified_job_applicants = async (id) => {
 
 
 // get all company jobs api
-
+//dashboard
 export const get_all_jobs_of_company = async (id) => {
     try {
       
