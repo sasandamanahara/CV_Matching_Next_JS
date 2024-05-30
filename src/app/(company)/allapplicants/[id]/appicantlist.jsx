@@ -19,19 +19,16 @@ export default function ApplicantList() {
   const url = usePathname();
   const id = extractIdFromUrl(url);
   const [JobApplicantsDetails, setJobApplicantsDetails] = useState(null);
-  const [JobApplicantsDetailsNew, setJobApplicantsDetailsNew] = useState(null);
+  const [filteredApplicants, setFilteredApplicants] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const { data } = useSWR(`/get-specified-job-applicants`, () =>
     get_specified_job_applicants(id), { refreshInterval: 0, revalidateOnFocus: false, revalidateOnReconnect: false, refreshWhenOffline: false, refreshWhenHidden: false }
   );
   
-
-
   useEffect(() => {
-    
     if (data) {
       setJobApplicantsDetails(data?.data);
-      
     }
   }, [data]);
 
@@ -45,27 +42,37 @@ export default function ApplicantList() {
               JobApplicantsDetails[0]?.jobId?.description
             );
             const formattedScore = score !== undefined ? (score).toFixed(2) + "%" : "";
-            console.log("score " + formattedScore);
             const newApplicant = { ...applicant, score: formattedScore };
-            return newApplicant
+            return newApplicant;
           })
         );
-         // Sort the updated applicants array by score in descending order
-         updatedApplicantsDetails.sort((a, b) => {
+        // Sort the updated applicants array by score in descending order
+        updatedApplicantsDetails.sort((a, b) => {
           const scoreA = parseFloat(a.score.replace('%', ''));
           const scoreB = parseFloat(b.score.replace('%', ''));
           return scoreB - scoreA;
         });
 
-        setJobApplicantsDetailsNew(updatedApplicantsDetails);
-
-        
+        setJobApplicantsDetails(updatedApplicantsDetails);
       };
 
       fetchMatchedScoresForApplicants();
     }
   }, [JobApplicantsDetails]);
 
+  useEffect(() => {
+    if (JobApplicantsDetails) {
+      const filtered = JobApplicantsDetails.filter((applicant) =>
+        applicant.userJobSeeker.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredApplicants(filtered);
+    }
+  }, [JobApplicantsDetails, searchQuery]);
+
+  // Handler for search input change
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
   return (
     <>
       <div className="flex flex-col">
@@ -91,6 +98,8 @@ export default function ApplicantList() {
                     id="form-subscribe-Filter"
                     className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full md:w-auto py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent mb-2 md:mb-0 md:mr-2"
                     placeholder="Search Applicants"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
                   />
                   <button
                     className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-orange-400 rounded-lg shadow-md hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-orange-200 flex items-center"
@@ -210,8 +219,8 @@ export default function ApplicantList() {
                   </tbody> */}
 {/* body without score */}
                   <tbody>
-                    {JobApplicantsDetails &&
-                      JobApplicantsDetails.map((applicant) => (
+                    {/*JobApplicantsDetails &&
+                      JobApplicantsDetails*/filteredApplicants.map((applicant) => (
                         <tr key={applicant._id}>
                           <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
                             <div className="flex items-center">
@@ -251,7 +260,16 @@ export default function ApplicantList() {
                                 className="absolute inset-0 bg-orange-200 rounded-full opacity-50"
                               ></span>
                               <span className="relative">
-                                {applicant.status}
+                                <select
+                        className="block w-full border-gray-300 rounded-md shadow-sm focus:border-orange-400 focus:ring focus:ring-orange-400 focus:ring-opacity-50"
+                        defaultValue={applicant.status}
+                              onChange={(e) => handleHiringStageChange(applicant._id, e.target.value)}
+          >
+                                  <option value="Pending">Pending</option>
+                                  <option value="Shortlisted">Shortlisted</option>
+                                  <option value="Interviewing">Interviewing</option>
+                                  <option value="Hired">Hired</option>
+                                </select>
                               </span>
                             </span>
                           </td>
