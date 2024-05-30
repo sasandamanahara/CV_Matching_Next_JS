@@ -1,12 +1,45 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Cookies from "js-cookie";
+import { update_email } from "../../Services/job";
 
 export default function Logindetails() {
   //const [email, setEmail] = useState("example@example.com");
   //const [oldPassword, setOldPassword] = useState("");
   //const [newPassword, setNewPassword] = useState("");
   
-  const handleEmailUpdate = () => {
-    // Logic to update email address
+  let [formDataEmail, setFormDataEmail] = useState({
+    oldEmail:"",
+    newEmail:"",
+    password:""
+  });
+
+  let userId;
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    const tokenParts = token ? token.split(".") : [];
+    const payload = JSON.parse(atob(tokenParts[1]));
+    userId = payload.id;
+  });
+
+  const handleEmailUpdate = async (e) => {
+    e.preventDefault();
+    console.log(formDataEmail);
+    formDataEmail.userJobSeeker = userId;
+    console.log("formDataEmail");
+    console.log(formDataEmail);
+    const res = await update_email(formDataEmail);
+    if (res.success) {
+      toast.success(res.message);
+      setTimeout(() => {
+        // router.push("/display_jobs");
+      }, 1000);
+    } else {
+      toast.error(res.message);
+    }
   };
   
   const handleChangePassword = () => {
@@ -25,6 +58,9 @@ export default function Logindetails() {
           //  onChange={(e) => setEmail(e.target.value)}
             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
             placeholder="Old Email"
+            onChange={(e) =>
+              setFormDataEmail({ ...formDataEmail, oldEmail: e.target.value })
+            }
           />
           <input
             type="email"
@@ -32,6 +68,9 @@ export default function Logindetails() {
           //  onChange={(e) => setEmail(e.target.value)}
             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none mt-4"
             placeholder="New Email"
+            onChange={(e) =>
+              setFormDataEmail({ ...formDataEmail, newEmail: e.target.value })
+            }
           />
           <input
             type="password"
@@ -39,11 +78,15 @@ export default function Logindetails() {
            // onChange={(e) => setOldPassword(e.target.value)}
             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none mt-4"
             placeholder="Password"
+            onChange={(e) =>
+              setFormDataEmail({ ...formDataEmail, password: e.target.value })
+            }
           />
           <button
             type="button"
             //onClick={handleEmailUpdate}
             className="my-4 inline-block px-6 py-3 bg-orange-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500 hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out"
+            onClick={handleEmailUpdate}
           >
             Update Email
           </button>
@@ -74,6 +117,7 @@ export default function Logindetails() {
             Change Password
           </button>
         </div>
+        <ToastContainer />
       </div>
     </div>
   )

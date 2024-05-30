@@ -115,3 +115,21 @@ export const load_profile = async (userID) => {
         console.log('error in post resume (service) => ', error);
     }
 };
+
+
+export const update_email = async (formData) => {
+    try {
+        console.log("formData");
+        const res = await fetch("http://localhost:3000/api/updateEmail", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error in login (service) => ', error);
+    }
+}
