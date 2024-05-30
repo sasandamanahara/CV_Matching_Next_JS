@@ -59,7 +59,7 @@ export default function Profile() {
               maxLength="30"
             />
             <p className="py-2 mb-4 text-base text-gray-500">
-              This will be displayed as your creator name on the Marketplace.
+              This will be displayed as your name.
             </p>
           </div>
           <div>
@@ -94,20 +94,6 @@ export default function Profile() {
           </div>
           <div>
             <label
-              htmlFor="email"
-              className="block mb-2 text-base font-medium text-gray-700"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
-              placeholder="Email"
-            />
-          </div>
-          <div>
-            <label
               htmlFor="phone"
               className="block mb-2 text-base font-medium text-gray-700"
             >
@@ -120,22 +106,7 @@ export default function Profile() {
               placeholder="Phone Number"
             />
           </div>
-          <div>
-            <label
-              htmlFor="accountType"
-              className="block mb-2 text-base font-medium text-gray-700"
-            >
-              Account Type
-            </label>
-            <select
-              id="accountType"
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
-            >
-              <option value="">Select</option>
-              <option value="jobseeker">Job Seeker</option>
-              <option value="employer">Employer</option>
-            </select>
-          </div>
+          
           <div className="col-span-2">
             <label
               htmlFor="message"
@@ -150,7 +121,7 @@ export default function Profile() {
               maxLength="500"
             />
             <p className="py-2 mb-4 text-base text-gray-500">
-              This will be displayed to all users and followers on the Marketplace.
+              This will be displayed to company.
             </p>
           </div>
           <div className="col-span-2">

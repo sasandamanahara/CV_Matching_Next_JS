@@ -21,10 +21,24 @@ export default function Logindetails() {
           <p className="text-sm">Update your email address.</p>
           <input
             type="email"
-           // value={email}
+           // value={oldemail}
           //  onChange={(e) => setEmail(e.target.value)}
             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
-            placeholder="Email"
+            placeholder="Old Email"
+          />
+          <input
+            type="email"
+           // value={newemail}
+          //  onChange={(e) => setEmail(e.target.value)}
+            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none mt-4"
+            placeholder="New Email"
+          />
+          <input
+            type="password"
+            //value={Password}
+           // onChange={(e) => setOldPassword(e.target.value)}
+            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none mt-4"
+            placeholder="Password"
           />
           <button
             type="button"
@@ -44,6 +58,7 @@ export default function Logindetails() {
             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
             placeholder="Old Password"
           />
+          
           <input
             type="password"
             //value={newPassword}
