@@ -8,7 +8,7 @@ import useSWR from "swr";
 import Cookies from "js-cookie";
 import { get_all_jobs_of_company } from "../Services/job";
 import { useEffect, useState } from "react";
-
+import { InfinitySpin } from 'react-loader-spinner';
 
 export default function DashBoard() {
   let [pendingCount, setPendingCount] = useState(null);
@@ -134,7 +134,8 @@ export default function DashBoard() {
             <div>
               {loading ? (
                 // Display loading indicator while data is being fetched
-                <div>Loading...</div>
+                <div><div><InfinitySpin width='200' color="orange" />
+                <p className='text-xs uppercase'>Loading...</p></div></div>
               ) : (
                 <CardsGrid
                   pendingCount={pendingCount}
@@ -151,7 +152,8 @@ export default function DashBoard() {
               <div>
                 {loading ? (
                   // Display loading indicator while data is being fetched
-                  <div>Loading...</div>
+                  <div><div><InfinitySpin width='200' color="orange" />
+                <p className='text-xs uppercase'>Loading...</p></div></div>
                 ) : (
                   // Pass counts as props to CardsGrid when data fetching is complete
                   <GraphSection
@@ -175,7 +177,8 @@ export default function DashBoard() {
               <div>
                 {loading ? (
                   // Display loading indicator while data is being fetched
-                  <div>Loading...</div>
+                  <div><div><InfinitySpin width='200' color="orange" />
+                <p className='text-xs uppercase'>Loading...</p></div></div>
                 ) : (
                   // Pass counts as props to CardsGrid when data fetching is complete
                   <JobupdatesSection  openJobs={openJobs}/>
