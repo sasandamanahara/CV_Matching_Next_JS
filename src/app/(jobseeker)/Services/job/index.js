@@ -133,3 +133,21 @@ export const update_email = async (formData) => {
         console.log('error in login (service) => ', error);
     }
 }
+
+
+export const update_password = async (formData) => {
+    try {
+        console.log("formData");
+        const res = await fetch("http://localhost:3000/api/updatePassword", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error in login (service) => ', error);
+    }
+}

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
-import { update_email } from "../../Services/job";
+import { update_email, update_password } from "../../Services/job";
 
 export default function Logindetails() {
   //const [email, setEmail] = useState("example@example.com");
@@ -13,8 +13,19 @@ export default function Logindetails() {
   let [formDataEmail, setFormDataEmail] = useState({
     oldEmail:"",
     newEmail:"",
+    reEmail:"",
     password:""
   });
+
+
+    
+  let [formDataPassword, setFormDataPassword] = useState({
+    Email:"",
+    oldPassword:"",
+    newPassword:"",
+    reNewPassword:"",
+  });
+
 
   let userId;
 
@@ -27,6 +38,10 @@ export default function Logindetails() {
 
   const handleEmailUpdate = async (e) => {
     e.preventDefault();
+    if(formDataEmail.newEmail!=formDataEmail.reEmail){
+      toast.error("ReCheck New Email");
+      return;
+    }
     console.log(formDataEmail);
     formDataEmail.userJobSeeker = userId;
     console.log("formDataEmail");
@@ -34,16 +49,29 @@ export default function Logindetails() {
     const res = await update_email(formDataEmail);
     if (res.success) {
       toast.success(res.message);
-      setTimeout(() => {
-        // router.push("/display_jobs");
-      }, 1000);
     } else {
       toast.error(res.message);
     }
   };
   
-  const handleChangePassword = () => {
-    // Logic to change password
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    if(formDataPassword.newPassword!=formDataPassword.reNewPassword){
+      toast.error("ReCheck New password");
+      return;
+    }
+    console.log(formDataPassword);
+    formDataPassword.userJobSeeker = userId;
+    console.log("formDataEmail");
+    console.log(formDataPassword);
+
+    const res = await update_password(formDataPassword);
+    if (res.success) {
+      toast.success(res.message);
+    } else {
+      toast.error(res.message);
+    }
+
   };
   
   return (
@@ -72,6 +100,19 @@ export default function Logindetails() {
               setFormDataEmail({ ...formDataEmail, newEmail: e.target.value })
             }
           />
+
+<input
+            type="email"
+           // value={newemail}
+          //  onChange={(e) => setEmail(e.target.value)}
+            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none mt-4"
+            placeholder="Re-Enter new Email"
+            onChange={(e) =>
+              setFormDataEmail({ ...formDataEmail, reEmail: e.target.value })
+            }
+          />
+
+
           <input
             type="password"
             //value={Password}
@@ -95,11 +136,24 @@ export default function Logindetails() {
           <p className="py-3 text-md md:text-xl font-bold ">CHANGE PASSWORD </p>
           <p className="text-sm">Change your password to a new one.</p>
           <input
+            type="email"
+           // value={oldemail}
+          //  onChange={(e) => setEmail(e.target.value)}
+            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none mt-4"
+            placeholder="Email"
+            onChange={(e) =>
+              setFormDataPassword({ ...formDataPassword, Email: e.target.value })
+            }
+          />
+          <input
             type="password"
             //value={oldPassword}
            // onChange={(e) => setOldPassword(e.target.value)}
-            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
+            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none mt-4"
             placeholder="Old Password"
+            onChange={(e) =>
+              setFormDataPassword({ ...formDataPassword, oldPassword: e.target.value })
+            }
           />
           
           <input
@@ -108,10 +162,26 @@ export default function Logindetails() {
            // onChange={(e) => setNewPassword(e.target.value)}
             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none mt-4"
             placeholder="New Password"
+            onChange={(e) =>
+              setFormDataPassword({ ...formDataPassword, newPassword: e.target.value })
+            }
           />
+
+<input
+            type="password"
+            //value={newPassword}
+           // onChange={(e) => setNewPassword(e.target.value)}
+            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-gray-50 bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none mt-4"
+            placeholder="Re-Enter New Password"
+            onChange={(e) =>
+              setFormDataPassword({ ...formDataPassword, reNewPassword: e.target.value })
+            }
+          />
+
+
           <button
             type="button"
-            //onClick={handleChangePassword}
+            onClick={handleChangePassword}
             className="my-4 inline-block px-6 py-3 bg-orange-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500 hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out"
           >
             Change Password
