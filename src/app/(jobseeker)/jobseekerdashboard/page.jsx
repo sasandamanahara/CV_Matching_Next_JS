@@ -7,6 +7,7 @@ import Recentapplication from "./recentapplication"
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { get_my_applied_job  } from "../Services/job";
+import { InfinitySpin } from 'react-loader-spinner';
 
 export default function DashBoard() {
 
@@ -98,7 +99,8 @@ export default function DashBoard() {
                 <div>
               {loading ? (
                 // Display loading indicator while data is being fetched
-                <div>Loading...</div>
+                <div><InfinitySpin width='200' color="orange" />
+                <p className='text-xs uppercase'>Loading...</p></div>
               ) : (
                 <GraphSection
                 totalAppliedJobs={totalAppliedJobs}
@@ -120,7 +122,8 @@ export default function DashBoard() {
                 <div>
               {loading ? (
                 // Display loading indicator while data is being fetched
-                <div>Loading...</div>
+                <div><div><InfinitySpin width='200' color="orange" />
+                <p className='text-xs uppercase'>Loading...</p></div></div>
               ) : (
                 <Recentapplication 
               appliedJobs={appliedJobs}

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { update_profile } from "../../Services/job";
 import { load_profile } from "../../Services/job";
+import { InfinitySpin } from 'react-loader-spinner';
 export default function Profile() {
   let userId;
 
@@ -85,7 +86,8 @@ export default function Profile() {
         <div>
           {loading ? (
             // Display loading indicator while data is being fetched
-            <div>Loading...</div>
+            <div><InfinitySpin width='200' color="orange" />
+                <p className='text-xs uppercase'>Loading...</p></div>
           ) : (
             <div>
               <div className="flex items-center space-x-8 mb-8">
