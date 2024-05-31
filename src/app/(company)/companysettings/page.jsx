@@ -6,7 +6,6 @@ import React from 'react';
 import SideBar from "../_components/sidebar"
 import CompanyHeader from "../_components/header"
 import Overview from "./overview"
-import SocialLinks from './sociallinks';
 
 import {
   Card,
@@ -68,7 +67,7 @@ function MyApp({ Component, pageProps }) {
           </CardHeader>
           <CardContent className="space-y-2">
             
-            <SocialLinks/>
+           {/* fdcghvbjnk */}
           </CardContent>
           
         </Card>

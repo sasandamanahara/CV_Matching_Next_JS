@@ -4,6 +4,9 @@ import Cookies from "js-cookie";
 import { update_profile } from "../../Services/job";
 import { load_profile } from "../../Services/job";
 import { InfinitySpin } from 'react-loader-spinner';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Profile() {
   let userId;
 
@@ -244,6 +247,7 @@ export default function Profile() {
             </div>
           )}
         </div>
+        <ToastContainer />
       </div>
     </div>
   );

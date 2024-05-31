@@ -78,7 +78,7 @@ export const update_profile = async (formData) => {
 
         console.log("posting");
         console.log(formData);
-        const res = await fetch(`http://localhost:3000/api/updateprofile`, {
+        const res = await fetch(`http://localhost:3000/api/updateprofileJobSeeker`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ export const update_profile = async (formData) => {
         console.log(data);
         return data;
     } catch (error) {
-        console.log('error in post job (service) => ', error);
+        console.log('error in updating (service) => ', error);
     }
 }
 
@@ -99,7 +99,7 @@ export const load_profile = async (userID) => {
     try {
         // console.log("getting resume");
         console.log(userID);
-        const res = await fetch(`http://localhost:3000/api/loadProfile?id=${userID}`, {
+        const res = await fetch(`http://localhost:3000/api/loadProfileJobSeeker?id=${userID}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ export const load_profile = async (userID) => {
         // console.log(data);
         return data;
     } catch (error) {
-        console.log('error in post resume (service) => ', error);
+        console.log('error in loading => ', error);
     }
 };
 
@@ -130,7 +130,7 @@ export const update_email = async (formData) => {
         const data = await res.json();
         return data;
     } catch (error) {
-        console.log('error in login (service) => ', error);
+        console.log('error in updating (service) => ', error);
     }
 }
 
@@ -148,6 +148,6 @@ export const update_password = async (formData) => {
         const data = await res.json();
         return data;
     } catch (error) {
-        console.log('error in login (service) => ', error);
+        console.log('error in updating (service) => ', error);
     }
 }

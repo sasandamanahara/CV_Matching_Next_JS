@@ -33,6 +33,10 @@ const updateProfile = async (req, res) => {
   else{
     try {
         await existingProfile.set({ profilePicture,name,dateOfBirth,gender,phoneNo });
+        existingProfile.profilePicture=profilePicture;
+        existingProfile.dateOfBirth=dateOfBirth;
+        existingProfile.gender=gender;
+        existingProfile.phoneNo=phoneNo;
         const updatedJobSeeker = await existingProfile.save(); 
         console.log("updatingJobSeeker");
         console.log(updatedJobSeeker);
