@@ -280,3 +280,38 @@ export const load_profile = async (userID) => {
     }
 };
 
+
+export const update_email = async (formData) => {
+    try {
+        console.log("formData");
+        const res = await fetch("http://localhost:3000/api/updateEmailCompany", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error in updating (service) => ', error);
+    }
+}
+
+
+export const update_password = async (formData) => {
+    try {
+        console.log("formData");
+        const res = await fetch("http://localhost:3000/api/updatePasswordCompany", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error in updating (service) => ', error);
+    }
+}

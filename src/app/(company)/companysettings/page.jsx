@@ -1,11 +1,12 @@
 'use client';
 import { Provider } from 'react-redux';
-import { store } from '../Store/store'; // Import your Redux store configuration
+import { store } from '../Store/store';
 import React from 'react';
 
 import SideBar from "../_components/sidebar"
 import CompanyHeader from "../_components/header"
 import Overview from "./overview"
+import Logindetails from './security';
 
 import {
   Card,
@@ -44,7 +45,7 @@ function MyApp({ Component, pageProps }) {
             <Tabs defaultValue="overview" className="flex-auto">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="overview">Overview</TabsTrigger>
-        <TabsTrigger value="sociallinks">Social Links</TabsTrigger>
+        <TabsTrigger value="logindetails">Login Details</TabsTrigger>
         
       </TabsList>
       <TabsContent value="overview">
@@ -59,15 +60,15 @@ function MyApp({ Component, pageProps }) {
           
         </Card>
       </TabsContent>
-      <TabsContent value="sociallinks">
+      <TabsContent value="logindetails">
         <Card>
           <CardHeader>
-            <CardTitle>Social Links</CardTitle>
+            <CardTitle>Login Details</CardTitle>
             
           </CardHeader>
           <CardContent className="space-y-2">
             
-           {/* fdcghvbjnk */}
+           <Logindetails/>
           </CardContent>
           
         </Card>

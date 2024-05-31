@@ -120,7 +120,7 @@ export const load_profile = async (userID) => {
 export const update_email = async (formData) => {
     try {
         console.log("formData");
-        const res = await fetch("http://localhost:3000/api/updateEmail", {
+        const res = await fetch("http://localhost:3000/api/updateEmailJobSeeker", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -138,7 +138,7 @@ export const update_email = async (formData) => {
 export const update_password = async (formData) => {
     try {
         console.log("formData");
-        const res = await fetch("http://localhost:3000/api/updatePassword", {
+        const res = await fetch("http://localhost:3000/api/updatePasswordJobSeeker", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
