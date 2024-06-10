@@ -1,6 +1,6 @@
 "use client"
 import SideBar from "../_components/sidebar"
-import CompanyHeader from "../_components/header"
+import JobSeekerHeader from "../_components/header"
 //import CardsGrid from "./cardsgrid"
 import GraphSection from "./graphsection"
 import Recentapplication from "./recentapplication"
@@ -80,7 +80,7 @@ export default function DashBoard() {
         <SideBar/>
       </div>
       <div className="flex flex-col">
-        <CompanyHeader/>
+        <JobSeekerHeader/>
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
           <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">DashBoard</h1>
