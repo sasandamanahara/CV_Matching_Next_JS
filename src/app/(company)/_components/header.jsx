@@ -33,6 +33,7 @@ export default function CompanyHeader() {
   
   const handleLogout = async () => {
     Cookies.remove('token');
+    Cookies.remove('type');
     localStorage.removeItem('user');
     window.location.href = '/'
 }
