@@ -72,8 +72,8 @@ export default function NavBar() {
 
     const handleLogout = async () => {
         Cookies.remove('token');
-        localStorage.removeItem('user')
-        Router.reload();
+        localStorage.removeItem('user');
+        window.location.href = '/'
     }
 
 

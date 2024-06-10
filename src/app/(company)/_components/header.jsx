@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Cookies from "js-cookie";
 import {
   CircleUser,
   Home,
@@ -27,9 +27,31 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useEffect } from "react";
 
 export default function CompanyHeader() {
+  
+  const handleLogout = async () => {
+    Cookies.remove('token');
+    localStorage.removeItem('user');
+    window.location.href = '/'
+}
+
+useEffect(()=>{
+  const token = Cookies.get("token");
+  if (!token) {
+    window.location.href = '/auth/login';
+  }
+  const type = Cookies.get("type");
+    if(type!="company"){
+      window.location.href = '/auth/login';
+    }
+},[])
+
   return (
+
+
+
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
       <Sheet>
         <SheetTrigger asChild>
@@ -137,7 +159,7 @@ export default function CompanyHeader() {
           <DropdownMenuItem>Settings</DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
+          <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </header>

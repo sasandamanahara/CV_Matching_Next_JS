@@ -45,6 +45,7 @@ export default function DashBoard() {
     get_all_jobs_of_company(userId)
   );
 
+  
   useEffect(() => {
     if (data) {
       let pending = 0;

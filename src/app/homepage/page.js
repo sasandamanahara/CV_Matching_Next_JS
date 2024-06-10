@@ -3,25 +3,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Link } from "react-scroll";
-import * as Unicons from "@iconscout/react-unicons";
 import { useRouter } from "next/navigation";
-
-import Typed from "typed.js";
-
-import Services from "./component/Services";
-import About from "./component/About";
 import Wrapper from "./component/Wrapper";
-
 import "./assets/css/tailwind.css";
 import "./assets/scss/tailwind.scss";
-
 import "./assets/scss/icons.scss";
-import Pricing from "./component/Pricing";
-import Blog from "./component/Blog";
 import Contact from "./component/Contact";
 import Footer from "./component/Footer";
-import Portfolio from "./component/Portfolio";
-import { Button } from "react-day-picker";
 
 function Home() {
   const [isOpen, setMenu] = useState(true);

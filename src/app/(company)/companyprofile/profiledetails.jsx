@@ -1,43 +1,93 @@
-// components/ProfileDetails.jsx
+"use client";
 import React from 'react';
 import { FaIndustry, FaMapMarkerAlt, FaLink, FaPhone, FaEnvelope, FaUsers, FaBriefcase, FaGift } from 'react-icons/fa';
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { load_profile } from "../Services/job";
+import { InfinitySpin } from 'react-loader-spinner';
 
-const mockCompany = {
-  name: "Tech Innovations Ltd.",
-  description: "Nomad is a software platform for starting and running internet businesses. Millions of businesses rely on Stripe’s software tools to accept payments, expand globally, and manage their businesses online. Stripe has been at the forefront of expanding internet commerce, powering new business models, and supporting the latest platforms, from marketplaces to mobile commerce sites. We believe that growing the GDP of the internet is a problem rooted in code and design, not finance. Stripe is built for developers, makers, and creators. We work on solving the hard technical problems necessary to build global economic infrastructure from designing highly reliable systems to developing advanced machine learning algorithms to prevent fraud.",
-  industry: "Technology",
-  location: "San Francisco, CA",
-  website: "https://techinnovations.com",
-  profilePicture: "https://th.bing.com/th/id/R.b6ae5248f97d6fbc86c4868af53eae4e?rik=FTayog6oY12Ikg&pid=ImgRaw&r=0",
-  additionalImages: 
-    "https://th.bing.com/th/id/OIP.ioQI1NlT-ynIqZPjUzWZlQHaEo?rs=1&pid=ImgDetMain",
-    
+const formDataDetails = () => {
+
+  const token = Cookies.get("token");
+  const [loading, setLoading] = useState(true);
+
   
-  benefits: [
-    "Health Insurance",
-    "Paid Time Off",
-    "Retirement Savings Plan",
-    "Flexible Work Hours",
-  ],
-  contact: {
-    phone: "(123) 456-7890",
-    email: "info@techinnovations.com",
-  },
-  founded: "2010",
-  employees: "200",
-};
+let [formData, setFormData] = useState({
+  profilePicture: "",
+  companyPicture: "",
+  name: "",
+  website: "",
+  location: "",
+  phoneNo: "",
+  employeeCount: "",
+  industry: "",
+  date: "",
+  benifits: "",
+  message: "",
+  instagram:"",
+  twitter:"",
+  linkedin:"",
+  email:"",
+});
 
-const ProfileDetails = () => {
+
+
+  let userId = null;
+
+  
+  const handleLoad = async (event) => {
+    const token = Cookies.get("token");
+    const tokenParts = token ? token.split(".") : [];
+    const payload = JSON.parse(atob(tokenParts[1]));
+    const userId = payload.id;
+
+    const res = await load_profile(userId);
+    console.log(res.profile);
+
+    if (res.success) {
+      console.log(res.profile);
+      const { profilePicture, companyPicture,name,website,location, phoneNo,employeeCount,industry,date,benifits,message,instagram,twitter,linkedin,email } =
+        res.profile;
+      setFormData({
+        profilePicture, companyPicture,name,website,location, phoneNo,employeeCount,industry,date,benifits,message,instagram,twitter,linkedin,email
+      });
+      setLoading(false);
+    } else {
+      toast.error(res.message);
+    }
+  };
+
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    const tokenParts = token ? token.split(".") : [];
+    const payload = JSON.parse(atob(tokenParts[1]));
+    userId = payload.id;
+    if (userId) {
+      handleLoad();
+    }
+  }, []);
+ 
+
+
   return (
-    <div className="profile-details p-4 bg-orange-100 rounded-lg shadow-md w-full max-w-5.6xl">
+    <div>
+       <div>
+          {loading ? (
+            // Display loading indicator while data is being fetched
+            <div><InfinitySpin width='200' color="orange" />
+                <p className='text-xs uppercase'>Loading...</p></div>
+          ) : (
+            <div>
+        <div className="formData-details p-4 bg-orange-100 rounded-lg shadow-md w-full max-w-5.6xl">
       <div className="text-center mb-10">
         <img 
-          src={mockCompany.profilePicture} 
-          alt="Company Profile" 
+          src={formData.profilePicture} 
+          alt=""
           className="w-32 h-32 rounded-full mx-auto mb-4"
         />
-        <h2 className="text-2xl font-bold text-gray-900">{mockCompany.name}</h2>
-        <p className="text-gray-700 mt-2">{mockCompany.description}</p>
+        <h2 className="text-2xl font-bold text-gray-900">{formData.name}</h2>
+        <p className="text-gray-700 mt-2">{formData.message}</p>
       </div>
       <div className="bg-white p-4 rounded-lg shadow-md">
         
@@ -46,15 +96,14 @@ const ProfileDetails = () => {
           </h3>
           <div className="flex flex-wrap gap-2 justify-center mt-2">
        
-       <img src={mockCompany.additionalImages} alt={`Company Image`} className="w-200 h-100 object-cover rounded-lg shadow-sm"/>
+       <img src={formData.companyPicture} alt={''} className="w-200 h-100 object-cover rounded-lg shadow-sm"/>
     
    </div>
    <br/>
-          <p className="text-gray-800"><strong>Industry:</strong> {mockCompany.industry}</p>
-          <p className="text-gray-800"><strong>Location:</strong> {mockCompany.location}</p>
-          <p className="text-gray-800"><strong>Founded:</strong> {mockCompany.founded}</p>
-          <p className="text-gray-800"><strong>Employees:</strong> {mockCompany.employees}</p>
-          <p className="text-gray-800"><strong>Website:</strong> <a href={mockCompany.website} className="text-blue-600">{mockCompany.website}</a></p>
+          <p className="text-gray-800"><strong>Industry:</strong> {formData.industry}</p>
+          <p className="text-gray-800"><strong>Location:</strong> {formData.location}</p>
+          <p className="text-gray-800"><strong>Employees:</strong> {formData.employeeCount}</p>
+          <p className="text-gray-800"><strong>Website:</strong> <a href={formData.website} className="text-blue-600">{formData.website}</a></p>
         
         
         </div>
@@ -66,31 +115,34 @@ const ProfileDetails = () => {
             <FaGift className="mr-2" /> Benefits
           </h3>
           <ul className="list-disc list-inside text-gray-800">
-            {mockCompany.benefits.map((benefit, index) => (
-              <li key={index}>{benefit}</li>
-            ))}
+            {formData.benifits}
           </ul>
         </div>
         <div className="bg-white p-4 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold text-gray-900 flex items-center mb-4">
             <FaPhone className="mr-2" /> Contact
           </h3>
-          <p className="text-gray-800"><strong>Phone:</strong> {mockCompany.contact.phone}</p>
-          <p className="text-gray-800"><strong>Email:</strong> <a href={`mailto:${mockCompany.contact.email}`} className="text-blue-600">{mockCompany.contact.email}</a></p>
-          <p className="text-gray-800"><strong>Facebook:</strong> {mockCompany.contact.facebook}</p>
-          <p className="text-gray-800"><strong>Instagram:</strong> {mockCompany.contact.instagram}</p>
-          <p className="text-gray-800"><strong>Twitter:</strong> {mockCompany.contact.twitter}</p>
-          <p className="text-gray-800"><strong>LinkedIn:</strong> {mockCompany.contact.linkedin}</p>
+          <p className="text-gray-800"><strong>Phone:</strong> {formData.phoneNo}</p>
+          <p className="text-gray-800"><strong>Email:</strong> <a href={`mailto:${formData.email}`} className="text-blue-600">{formData.email}</a></p>
+          <p className="text-gray-800"><strong>Instagram:</strong> {formData.instagram}</p>
+          <p className="text-gray-800"><strong>Twitter:</strong> {formData.twitter}</p>
+          <p className="text-gray-800"><strong>LinkedIn:</strong> {formData.linkedin}</p>
         </div>
       </div>
       <div className="mt-8 text-center">
-        <button className="bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300">
+        <button className="bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300"
+       onClick={() => window.location.href = '/companysettings'}>
 
-          Profile Settings
+          Edit Profile
         </button>
       </div>
     </div>
+            </div>
+          )}
+        </div>
+    </div>
+ 
   );
 };
 
-export default ProfileDetails;
+export default formDataDetails;

@@ -1,7 +1,7 @@
 'use client';
 import { Provider } from 'react-redux';
 import { store } from '../Store/store';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import SideBar from "../_components/sidebar"
 import CompanyHeader from "../_components/header"
@@ -25,6 +25,7 @@ import {
 
 
 function MyApp({ Component, pageProps }) {
+
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
