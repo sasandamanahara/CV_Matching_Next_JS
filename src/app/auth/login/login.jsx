@@ -63,7 +63,7 @@ export default function Login() {
 
       if (res.success) {
         Cookies.set("token", res?.finalData?.token);
-        
+        Cookies.set("type", "company");
         const token = Cookies.get("token");
         const tokenParts = token.split(".");
 
@@ -123,6 +123,7 @@ export default function Login() {
 
       if (res.success) {
         Cookies.set("token", res?.finalData?.token);
+        Cookies.set("type", "jobseeker");
         console.log("login success");
         window.location.href = "/jobseekerdashboard";
       } else {

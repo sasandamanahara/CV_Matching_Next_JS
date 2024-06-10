@@ -85,13 +85,13 @@ export default function PostedJobs() {
                     <p className="text-xs uppercase">Loading Resources Hold Tight...</p>
                 </div>
             ) : (
-                <div className="w-full pt-20">
+                <div className="w-fulls">
                     <div className="w-full h-full px-4 py-4 flex overflow-y-auto items-start justify-center flex-wrap">
                         <div className="w-full mb-4 flex items-center">
                             <div className="relative w-full">
                                 <input
                                     type="text"
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-400"
+                                    className="w-full px-4 py-2 border border-orange-300 rounded-lg focus:outline-none focus:border-orange-400"
                                     placeholder="Search Jobs"
                                     value={searchQuery}
                                     onChange={handleSearchChange}

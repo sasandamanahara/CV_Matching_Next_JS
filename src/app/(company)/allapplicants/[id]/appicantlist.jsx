@@ -92,34 +92,32 @@ export default function ApplicantList() {
                   Total Applicants:{" "}
                   {JobApplicantsDetails && JobApplicantsDetails.length}
                 </h2>
-                <div className="flex flex-col md:flex-row">
-                  <input
-                    type="text"
-                    id="form-subscribe-Filter"
-                    className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full md:w-auto py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent mb-2 md:mb-0 md:mr-2"
-                    placeholder="Search Applicants"
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                  />
-                  <button
-                    className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-orange-400 rounded-lg shadow-md hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-orange-200 flex items-center"
-                    type="submit"
-                  >
-                    <svg
-                      className="w-4 h-4 mr-2"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M7 9V2H3a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V10h-7a1 1 0 01-1-1zm9-5v2a1 1 0 001 1h2l-3.707 3.707a1 1 0 01-1.414 0L10 5H7a1 1 0 001-1V2h6a1 1 0 011 1z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Filter
-                  </button>
-                </div>
+                <div className="flex flex-col md:flex-row relative">
+  <input
+    type="text"
+    id="form-subscribe-Filter"
+    className="rounded-lg flex-1 appearance-none border border-orange-500 w-full md:w-auto py-2 px-4 pl-10 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent mb-2 md:mb-0 md:mr-2"
+    placeholder="Search Applicants"
+    value={searchQuery}
+    onChange={handleSearchChange}
+  />
+  <div className="absolute left-3 top-3 text-gray-400">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-6 w-6"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </div>
+</div>
+
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">

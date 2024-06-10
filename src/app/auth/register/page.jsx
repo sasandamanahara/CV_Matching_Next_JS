@@ -58,7 +58,7 @@ export default function Register() {
       if (data.success) {
         toast.success(data.message);
         Cookies.set("token", data?.finalData?.token);
-
+        Cookies.set("type", "company");
         const token = Cookies.get("token");
         const tokenParts = token.split(".");
 
@@ -123,7 +123,7 @@ export default function Register() {
         
         toast.success(data.message);
         Cookies.set("token", data?.finalData?.token);
-
+        Cookies.set("type", "jobseeker");
         const token = Cookies.get("token");
         const tokenParts = token.split(".");
         console.log(data?.finalData?.token);
