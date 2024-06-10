@@ -92,17 +92,7 @@ function Home() {
                   >
                     <span className="nav-link">Home</span>
                   </Link>
-                  <Link
-                    className="nav-item"
-                    to="features"
-                    activeclassname="active"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
-                  >
-                    <span className="nav-link">Popular Categories</span>
-                  </Link>
-        
+                
                   <Link
                     className="nav-item"
                     to="contact"

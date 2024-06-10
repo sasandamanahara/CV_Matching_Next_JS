@@ -47,7 +47,7 @@ export default function SideBar() {
                 </Badge>
               </Link>
               <Link
-                href="#"
+                href="/companyprofile"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Building2 className="h-4 w-4" />
@@ -67,14 +67,7 @@ export default function SideBar() {
                 <ClipboardList className="h-4 w-4" />
                 My Jobs
               </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <CalendarCheck className="h-4 w-4" />
-                My Shedule
-              </Link>
-              
+            
 
               <Link
                 href="/companysettings"

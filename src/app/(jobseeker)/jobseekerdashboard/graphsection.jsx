@@ -1,22 +1,11 @@
 import React from "react";
 
 const MyComponent = (totalAppliedJobs) => {
-  const upcomingInterviews = [
-    {
-      date: "April 29, 2024",
-      time: "10:00 AM",
-    },
-    {
-      date: "May 5, 2024",
-      time: "2:30 PM",
-    },
-
-    // Add more interview data as needed
-  ];
+  
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
       <div className="lg:col-span-2">
-        <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:grid-cols-2 lg:gap-8">
           <div>
             <div className="p-4 ml-2 border-2 border-orange-500 shadow-lg rounded-2xl">
               <div className="flex items-center">
@@ -93,33 +82,6 @@ const MyComponent = (totalAppliedJobs) => {
             </div>
           </div>
           <div>
-            <div className="p-6 border-2 border-orange-500 shadow-lg rounded-2xl">
-              <div className="flex items-center justify-between mb-4">
-                <p className="tml-2 text-black text-md dark:text-white">
-                  Upcoming Interviews
-                </p>
-                <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs">
-                  {upcomingInterviews.length}
-                </span>
-              </div>
-              <div className="grid grid-cols-1 gap-4">
-                {upcomingInterviews.map((interview, index) => (
-                  <div
-                    key={index}
-                    className="p-4  bg-orange-100 shadow-md rounded-lg flex items-center justify-between"
-                  >
-                    <div>
-                      <p className="text-base font-semibold text-gray-800 dark:text-gray-100">
-                        {interview.date}
-                      </p>
-                      <p className="text-xs text-gray-600 dark:text-gray-300">
-                        {interview.time}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>
