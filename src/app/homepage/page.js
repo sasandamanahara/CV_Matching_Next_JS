@@ -112,19 +112,6 @@ function Home() {
                   Unlock Your Next Career Move or Find the Perfect Candidate
                   Effortlessly with Our Advanced Matching Platform.
                 </p>
-{/* 
-                <div className="relative mt-10">
-                  <Button
-                    onClick={() => router.push("/auth/login")}
-                    className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md"
-                  ></Button>
-                  <Link
-                    onClick={() => router.push('/auth/login')} 
-                    className="btn bg-orange-600 hover:bg-orange-700 border-orange-600 hover:border-orange-700 text-white rounded-md"
-                  >
-                    Get Started
-                  </Link>
-                </div> */}
                 <div className="relative mt-10">
                   <Link to=""
                     onClick={() => router.push('/auth/login')} 
