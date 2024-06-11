@@ -1,29 +1,24 @@
 "use client"; // This is a client component
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-
 import Image from "next/image";
 import "../assets/css/tailwind.css";
 import "../assets/scss/tailwind.scss";
 import "../assets/scss/icons.scss";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "react-scroll";
-import { login_me, login_me_company } from "../../(company)/Services/auth";
+import {login_me_company } from "../../(company)/Services/auth";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
-import { setUserData } from "../../(company)/Utils/UserSlice";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { login_me_jobseeker } from "@/app/(jobseeker)/Services/auth";
-import jwt_decode from "jwt-decode";
 
 /**
  * Login component
  */
 export default function Login() {
-  const dispatch = useDispatch();
-  const router = useRouter();
 
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState({ email: "", password: "" });
@@ -58,7 +53,6 @@ export default function Login() {
     try {
       console.log("login");
       const res = await login_me_company(formData);
-      setFormData({ email: "", password: ""});
       console.log(res);
 
       if (res.success) {
@@ -118,7 +112,6 @@ export default function Login() {
     try {
       console.log("login");
       const res = await login_me_jobseeker(formData);
-      setFormData({ email: "", password: ""});
       console.log(res);
 
       if (res.success) {
