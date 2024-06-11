@@ -47,34 +47,21 @@ export default function SideBar() {
                 </Badge>
               </Link>
               <Link
-                href="#"
+                href="/companyprofile"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Building2 className="h-4 w-4" />
                 Company Profile
               </Link>
-              <Link
-                href="/display_jobs"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <ClipboardList className="h-4 w-4" />
-                All Jobs
-              </Link>
+              
               <Link
                 href="/displaypostedjobs"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <ClipboardList className="h-4 w-4" />
-                My Jobs
+                My Jobs & Applicants
               </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <CalendarCheck className="h-4 w-4" />
-                My Shedule
-              </Link>
-              
+            
 
               <Link
                 href="/companysettings"

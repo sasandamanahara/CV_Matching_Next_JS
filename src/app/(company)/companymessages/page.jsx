@@ -1,4 +1,5 @@
 
+'use client'
 import SideBar from "../_components/sidebar"
 import {
   

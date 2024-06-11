@@ -35,13 +35,12 @@ export default function TabsDemo() {
           </div>
         <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
           <div className="flex flex-col items-center gap-1 text-center">
-            
+          
             
           </div>
           <Tabs defaultValue="profile" className="flex-auto">
-      <TabsList className="grid w-full grid-cols-3">
+      <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="profile">Profile</TabsTrigger>
-        <TabsTrigger value="notification">Notifications</TabsTrigger>
         <TabsTrigger value="security">Login Details</TabsTrigger>
       </TabsList>
       <TabsContent value="profile">
@@ -56,21 +55,8 @@ export default function TabsDemo() {
           
         </Card>
       </TabsContent>
-      <TabsContent value="notification">
-        <Card>
-          <CardHeader>
-            <CardTitle>Notification</CardTitle>
-            
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <Notification/>
-
-
-
-          </CardContent>
-          
-        </Card>
-      </TabsContent>
+  
+      
       <TabsContent value="security">
         <Card>
           <CardHeader>

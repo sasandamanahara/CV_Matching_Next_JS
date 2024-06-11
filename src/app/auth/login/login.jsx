@@ -58,11 +58,12 @@ export default function Login() {
     try {
       console.log("login");
       const res = await login_me_company(formData);
+      setFormData({ email: "", password: ""});
       console.log(res);
 
       if (res.success) {
         Cookies.set("token", res?.finalData?.token);
-        
+        Cookies.set("type", "company");
         const token = Cookies.get("token");
         const tokenParts = token.split(".");
 
@@ -117,10 +118,12 @@ export default function Login() {
     try {
       console.log("login");
       const res = await login_me_jobseeker(formData);
+      setFormData({ email: "", password: ""});
       console.log(res);
 
       if (res.success) {
         Cookies.set("token", res?.finalData?.token);
+        Cookies.set("type", "jobseeker");
         console.log("login success");
         window.location.href = "/jobseekerdashboard";
       } else {

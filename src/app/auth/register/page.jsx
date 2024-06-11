@@ -54,11 +54,11 @@ export default function Register() {
 
     try {
       const data = await register_me_company(formData); // Pass formData directly here
-      setFormData("");
+      setFormData({ email: "", password: "", name: "" });
       if (data.success) {
         toast.success(data.message);
         Cookies.set("token", data?.finalData?.token);
-
+        Cookies.set("type", "company");
         const token = Cookies.get("token");
         const tokenParts = token.split(".");
 
@@ -115,14 +115,15 @@ export default function Register() {
 
     try {
       const data = await register_me_jobseeker(formData);
-      setFormData("");
+      setFormData({ email: "", password: "", name: "" });
+
       console.log(formData);
       if (data.success) {
         console.log(data);
         
         toast.success(data.message);
         Cookies.set("token", data?.finalData?.token);
-
+        Cookies.set("type", "jobseeker");
         const token = Cookies.get("token");
         const tokenParts = token.split(".");
         console.log(data?.finalData?.token);

@@ -41,7 +41,7 @@ export default function SideBar() {
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
               <Link
-                href="#"
+                href="/jobseekerdashboard"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Home className="h-4 w-4" />
@@ -72,26 +72,17 @@ export default function SideBar() {
                 All Applications
               </Link>
               <Link
-                href="#"
+                href="/display_jobs_jobseeker"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-                onClick={(e) => {
-                  e.preventDefault();
-                  router.push("/display_jobs_jobseeker");
-                }}>
+                >
                 <ClipboardList className="h-4 w-4" />
                 All Jobs
               </Link>
 
-              <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <CalendarCheck className="h-4 w-4" />
-                My Shedule
-              </Link>
+             
 
               <Link
-                href="#"
+                href="/jobseekersettings"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Settings className="h-4 w-4" />
