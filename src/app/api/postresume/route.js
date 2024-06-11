@@ -11,7 +11,7 @@ export async function POST(req, res) {
     switch (method) {
         case 'POST':
             await postResume(req, res);
-            return NextResponse.json({ success: true, message: "Resume Posted Successfully !" });
+            return NextResponse.json({ success: true, message: "Successful!" });
        
         default:
             return NextResponse.json({ success: false, message: "Invalid Request" });

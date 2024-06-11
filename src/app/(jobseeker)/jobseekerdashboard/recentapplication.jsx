@@ -32,15 +32,7 @@ export default function RecentApplication(appliedJobs) {
         </div>
       </div>
       <br/>
-      <div className="flex items-center justify-center">
-          <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full flex items-center">
-            View All Applications
-            <svg className="ml-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14"></path>
-              <path d="M12 5l7 7-7 7"></path>
-            </svg>
-          </button>
-        </div>
+    
     </>
    
   )
