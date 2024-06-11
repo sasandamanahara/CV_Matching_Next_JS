@@ -2,11 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { get_specified_job_applicants } from "../../Services/job";
+import { hiring_state_change } from "../../Services/job";
 import { usePathname } from "next/navigation";
 import Cookies from "js-cookie";
 import useSWR from "swr";
 import CompanyHeader from "../../_components/header";
 import { getResume } from "../../Services/applicantService";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function extractIdFromUrl(url) {
   const parts = url.split("/");
@@ -73,6 +76,20 @@ export default function ApplicantList() {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
+
+
+  const handleHiringStageChange = async (id,value) => {
+    const res = await hiring_state_change(id,value);
+    console.log(res);
+    if (res.success) {
+      console.log("ok");
+      toast.success("Updated");
+    } else {
+      toast.error(res.message);
+    }
+  };
+
+
   return (
     <>
       <div className="flex flex-col">
@@ -261,12 +278,11 @@ export default function ApplicantList() {
                                 <select
                         className="block w-full border-gray-300 rounded-md shadow-sm focus:border-orange-400 focus:ring focus:ring-orange-400 focus:ring-opacity-50"
                         defaultValue={applicant.status}
-                              onChange={(e) => handleHiringStageChange(applicant._id, e.target.value)}
-          >
+                              onChange={(e) => handleHiringStageChange(applicant._id, e.target.value)}>
                                   <option value="Pending">Pending</option>
-                                  <option value="Shortlisted">Shortlisted</option>
                                   <option value="Interviewing">Interviewing</option>
-                                  <option value="Hired">Hired</option>
+                                  <option value="Offered">Offered</option>
+                                  <option value="Accepted">Accepted</option>
                                 </select>
                               </span>
                             </span>
@@ -355,6 +371,7 @@ export default function ApplicantList() {
             </div>
           </div>
         </main>
+        <ToastContainer />
       </div>
     </>
   );

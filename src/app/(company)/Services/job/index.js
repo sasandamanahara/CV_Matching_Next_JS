@@ -171,23 +171,23 @@ export const get_my_posted_job = async (id) => {
 
 
 // change application status api
-//not done yet
-export const change_application_status = async (formData) => {
+export const hiring_state_change = async (id, value) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/job/responseOfApplication`, {
-            method: 'PUT',
+        const res = await fetch(`http://localhost:3000/api/hiringStateChange`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${Cookies.get('token')}`
             },
-            body: JSON.stringify(formData),
-        })
-        const data = res.json();
+            body: JSON.stringify({ id, value }), // Corrected body
+        });
+        const data = await res.json(); // Await the JSON parsing
         return data;
     } catch (error) {
-        console.log('error in   getting my all application of specified jobs (service) => ', error);
+        console.log('error in updating (service) => ', error);
     }
 }
+
 
 
 export const get_application_details = async (id) => {
