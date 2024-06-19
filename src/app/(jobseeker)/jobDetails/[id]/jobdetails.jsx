@@ -32,6 +32,7 @@ export default function JobDetails() {
   const id = extractIdFromUrl(url);
   const [JobDetails, setJobDetails] = useState(null);
   const [formData, setFormData] = useState({ message: "", userJobSeeker: "", jobId:""});
+  const [isDeadlinePassed, setIsDeadlinePassed] = useState(false);
 
   const token = Cookies.get("token");
   const tokenParts = token ? token.split(".") : [];
@@ -95,8 +96,14 @@ export default function JobDetails() {
     get_specified_job(id)
   );
 
+
   useEffect(() => {
-    if (data) setJobDetails(data?.data);
+    if (data) {
+      setJobDetails(data?.data);
+      const currentTime = new Date().getTime(); // Get current time in milliseconds
+      const deadlinePassed = new Date(data?.data.job_deadline).getTime() < currentTime;
+      setIsDeadlinePassed(deadlinePassed);
+    }
   }, [data]);
 
   if (error2) toast.error(error2);
@@ -261,7 +268,8 @@ export default function JobDetails() {
 
               <button
                 type="submit"
-                className="w-full py-2 px-10 rounded bg-indigo-600 text-white font-semisbold tracking-widest"
+                disabled={isDeadlinePassed}
+                className={`w-full py-2 px-10 rounded ${isDeadlinePassed ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600'} text-white font-semisbold tracking-widest`}
               >
                 Submit
               </button>

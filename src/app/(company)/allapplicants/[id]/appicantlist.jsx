@@ -22,46 +22,68 @@ export default function ApplicantList() {
   const url = usePathname();
   const id = extractIdFromUrl(url);
   const [JobApplicantsDetails, setJobApplicantsDetails] = useState(null);
+  const [details, setDetails] = useState(null);
   const [filteredApplicants, setFilteredApplicants] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setloading] = useState(true);
 
-  const { data } = useSWR(`/get-specified-job-applicants`, () =>
-    get_specified_job_applicants(id), { refreshInterval: 0, revalidateOnFocus: false, revalidateOnReconnect: false, refreshWhenOffline: false, refreshWhenHidden: false }
-  );
-  
-  useEffect(() => {
-    if (data) {
-      setJobApplicantsDetails(data?.data);
-    }
-  }, [data]);
 
-  useEffect(() => {
-    if (JobApplicantsDetails) {
-      const fetchMatchedScoresForApplicants = async () => {
-        const updatedApplicantsDetails = await Promise.all(
-          JobApplicantsDetails.map(async (applicant) => {
-            const score = await getResume(
-              applicant.userJobSeeker._id,
-              JobApplicantsDetails[0]?.jobId?.description
-            );
-            const formattedScore = score !== undefined ? (score).toFixed(2) + "%" : "";
-            const newApplicant = { ...applicant, score: formattedScore };
-            return newApplicant;
-          })
-        );
-        // Sort the updated applicants array by score in descending order
-        updatedApplicantsDetails.sort((a, b) => {
-          const scoreA = parseFloat(a.score.replace('%', ''));
-          const scoreB = parseFloat(b.score.replace('%', ''));
-          return scoreB - scoreA;
-        });
-
-        setJobApplicantsDetails(updatedApplicantsDetails);
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const data = await get_specified_job_applicants(id);
+          setDetails(data?.data);
+          setloading(false);
+        } catch (error) {
+          // Handle any errors from the API call
+          console.error("Error fetching data:", error);
+        }
       };
+    
+      fetchData(); // Invoke the async function
+     
+    }, []);
+    
+    let noRuns=0;
 
-      fetchMatchedScoresForApplicants();
+  useEffect(() => {
+    if (details) {
+      noRuns=noRuns+1;
+      try{
+        const fetchMatchedScoresForApplicants = async () => {
+          const updatedApplicantsDetails = await Promise.all(
+            details.map(async (applicant) => {
+              const score = await getResume(
+                applicant.userJobSeeker._id,
+                details[0]?.jobId?.description
+              );
+              const formattedScore = score !== undefined ? (score).toFixed(2) + "%" : "";
+              return { ...applicant, score: formattedScore }; // Return updated applicant object
+            })
+          );
+        
+          // Sort the updated applicants array by score in descending order
+          updatedApplicantsDetails.sort((a, b) => {
+            const scoreA = parseFloat(a.score.replace('%', ''));
+            const scoreB = parseFloat(b.score.replace('%', ''));
+            return scoreB - scoreA;
+          });
+        
+          // Set the state once with the updated data
+          setJobApplicantsDetails(updatedApplicantsDetails);
+        };
+        fetchMatchedScoresForApplicants();
+      }catch(e){
+        console.log("rerun");
+        console.log(noRuns);
+        if(noRuns==1||noRuns==2){
+          console.log("rerun");
+          fetchMatchedScoresForApplicants();
+        }
+      }
+     
     }
-  }, [JobApplicantsDetails]);
+  }, [loading]);
 
   useEffect(() => {
     if (JobApplicantsDetails) {
@@ -85,7 +107,7 @@ export default function ApplicantList() {
       console.log("ok");
       toast.success("Updated");
     } else {
-      toast.error(res.message);
+      // toast.error(res.message);
     }
   };
 
@@ -160,82 +182,8 @@ export default function ApplicantList() {
                       </th>
                     </tr>
                   </thead>
-                  {/* body with score */}
-                  {/* <tbody>
-                    {JobApplicantsDetailsNew &&
-                      JobApplicantsDetailsNew.map((applicant) => (
-                        <tr key={applicant._id}>
-                          <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0">
-                                <a href="" className="block">
-                                  <img
-                                    alt="profil"
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Orange_Icon_User.svg/1024px-Orange_Icon_User.svg.png"
-                                    className="object-cover rounded-full h-8 w-8"
-                                  />
-                                </a>
-                              </div>
-                              <div className="ml-2">
-                                <p className="text-gray-900">
-                                  {applicant.userJobSeeker.name}
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                            <p className="text-gray-900">{applicant.message}</p>
-                          </td>
-                          <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                            <p className="text-gray-900">
-                              {applicant.score}
-                            </p>
-                          </td>
-                          <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                            <p className="text-gray-900">
-                              {applicant.createdAt.split("T")[0]}
-                            </p>
-                          </td>
-                          <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                            <span className="relative inline-block px-2 py-1 text-xs font-semibold leading-tight text-green-900">
-                              <span
-                                aria-hidden="true"
-                                className="absolute inset-0 bg-orange-200 rounded-full opacity-50"
-                              ></span>
-                              <span className="relative">
-                                {applicant.status === "Pending"
-                                  ? "Active"
-                                  : applicant.status}
-                              </span>
-                            </span>
-                          </td>
-                          <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
-                            <a
-                              href={`/applicantprofile/${applicant.userJobSeeker._id}`}
-                              className="text-orange-600 hover:text-orange-900 flex items-center"
-                            >
-                              <svg
-                                className="w-4 h-4 mr-1"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M7 9V2H3a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V10h-7a1 1 0 01-1-1zm9-5v2a1 1 0 001 1h2l-3.707 3.707a1 1 0 01-1.414 0L10 5H7a1 1 0 001-1V2h6a1 1 0 011 1z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                              See Application
-                            </a>
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody> */}
-{/* body without score */}
                   <tbody>
-                    {/*JobApplicantsDetails &&
-                      JobApplicantsDetails*/filteredApplicants.map((applicant) => (
+                  {filteredApplicants.map((applicant) => (
                         <tr key={applicant._id}>
                           <td className="px-3 py-2 text-xs bg-white border-b border-gray-200">
                             <div className="flex items-center">

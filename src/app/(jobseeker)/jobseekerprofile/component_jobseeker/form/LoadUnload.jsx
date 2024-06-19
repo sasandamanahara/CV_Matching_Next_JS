@@ -4,6 +4,7 @@ import { ResumeContext } from "../../../jobseekerprofile/builder";
 import { post_resume } from "../../../Services/Resume";
 import { load_resume } from "../../../Services/Resume";
 import Cookies from 'js-cookie';
+import { toast, ToastContainer } from "react-toastify";
 
 const LoadUnload = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -51,10 +52,9 @@ const LoadUnload = () => {
   
     const res = await post_resume(data); // Send the resume data object directly
     if (res.success) {
-      // toast.success(res.message);
+      toast.success(res.message);
       setTimeout(() => {
-        console.log("send resume");
-        // router.push("/display_jobs");
+        toast.dismiss();
       }, 1000);
     } else {
       // toast.error(res.message);
@@ -78,7 +78,12 @@ const LoadUnload = () => {
         >
           <FaCloudDownloadAlt className="text-[1.2rem] text-white" />
         </button>
+        <div style={{ width: '20px', height: '20px' }} >
+        <ToastContainer/>
+        </div>
+        
       </div>
+      
     </div>
   );
 };
