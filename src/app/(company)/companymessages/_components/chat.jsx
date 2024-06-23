@@ -5,7 +5,7 @@ export default function Chat() {
       <div class="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
         <div class="flex flex-row items-center justify-center h-12 w-full">
           <div
-            class="flex items-center justify-center rounded-2xl text-indigo-700 bg-indigo-100 h-10 w-10"
+            class="flex items-center justify-center rounded-2xl text-orange-700 bg-indigo-100 h-10 w-10"
           >
             <svg
               class="w-6 h-6"
@@ -38,7 +38,7 @@ export default function Chat() {
           <div class="text-xs text-gray-500">Lead UI/UX Designer</div>
           <div class="flex flex-row items-center mt-3">
             <div
-              class="flex flex-col justify-center h-4 w-8 bg-indigo-500 rounded-full"
+              class="flex flex-col justify-center h-4 w-8 bg-orange-500 rounded-full"
             >
               <div class="h-3 w-3 bg-white rounded-full self-end mr-1"></div>
             </div>
@@ -141,7 +141,7 @@ export default function Chat() {
                 <div class="col-start-1 col-end-8 p-3 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div
-                      class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
+                      class="flex items-center justify-center h-10 w-10 rounded-full bg-orange-500 flex-shrink-0"
                     >
                       A
                     </div>
@@ -155,7 +155,7 @@ export default function Chat() {
                 <div class="col-start-1 col-end-8 p-3 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div
-                      class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
+                      class="flex items-center justify-center h-10 w-10 rounded-full bg-orange-500 flex-shrink-0"
                     >
                       A
                     </div>
@@ -173,7 +173,7 @@ export default function Chat() {
                 <div class="col-start-6 col-end-13 p-3 rounded-lg">
                   <div class="flex items-center justify-start flex-row-reverse">
                     <div
-                      class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
+                      class="flex items-center justify-center h-10 w-10 rounded-full bg-orange-500 flex-shrink-0"
                     >
                       A
                     </div>
@@ -187,7 +187,7 @@ export default function Chat() {
                 <div class="col-start-6 col-end-13 p-3 rounded-lg">
                   <div class="flex items-center justify-start flex-row-reverse">
                     <div
-                      class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
+                      class="flex items-center justify-center h-10 w-10 rounded-full bg-orange-500 flex-shrink-0"
                     >
                       A
                     </div>
@@ -203,7 +203,7 @@ export default function Chat() {
                 <div class="col-start-1 col-end-8 p-3 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div
-                      class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
+                      class="flex items-center justify-center h-10 w-10 rounded-full bg-orange-500 flex-shrink-0"
                     >
                       A
                     </div>
@@ -217,7 +217,7 @@ export default function Chat() {
                 <div class="col-start-6 col-end-13 p-3 rounded-lg">
                   <div class="flex items-center justify-start flex-row-reverse">
                     <div
-                      class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
+                      class="flex items-center justify-center h-10 w-10 rounded-full bg-orange-500 flex-shrink-0"
                     >
                       A
                     </div>
@@ -238,7 +238,7 @@ export default function Chat() {
                 <div class="col-start-1 col-end-8 p-3 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div
-                      class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
+                      class="flex items-center justify-center h-10 w-10 rounded-full bg-orange-500 flex-shrink-0"
                     >
                       A
                     </div>
@@ -255,7 +255,7 @@ export default function Chat() {
                 <div class="col-start-1 col-end-8 p-3 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div
-                      class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0"
+                      class="flex items-center justify-center h-10 w-10 rounded-full bg-orange-500 flex-shrink-0"
                     >
                       A
                     </div>
@@ -264,7 +264,7 @@ export default function Chat() {
                     >
                       <div class="flex flex-row items-center">
                         <button
-                          class="flex items-center justify-center bg-indigo-600 hover:bg-indigo-800 rounded-full h-8 w-10"
+                          class="flex items-center justify-center bg-orange-600 hover:bg-orange-800 rounded-full h-8 w-10"
                         >
                           <svg
                             class="w-6 h-6 text-white"
@@ -378,7 +378,7 @@ export default function Chat() {
             </div>
             <div class="ml-4">
               <button
-                class="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0"
+                class="flex items-center justify-center bg-orange-500 hover:bg-orange-600 rounded-xl text-white px-4 py-1 flex-shrink-0"
               >
                 <span>Send</span>
                 <span class="ml-2">

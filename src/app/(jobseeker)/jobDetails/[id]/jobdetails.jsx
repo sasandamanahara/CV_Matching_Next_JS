@@ -113,7 +113,7 @@ export default function JobDetails() {
     <>
       {isLoading ? (
         <div className="bg-gray w-full h-screen flex items-center flex-col justify-center">
-          <InfinitySpin width="200" color="#4f46e5" />
+          <InfinitySpin width="200" color="orange" />
           <p className="text-xs uppercase">Loading Resources Hold Tight...</p>
         </div>
       ) : (
@@ -134,14 +134,14 @@ export default function JobDetails() {
                 </div>
                 <div className="md:px-4 mb-1 px-2 md:mx-2 flex flex-col items-start justify-center">
                   <div className="flex items-center justify-center mb-1">
-                    <FaUserAstronaut className="text-xs font-semibold text-indigo-600" />
+                    <FaUserAstronaut className="text-xs font-semibold text-orange-600" />
                     <p className="font-semibold text-base mx-1">Job Poster </p>
                     <p className=" text-sm text-gray-800 mx-1">
                       {JobDetails?.userCompany?.name}
                     </p>
                   </div>
                   <div className="flex items-center justify-center mb-1">
-                    <MdEmail className="text-xs font-semibold text-indigo-600" />
+                    <MdEmail className="text-xs font-semibold text-orange-600" />
                     <p className="font-semibold text-base mx-1">Email </p>
                     <p className=" text-sm text-gray-800 mx-1">
                       {JobDetails?.userCompany?.email}
@@ -150,12 +150,12 @@ export default function JobDetails() {
                 </div>
                 <div className="md:px-4 mb-1 px-2 md:mx-2 flex flex-col items-start justify-center">
                   <div className="flex items-center justify-center mb-1">
-                    <GoLocation className="text-xs font-semibold text-indigo-600" />
+                    <GoLocation className="text-xs font-semibold text-orange-600" />
                     <p className="font-semibold text-base mx-1">Location </p>
                     <p className=" text-sm text-gray-800 mx-1">Sri Lanka</p>
                   </div>
                   <div className="flex items-center justify-center mb-1">
-                    <MdCategory className="text-xs font-semibold text-indigo-600" />
+                    <MdCategory className="text-xs font-semibold text-orange-600" />
                     <p className="font-semibold text-base mx-1">Category </p>
                     <p className=" text-sm text-gray-800 mx-1">
                       {JobDetails?.job_category}
@@ -164,14 +164,14 @@ export default function JobDetails() {
                 </div>
                 <div className="md:px-4 mb-1 px-2 md:mx-2 flex flex-col items-start justify-center">
                   <div className="flex items-center justify-center mb-1">
-                    <BsBriefcaseFill className="text-xs font-semibold text-indigo-600" />
+                    <BsBriefcaseFill className="text-xs font-semibold text-orange-600" />
                     <p className="font-semibold text-base mx-1">Job Type </p>
                     <p className="text-sm text-gray-800 mx-1">
                       {JobDetails?.job_type}
                     </p>
                   </div>
                   <div className="flex items-center justify-center mb-1">
-                    <AiOutlineDollarCircle className="text-xs font-semibold text-indigo-600" />
+                    <AiOutlineDollarCircle className="text-xs font-semibold text-orange-600" />
                     <p className="font-semibold text-base mx-1">Salary </p>
                     <p className=" text-sm text-gray-800 mx-1">
                       $ {JobDetails?.salary}{" "}
@@ -181,14 +181,14 @@ export default function JobDetails() {
               </div>
             </div>
             <br/>
-                <button className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300"
+                <button className="bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300"
        onClick={() => router.push(`/companyprofileview/${JobDetails?.userCompany?._id}`)}>
 
           View Company
         </button>
             <div className="w-full md:px-4 py-2 flex items-center md:items-start md:flex-row flex-col justify-start md:justify-center">
               <div className="md:w-8/12 w-full md:px-4 py-8 flex flex-col items-center content-start justify-center ">
-                <h1 className="text-center lg:text-2xl font-semibold text-xl mb-4 uppercase border-b-2 border-indigo-600 py-2">
+                <h1 className="text-center lg:text-2xl font-semibold text-xl mb-4 uppercase border-b-2 border-orange-600 py-2">
                   Job Description
                   
                 </h1>
@@ -200,7 +200,7 @@ export default function JobDetails() {
               <div className="md:w-4/12 w-full py-8 px-4 md:px-10">
                 <h1 className=" text-2xl font-semibold mb-2">Job Summary</h1>
                 <div className="flex items-center justify-start mb-3">
-                  <RiUserSearchFill className="text-base font-semibold text-indigo-600" />
+                  <RiUserSearchFill className="text-base font-semibold text-orange-600" />
                   <p className="font-semibold text-base mx-1">
                     Total Vacancies{" "}
                   </p>
@@ -209,7 +209,7 @@ export default function JobDetails() {
                   </p>
                 </div>
                 <div className="flex items-center justify-start mb-3">
-                  <BsFillCalendar2DateFill className="text-base font-semibold text-indigo-600" />
+                  <BsFillCalendar2DateFill className="text-base font-semibold text-orange-600" />
                   <p className="font-semibold text-base mx-1">Dead Line</p>
                   <p className=" text-sm text-gray-800 mx-1">
                     {new Date(`${JobDetails?.job_deadline}`).toLocaleDateString(
@@ -218,7 +218,7 @@ export default function JobDetails() {
                   </p>
                 </div>
                 <div className="flex items-center justify-start mb-3">
-                  <HiOutlineStar className="text-base font-semibold text-indigo-600" />
+                  <HiOutlineStar className="text-base font-semibold text-orange-600" />
                   <p className="font-semibold text-base mx-1">
                     Experience Required
                   </p>
@@ -230,7 +230,7 @@ export default function JobDetails() {
             </div>
           </div>
           <center>
-          <h1 className="text-3xl text-blue-600">Apply for This Job</h1>
+          <h1 className="text-3xl text-orange-600">Apply for This Job</h1>
             <form
               encType="multipart/form-data"
               onSubmit={handleSubmit}
@@ -253,7 +253,7 @@ export default function JobDetails() {
                   }
                   type="description"
                   id="description"
-                  className="w-full py-2 px-3 mb-2 border border-indigo-600 rounded"
+                  className="w-full py-2 px-3 mb-2 border border-orange-600 rounded"
                   placeholder="Enter Message"
                 />
                 {error.message && (
@@ -269,7 +269,7 @@ export default function JobDetails() {
               <button
                 type="submit"
                 disabled={isDeadlinePassed}
-                className={`w-full py-2 px-10 rounded ${isDeadlinePassed ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600'} text-white font-semisbold tracking-widest`}
+                className={`w-full py-2 px-10 rounded ${isDeadlinePassed ? 'bg-gray-400 cursor-not-allowed' : 'bg-orange-600'} text-white font-semisbold tracking-widest`}
               >
                 Submit
               </button>
