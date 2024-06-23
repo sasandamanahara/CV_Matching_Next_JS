@@ -3,7 +3,7 @@
 export const register_me_jobseeker = async (formData) => {
     try {
 
-        const res = await fetch(`http://localhost:3000/api/auth/registerJobSeeker`, {
+        const res = await fetch(`/api/auth/registerJobSeeker`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ export const login_me_jobseeker = async (formData) => {
     console.log("gettong");
     try {
         console.log("formData");
-        const res = await fetch("http://localhost:3000/api/auth/loginJobSeeker", {
+        const res = await fetch("/api/auth/loginJobSeeker", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export const login_me_jobseeker = async (formData) => {
 
 export const forget_password_jobseeker = async (formData) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/auth/forgetPasswordJobseeker`, {
+        const res = await fetch(`/api/auth/forgetPasswordJobseeker`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

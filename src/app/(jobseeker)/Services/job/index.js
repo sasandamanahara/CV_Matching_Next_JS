@@ -5,7 +5,7 @@ export const get_all_posted_job = async (id) => {
     try {
 
         console.log("done1");
-        const res = await fetch("http://localhost:3000/api/getalljobs", {
+        const res = await fetch("/api/getalljobs", {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
@@ -22,7 +22,7 @@ export const get_all_posted_job = async (id) => {
 export const get_specified_job = async (id) => {
     try {
       
-        const res = await fetch(`http://localhost:3000/api/getSpecifiedJob?id=${id}`, {
+        const res = await fetch(`/api/getSpecifiedJob?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
@@ -78,7 +78,7 @@ export const update_profile = async (formData) => {
 
         console.log("posting");
         console.log(formData);
-        const res = await fetch(`http://localhost:3000/api/updateprofileJobSeeker`, {
+        const res = await fetch(`/api/updateprofileJobSeeker`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export const load_profile = async (userID) => {
     try {
         // console.log("getting resume");
         console.log(userID);
-        const res = await fetch(`http://localhost:3000/api/loadProfileJobSeeker?id=${userID}`, {
+        const res = await fetch(`/api/loadProfileJobSeeker?id=${userID}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ export const load_profile = async (userID) => {
 export const update_email = async (formData) => {
     try {
         console.log("formData");
-        const res = await fetch("http://localhost:3000/api/updateEmailJobSeeker", {
+        const res = await fetch("/api/updateEmailJobSeeker", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -138,7 +138,7 @@ export const update_email = async (formData) => {
 export const update_password = async (formData) => {
     try {
         console.log("formData");
-        const res = await fetch("http://localhost:3000/api/updatePasswordJobSeeker", {
+        const res = await fetch("/api/updatePasswordJobSeeker", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

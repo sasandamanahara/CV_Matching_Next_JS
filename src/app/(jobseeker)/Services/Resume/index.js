@@ -4,7 +4,7 @@ export const post_resume = async (formData) => {
     try {
         // console.log("posting");
         // console.log(formData);
-        const res = await fetch(`http://localhost:3000/api/postresume`, {
+        const res = await fetch(`/api/postresume`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export const load_resume = async (userID) => {
     try {
         // console.log("getting resume");
         console.log(userID);
-        const res = await fetch(`http://localhost:3000/api/loadresume?id=${userID}`, {
+        const res = await fetch(`/api/loadresume?id=${userID}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

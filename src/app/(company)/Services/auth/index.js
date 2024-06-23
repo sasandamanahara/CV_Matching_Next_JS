@@ -3,7 +3,7 @@
 export const register_me_company = async (formData) => {
     try {
     console.log("regg");
-        const res = await fetch(`http://localhost:3000/api/auth/registerCompany`, {
+        const res = await fetch(`/api/auth/registerCompany`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ export const register_me_company = async (formData) => {
 
 export const login_me_company = async (formData) => {
     try {
-        const res = await fetch("http://localhost:3000/api/auth/loginCompany", {
+        const res = await fetch("/api/auth/loginCompany", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export const login_me_company = async (formData) => {
 
 export const forget_password_company = async (formData) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/auth/forgetPasswordCompany`, {
+        const res = await fetch(`/api/auth/forgetPasswordCompany`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
