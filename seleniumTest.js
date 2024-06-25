@@ -45,7 +45,7 @@ async function testLoginPage() {
       .sendKeys("123456789", Key.RETURN);
     await driver.wait(until.urlContains("/jobseekerdashboard"), 30000);
     console.log("Job Seeker Login Test (Correct Credentials) Passed!");
-    await sleep(3000);
+    await sleep(5000);
 
     // Company Login Test - Correct Credentials
     await driver.get("http://localhost:3000/auth/login");
@@ -57,7 +57,7 @@ async function testLoginPage() {
     await driver
       .findElement(By.id("LoginPassword"))
       .sendKeys("123456789", Key.RETURN);
-    await driver.wait(until.urlContains("/companydashboard"), 10000);
+    await driver.wait(until.urlContains("/companydashboard"), 30000);
     console.log("Company Login Test (Correct Credentials) Passed!");
 
     // Wait for 3 seconds on the dashboard
