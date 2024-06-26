@@ -193,7 +193,7 @@ export default function JobDetails() {
                   
                 </h1>
                 
-                <p className="px-4">{JobDetails?.description}</p>
+                <p className="px-4 text-justify">{JobDetails?.description}</p>
              
               </div>
               
