@@ -22,7 +22,7 @@ export default function JobsCard({ job, posted }) {
       <div className="border border-orange-500 rounded-md overflow-hidden">
         <img
           alt=""
-          src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+          src="https://th.bing.com/th/id/OIP.tcrTKYBnscD49oGdvyLGNwAAAA?w=474&h=355&rs=1&pid=ImgDetMain"
           className="h-56 w-full object-cover"
         />
       </div>
