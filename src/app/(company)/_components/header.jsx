@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import {
@@ -30,29 +31,25 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useEffect } from "react";
 
 export default function CompanyHeader() {
-  
   const handleLogout = async () => {
-    Cookies.remove('token');
-    Cookies.remove('type');
-    localStorage.removeItem('user');
-    window.location.href = '/'
-}
+    Cookies.remove("token");
+    Cookies.remove("type");
+    localStorage.removeItem("user");
+    window.location.href = "/";
+  };
 
-useEffect(()=>{
-  const token = Cookies.get("token");
-  if (!token) {
-    window.location.href = '/auth/login';
-  }
-  const type = Cookies.get("type");
-    if(type!="company"){
-      window.location.href = '/auth/login';
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (!token) {
+      window.location.href = "/auth/login";
     }
-},[])
+    const type = Cookies.get("type");
+    if (type != "company") {
+      window.location.href = "/auth/login";
+    }
+  }, []);
 
   return (
-
-
-
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
       <Sheet>
         <SheetTrigger asChild>
