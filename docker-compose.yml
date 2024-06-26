@@ -14,7 +14,7 @@ services:
       context: .
       dockerfile: Dockerfile # Points to the Dockerfile in the root directory
     ports:
-      - "3001:3000"
+      - "3003:3000"
     environment:
       PORT: 3000
       DB_URL: mongodb+srv://nipunikumudika:nipunikumudika@cluster0.txmga7v.mongodb.net/JobBoard?retryWrites=true&w=majority
