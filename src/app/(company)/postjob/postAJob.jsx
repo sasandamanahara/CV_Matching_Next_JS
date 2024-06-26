@@ -114,7 +114,7 @@ console.log(formData);
     if (res.success) {
       toast.success(res.message);
       setTimeout(() => {
-        router.push("/display_jobs");
+        router.push("/displaypostedjobs");
       }, 1000);
     } else {
       toast.error(res.message);
@@ -132,7 +132,7 @@ console.log(formData);
     <>
     {/* <NavBar></NavBar> */}
       <div className="w-full  py-5 flex items-center  justify-center flex-col">
-        <h2 className="text-xl mt-1 uppercase tracking-widest border-b-2 border-b-indigo-600 py-2 font-semibold mb-8 md:text-2xl lg:text-2xl">
+        <h2 className="text-xl mt-1 uppercase tracking-widest border-b-2 border-b-orange-600 py-2 font-semibold mb-8 md:text-2xl lg:text-2xl">
           Enter Job Details
         </h2>
         <form onSubmit={handleSubmit} className=" w-full px-4 mx-4  h-full">
@@ -146,7 +146,7 @@ console.log(formData);
               }
               type="text"
               id="title"
-              className="w-full py-2 px-3 mb-2 border border-indigo-600 rounded"
+              className="w-full py-2 px-3 mb-2 border border-orange-600 rounded"
               placeholder="Enter title of job"
             />
             {error.title && (
@@ -163,7 +163,7 @@ console.log(formData);
               }
               type="number"
               id="salary"
-              className="w-full py-2 px-3 mb-2 border border-indigo-600 rounded"
+              className="w-full py-2 px-3 mb-2 border border-orange-600 rounded"
               placeholder="Enter Salary for this job"
             />
             {error.salary && (
@@ -180,7 +180,7 @@ console.log(formData);
               }
               type="email"
               id="email"
-              className="w-full py-2 px-3 mb-2 border border-indigo-600 rounded"
+              className="w-full py-2 px-3 mb-2 border border-orange-600 rounded"
               placeholder="Enter Email to be Contacted for this job"
             />
             {error.email && (
@@ -197,7 +197,7 @@ console.log(formData);
               }
               type="text"
               id="company"
-              className="w-full py-2 px-3 mb-2 border border-indigo-600 rounded"
+              className="w-full py-2 px-3 mb-2 border border-orange-600 rounded"
               placeholder="Enter Company of job"
             />
             {error.company && (
@@ -218,7 +218,7 @@ console.log(formData);
               onResize={"none"}
               type="text"
               id="description"
-              className="w-full py-2 px-3 mb-2 border border-indigo-600 rounded"
+              className="w-full py-2 px-3 mb-2 border border-orange-600 rounded"
               placeholder="Enter description of job"
             />
             {error.description && (
@@ -238,7 +238,7 @@ console.log(formData);
               }
               type="text"
               id="jobCategory"
-              className="w-full py-2 px-3 mb-2 border border-indigo-600 rounded"
+              className="w-full py-2 px-3 mb-2 border border-orange-600 rounded"
               placeholder="Enter Category of job"
             />
             {error.job_category && (
@@ -268,7 +268,7 @@ console.log(formData);
               }
               type="text"
               id="jobExperience"
-              className="w-full py-2 px-3 mb-2 border border-indigo-600 rounded"
+              className="w-full py-2 px-3 mb-2 border border-orange-600 rounded"
               placeholder="Enter Experience Required for this job"
             />
             {error.job_experience && (
@@ -285,7 +285,7 @@ console.log(formData);
               }
               type="number"
               id="jobva"
-              className="w-full py-2 px-3 mb-2 border border-indigo-600 rounded"
+              className="w-full py-2 px-3 mb-2 border border-orange-600 rounded"
               placeholder="Enter Number  of Vacancies"
             />
             {error.job_vacancy && (
@@ -302,7 +302,7 @@ console.log(formData);
               }
               type="date"
               id="jobva"
-              className="w-full py-2 px-3 mb-2 border border-indigo-600 rounded"
+              className="w-full py-2 px-3 mb-2 border border-orange-600 rounded"
               placeholder="Enter Deadline of job"
             />
             {error.job_deadline && (
@@ -311,7 +311,7 @@ console.log(formData);
           </div>
           <button
             type="submit"
-            className="py-3 px-10  rounded bg-gray-900 text-white font-semibold tracking-widest"
+            className="py-3 px-10  rounded bg-orange-700 text-white font-semibold tracking-widest"
           >
             Submit
           </button>

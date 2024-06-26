@@ -67,7 +67,7 @@ const LoadUnload = () => {
         <h2 className="text-[1.2rem] text-white">Save Data</h2>
         <button
           aria-label="Save Data"
-          className="p-2 text-white bg-blue-700 rounded"
+          className="p-2 text-white bg-orange-700 rounded"
           onClick={(event) =>
             handleSave(
               resumeData,
