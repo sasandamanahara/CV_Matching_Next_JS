@@ -114,7 +114,7 @@ console.log(formData);
     if (res.success) {
       toast.success(res.message);
       setTimeout(() => {
-        router.push("/display_jobs");
+        router.push("/displaypostedjobs");
       }, 1000);
     } else {
       toast.error(res.message);
