@@ -10,7 +10,7 @@ export const post_job = async (formData) => {
 
         console.log("posting");
         console.log(formData);
-        const res = await fetch(`http://localhost:3000/api/postajob`, {
+        const res = await fetch(`/api/postajob`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const post_job = async (formData) => {
 export const get_specified_job_applicants = async (id) => {
     try {
       
-        const res = await fetch(`http://localhost:3000/api/getSpecifiedJobApplicants?id=${id}`, {
+        const res = await fetch(`/getSpecifiedJobApplicants?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
@@ -65,12 +65,12 @@ export const get_specified_job_applicants = async (id) => {
 export const get_all_jobs_of_company = async (id) => {
     try {
       
-        const res1 = await fetch(`http://localhost:3000/api/getAllJobsCompany?id=${id}`, {
+        const res1 = await fetch(`/api/getAllJobsCompany?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
 
-        const res2 = await fetch(`http://localhost:3000/api/getPostedJobs?id=${id}`, {
+        const res2 = await fetch(`/api/getPostedJobs?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
@@ -124,7 +124,7 @@ export const get_all_posted_job = async (id) => {
     try {
 
         console.log("done1");
-        const res = await fetch("http://localhost:3000/api/getalljobs", {
+        const res = await fetch("/api/getalljobs", {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
@@ -142,7 +142,7 @@ export const get_my_posted_job = async (id) => {
 
     try {
         console.log("getting id "+id);
-        const res = await fetch(`http://localhost:3000/api/getPostedJobs?id=${id}`, {
+        const res = await fetch(`/getPostedJobs?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
@@ -173,7 +173,7 @@ export const get_my_posted_job = async (id) => {
 // change application status api
 export const hiring_state_change = async (id, value) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/hiringStateChange`, {
+        const res = await fetch(`/api/hiringStateChange`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -192,7 +192,7 @@ export const hiring_state_change = async (id, value) => {
 
 export const get_application_details = async (id) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/job/getApplicationDetail?id=${id}`, {
+        const res = await fetch(`/api/job/getApplicationDetail?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
@@ -212,7 +212,7 @@ export const get_matched_score = async (cvText, jdText) => {
     };
 
     try {
-        const res = await fetch(`http://localhost:5000/match-skills`, {
+        const res = await fetch(`/match-skills`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -242,7 +242,7 @@ export const update_profile = async (formData) => {
 
         console.log("posting");
         console.log(formData);
-        const res = await fetch(`http://localhost:3000/api/updateprofileCompany`, {
+        const res = await fetch(`/api/updateprofileCompany`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -263,7 +263,7 @@ export const load_profile = async (userID) => {
     try {
         // console.log("getting resume");
         console.log(userID);
-        const res = await fetch(`http://localhost:3000/api/loadProfileCompany?id=${userID}`, {
+        const res = await fetch(`/api/loadProfileCompany?id=${userID}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -284,7 +284,7 @@ export const load_profile = async (userID) => {
 export const update_email = async (formData) => {
     try {
         console.log("formData");
-        const res = await fetch("http://localhost:3000/api/updateEmailCompany", {
+        const res = await fetch("/api/updateEmailCompany", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -302,7 +302,7 @@ export const update_email = async (formData) => {
 export const update_password = async (formData) => {
     try {
         console.log("formData");
-        const res = await fetch("http://localhost:3000/api/updatePasswordCompany", {
+        const res = await fetch("/api/updatePasswordCompany", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
