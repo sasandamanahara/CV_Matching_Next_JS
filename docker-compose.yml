@@ -20,18 +20,18 @@ services:
       DB_URL: mongodb+srv://nipunikumudika:nipunikumudika@cluster0.txmga7v.mongodb.net/JobBoard?retryWrites=true&w=majority
     depends_on:
       - mongo_db
-      - match
+      # - match
     volumes:
       - .:/app # Bind the entire root directory to /app in the container
 
-  match:
-    build:
-      context: ./match
-      dockerfile: Dockerfile
-    ports:
-      - "3002:3000"
-    volumes:
-      - ./match:/app # Bind the match directory to /app in the container
+  # match:
+  #   build:
+  #     context: ./match
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5000:3000"
+  #   volumes:
+  #     - ./match:/app # Bind the match directory to /app in the container
 
 volumes:
   mongo_db:

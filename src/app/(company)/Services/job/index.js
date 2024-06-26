@@ -212,7 +212,7 @@ export const get_matched_score = async (cvText, jdText) => {
     };
 
     try {
-        const res = await fetch(`/match-skills`, {
+        const res = await fetch(`http://localhost:5000/match-skills`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
