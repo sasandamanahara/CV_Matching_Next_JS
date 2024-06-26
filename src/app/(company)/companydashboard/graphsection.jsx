@@ -5,11 +5,11 @@ const MyComponent = (appliedCount) => {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-8">
       <div className="lg:col-span-2">
-        <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 ">
           <div>
             <div className="p-4 bg-white shadow-lg rounded-2xl dark:bg-gray-800">
               <div className="flex items-center">
-                <span className="relative p-4 bg-purple-200 rounded-xl">
+                <span className="relative p-4 bg-orange-200 rounded-xl">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -40,7 +40,7 @@ const MyComponent = (appliedCount) => {
           <div>
             <div className="p-4 bg-white shadow-lg rounded-2xl dark:bg-gray-800">
               <div className="flex items-center">
-                <span className="relative p-4 bg-purple-200 rounded-xl">
+                <span className="relative p-4 bg-orange-200 rounded-xl">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -70,7 +70,7 @@ const MyComponent = (appliedCount) => {
           </div>
           <div className="p-4 bg-white rounded-lg shadow-lg">
             <div className="flex items-center">
-              <span className="relative p-4 bg-purple-200 rounded-xl">
+              <span className="relative p-4 bg-orange-200 rounded-xl">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -123,7 +123,7 @@ const MyComponent = (appliedCount) => {
                 </div>
                 <div className="w-full h-2 mb-4 bg-green-100 rounded-full">
                   <div
-                    className="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                    className="bg-orange-600 h-1.5 rounded-full dark:bg-orange-500"
                     style={{
                       width: `${
                         (appliedCount.fulltime / appliedCount.appliedCount) *
@@ -140,7 +140,7 @@ const MyComponent = (appliedCount) => {
                 </div>
                 <div className="w-full h-2 mb-4 bg-indigo-100 rounded-full">
                   <div
-                    className="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                    className="bg-orange-600 h-1.5 rounded-full dark:bg-orange-500"
                     style={{
                       width: `${
                         (appliedCount.parttime / appliedCount.appliedCount) *
@@ -157,7 +157,7 @@ const MyComponent = (appliedCount) => {
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700">
                   <div
-                    className="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                    className="bg-orange-600 h-1.5 rounded-full dark:bg-orange-500"
                     style={{
                       width: `${
                         (appliedCount.internship / appliedCount.appliedCount) *
@@ -174,7 +174,7 @@ const MyComponent = (appliedCount) => {
                 </div>
                 <div className="w-full h-2 bg-pink-100 rounded-full">
                   <div
-                    className="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
+                    className="bg-orange-600 h-1.5 rounded-full dark:bg-orange-500"
                     style={{
                       width: `${
                         (appliedCount.remote / appliedCount.appliedCount) * 100
