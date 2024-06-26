@@ -47,7 +47,7 @@ export const post_job = async (formData) => {
 export const get_specified_job_applicants = async (id) => {
     try {
       
-        const res = await fetch(`/getSpecifiedJobApplicants?id=${id}`, {
+        const res = await fetch(`/api/getSpecifiedJobApplicants?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
@@ -142,7 +142,7 @@ export const get_my_posted_job = async (id) => {
 
     try {
         console.log("getting id "+id);
-        const res = await fetch(`/getPostedJobs?id=${id}`, {
+        const res = await fetch(`/api/getPostedJobs?id=${id}`, {
             method: 'GET',
             headers : {'Authorization': `Bearer ${Cookies.get('token')}`}
         })
