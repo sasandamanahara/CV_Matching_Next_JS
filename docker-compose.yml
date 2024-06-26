@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  # MongoDB
+  #MongoDB
   mongo_db:
     container_name: database_container
     image: mongo:latest
@@ -10,28 +10,17 @@ services:
       - mongo_db:/data/db
 
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile # Points to the Dockerfile in the root directory
+    build: .
     ports:
-      - "3003:3000"
+      - 3001:3000
     environment:
       PORT: 3000
       DB_URL: mongodb+srv://nipunikumudika:nipunikumudika@cluster0.txmga7v.mongodb.net/JobBoard?retryWrites=true&w=majority
+
     depends_on:
       - mongo_db
-      # - match
-    volumes:
-      - .:/app # Bind the entire root directory to /app in the container
-
-  # match:
-  #   build:
-  #     context: ./match
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "5000:3000"
-  #   volumes:
-  #     - ./match:/app # Bind the match directory to /app in the container
 
 volumes:
-  mongo_db:
+  mongo_db: {}
+#run command
+# docker compose up
