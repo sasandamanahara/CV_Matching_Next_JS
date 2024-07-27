@@ -18,7 +18,7 @@ export const getResume = async (applicantId,jobDescription) => {
 export const fetchMatchedScore = async (applicantId, resume, jobDescription) => {
   try {
     // Assuming you have an endpoint '/calculate-matched-score' on your backend
-    const res = await fetch("https://nscpython.sasandamanahara.com/match-skills", {
+    const res = await fetch("http://127.0.0.1:5000/match-skills", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

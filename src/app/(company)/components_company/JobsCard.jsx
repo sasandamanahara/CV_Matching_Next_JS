@@ -23,7 +23,7 @@ export default function JobsCard({ job, posted }) {
       <div className="border border-orange-500 rounded-md overflow-hidden">
         <img
           alt=""
-          src="https://www.mypropertree.co.in/images/Work.png"
+          src="https://jumpcloud.com/wp-content/uploads/2022/02/Remote-work-ready-aspect-ratio-160-110.png"
           className="h-56 w-full object-cover"
         />
       </div>
